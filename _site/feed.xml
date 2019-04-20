@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-20T15:13:03+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Introduction to “Did You Mean “ feature in ElasticSearch</title><link href="http://localhost:4000/jekyll/update/2019/04/20/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Introduction to &quot;Did You Mean &quot; feature in ElasticSearch" /><published>2019-04-20T13:12:15+05:30</published><updated>2019-04-20T13:12:15+05:30</updated><id>http://localhost:4000/jekyll/update/2019/04/20/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/04/20/welcome-to-jekyll.html">&lt;p&gt;In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.&lt;/p&gt;
+
+&lt;p&gt;There are 4 types of suggestors&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Term Suggestor&lt;/li&gt;
+  &lt;li&gt;Phrase Suggestor&lt;/li&gt;
+  &lt;li&gt;Completion Suggestor&lt;/li&gt;
+  &lt;li&gt;Context Suggestor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So in recent times I have used a completion suggestor in one of my projects.The completion suggester provides auto-complete/search-as-you-type functionality. This is a navigational feature to guide users to relevant results as they are typing, improving search precision. It is not meant for spell correction or did-you-mean functionality like the term or phrase suggester&lt;/p&gt;
+
+&lt;p&gt;I will expalin with a small example in understand better and here is the sample mapping&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -XPUT &quot;http://localhost:9200/sample&quot; -H 'Content-Type: application/json' -d'
+{
+  &quot;mappings&quot;: {
+    &quot;doc&quot;: {
+      &quot;properties&quot;: {
+        &quot;namesuggest&quot;: {
+          &quot;type&quot;: &quot;completion&quot;,
+          &quot;analyzer&quot;: &quot;standard&quot;,
+          &quot;preserve_separators&quot;: true,
+          &quot;preserve_position_increments&quot;: true,
+          &quot;max_input_length&quot;: 50
+        },
+        &quot;fullname&quot;: {
+          &quot;type&quot;: &quot;text&quot;
+        }
+      }
+    }
+  }
+}'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the above mapping we defined completion suggestor and we have used standard analyzer,it provides grammar based tokenization (based on the Unicode Text Segmentation algorithm, as specified in Unicode Standard Annex #29) and works well for most languages.&lt;/p&gt;
+
+&lt;p&gt;Now we index few documents&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT sample/doc/1?refresh
+{
+  &quot;namesuggest&quot;: [
+    {
+      &quot;input&quot;: &quot;Kartheek Gummaluri&quot;,
+      &quot;weight&quot;: 10
+    }
+  ],
+  &quot;fullname&quot;: &quot;Kartheek Gummaluri&quot;
+}
+
+PUT sample/doc/2?refresh
+{
+  &quot;namesuggest&quot;: [
+    {
+      &quot;input&quot;: &quot;Kiran Sangita&quot;,
+      &quot;weight&quot;: 6
+    }
+  ],
+  &quot;fullname&quot;: &quot;Kiran Sangita&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So in the above document we have parameter called weight, so weight is used as relevancy tuning of search results.This helps us  which one needs to bubble up first.&lt;/p&gt;
+
+&lt;p&gt;Now we will write a sample query to get better idea&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -XPOST &quot;http://localhost:9200/sample/_search?pretty&quot; -H 'Content-Type: application/json' -d'
+{
+  &quot;suggest&quot;: {
+    &quot;namesuggest&quot;: {
+      &quot;prefix&quot;: &quot;k&quot;,
+      &quot;completion&quot;: {
+        &quot;field&quot;: &quot;namesuggest&quot;
+      }
+    }
+  }
+}'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So based on the above documents document-1 needs to be bubble up first because it has a weight of 10 where as the document -2 as weight 9.It will bubble up second.Please find results below.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+  &quot;took&quot; : 8,
+  &quot;timed_out&quot; : false,
+  &quot;_shards&quot; : {
+    &quot;total&quot; : 5,
+    &quot;successful&quot; : 5,
+    &quot;skipped&quot; : 0,
+    &quot;failed&quot; : 0
+  },
+  &quot;hits&quot; : {
+    &quot;total&quot; : 0,
+    &quot;max_score&quot; : 0.0,
+    &quot;hits&quot; : [ ]
+  },
+  &quot;suggest&quot; : {
+    &quot;namesuggest&quot; : [
+      {
+        &quot;text&quot; : &quot;k&quot;,
+        &quot;offset&quot; : 0,
+        &quot;length&quot; : 1,
+        &quot;options&quot; : [
+          {
+            &quot;text&quot; : &quot;Kartheek Gummaluri&quot;,
+            &quot;_index&quot; : &quot;sample&quot;,
+            &quot;_type&quot; : &quot;doc&quot;,
+            &quot;_id&quot; : &quot;1&quot;,
+            &quot;_score&quot; : 10.0,
+            &quot;_source&quot; : {
+              &quot;namesuggest&quot; : [
+                {
+                  &quot;input&quot; : &quot;Kartheek Gummaluri&quot;,
+                  &quot;weight&quot; : 10
+                }
+              ],
+              &quot;fullname&quot; : &quot;Kartheek Gummaluri&quot;
+            }
+          },
+          {
+            &quot;text&quot; : &quot;Kiran Sangita&quot;,
+            &quot;_index&quot; : &quot;sample&quot;,
+            &quot;_type&quot; : &quot;doc&quot;,
+            &quot;_id&quot; : &quot;2&quot;,
+            &quot;_score&quot; : 6.0,
+            &quot;_source&quot; : {
+              &quot;namesuggest&quot; : [
+                {
+                  &quot;input&quot; : &quot;Kiran Sangita&quot;,
+                  &quot;weight&quot; : 6
+                }
+              ],
+              &quot;fullname&quot; : &quot;Kiran Sangita&quot;
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Thanks and stay tuned for further updates.&lt;/p&gt;</content><author><name></name></author><summary type="html">In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.</summary></entry></feed>
