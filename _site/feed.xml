@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-23T16:04:32+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Introduction to “Did You Mean “ feature in ElasticSearch</title><link href="http://localhost:4000/jekyll/update/2019/04/20/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Introduction to &quot;Did You Mean &quot; feature in ElasticSearch" /><published>2019-04-20T13:12:15+05:30</published><updated>2019-04-20T13:12:15+05:30</updated><id>http://localhost:4000/jekyll/update/2019/04/20/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/04/20/welcome-to-jekyll.html">&lt;p&gt;In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-18T16:28:25+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Convert Emojis to text and Emoticons to text using emot package</title><link href="http://localhost:4000/2019/11/18/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html" rel="alternate" type="text/html" title="Convert Emojis to text and Emoticons to text using emot package" /><published>2019-11-18T00:00:00+05:30</published><updated>2019-11-18T00:00:00+05:30</updated><id>http://localhost:4000/2019/11/18/convert-emojis-to-text-and-emoticons-to-text-using-emot-package</id><content type="html" xml:base="http://localhost:4000/2019/11/18/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html">&lt;p&gt;Here I will explain you how to convert emojis and emoticons to text.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data_path = &quot;D:/nlp/HelperCodes/&quot;
+import sys
+import re
+import emot
+
+sys.path.append(data_path)
+from text_prep_config import UNICODE_EMO, EMOTICONS
+
+def convert_emojis(text):
+    for emot in UNICODE_EMO:
+#        print(&quot;_&quot;.join(UNICODE_EMO[emot].replace(&quot;,&quot;, &quot;&quot;).replace(&quot;:&quot;, &quot;&quot;).split()))
+        text = re.sub(r'(' + emot + ')', &quot;_&quot;.join(UNICODE_EMO[emot].replace(&quot;,&quot;, &quot;&quot;).replace(&quot;:&quot;, &quot;&quot;).split()), text)
+    return text
+
+def convert_emoticons(text):
+    for emot in EMOTICONS:
+        text = re.sub(u'('+emot+')', &quot;_&quot;.join(EMOTICONS[emot].replace(&quot;,&quot;,&quot;&quot;).split()), text)
+    return text
+
+def remove_emoji(string):
+  emoji_pattern = re.compile(&quot;[&quot;
+                       u&quot;\U0001F600-\U0001F64F&quot;  # emoticons
+                       u&quot;\U0001F300-\U0001F5FF&quot;  # symbols &amp;amp; pictographs
+                       u&quot;\U0001F680-\U0001F6FF&quot;  # transport &amp;amp; map symbols
+                       u&quot;\U0001F1E0-\U0001F1FF&quot;  # flags (iOS)
+                       u&quot;\U00002702-\U000027B0&quot;
+                       u&quot;\U000024C2-\U0001F251&quot;
+                       &quot;]+&quot;, flags=re.UNICODE)
+  return emoji_pattern.sub(r'', string)
+
+def remove_emoticons(text):
+    emoticon_pattern = re.compile(u'(' + u'|'.join(k for k in EMOTICONS) + u')')
+    return emoticon_pattern.sub(r'', text)
+
+emoticons_text = &quot;Hello :-) :-)&quot;
+emojis_text = &quot;Game is on 🔥&quot;
+
+print(&quot;CONVERTING Emojis to Text:\n*\nInput: &quot; + emojis_text +  &quot;\n&quot;+ &quot;Output: &quot; + convert_emojis(emojis_text) + &quot;\n*&quot;)
+print(&quot;CONVERTING Emoticons to Text:\n*\nInput: &quot; + emoticons_text +  &quot; \n&quot; + &quot;Output: &quot; + convert_emoticons(emoticons_text) + &quot;\n*&quot;)
+print(&quot;Removing Emoticons in the Text:\n*\nInput: &quot; + emoticons_text +  &quot; \n&quot; + &quot;Output: &quot; + remove_emoticons(emoticons_text)+ &quot;\n*&quot;)
+print(&quot;Removing  Emojis in the Text:\nInput: &quot; + emojis_text +  &quot; \n&quot; + &quot;Output: &quot; + remove_emoji(emojis_text))
+
+#Now we will use emot package that is designed by NeelShah
+
+print(emot.emoji(emojis_text))
+print(emot.emoticons(emoticons_text))
+
+for code in emot.UNICODE_EMO:
+    print( code  + emot.UNICODE_EMO[code] + &quot;\n&quot;)
+    
+for code in emot.EMOTICONS:
+    print( code  + &quot;=&quot; +  emot.EMOTICONS[code] + &quot;\n&quot;)**
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So here we  wrote a method called &lt;strong&gt;convert_emojis&lt;/strong&gt; where it will accept a string and you will get the text corresponding to emoji and here is the output.&lt;/p&gt;</content><author><name></name></author><summary type="html">Here I will explain you how to convert emojis and emoticons to text. ``` data_path = “D:/nlp/HelperCodes/” import sys import re import emot</summary></entry><entry><title type="html">Introduction to “Did You Mean “ feature in ElasticSearch</title><link href="http://localhost:4000/jekyll/update/2019/04/20/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Introduction to &quot;Did You Mean &quot; feature in ElasticSearch" /><published>2019-04-20T13:12:15+05:30</published><updated>2019-04-20T13:12:15+05:30</updated><id>http://localhost:4000/jekyll/update/2019/04/20/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/04/20/welcome-to-jekyll.html">&lt;p&gt;In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.&lt;/p&gt;
 
 &lt;p&gt;There are 4 types of suggestors&lt;/p&gt;
 &lt;ul&gt;

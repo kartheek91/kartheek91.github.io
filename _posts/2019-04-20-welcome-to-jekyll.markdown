@@ -2,7 +2,7 @@
 title: Introduction to "Did You Mean " feature in ElasticSearch
 layout: post
 date: '2019-04-20 13:12:15 +0530'
-categories: jekyll update
+categories: 
 ---
 
 In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about "Completion Suggestor".
