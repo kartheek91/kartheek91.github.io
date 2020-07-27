@@ -2,6 +2,7 @@
 title: Introduction to "Did You Mean " feature in ElasticSearch
 layout: post
 date: '2019-04-20 13:12:15 +0530'
+tags: ["ELasticSearch"]
 categories: 
 ---
 

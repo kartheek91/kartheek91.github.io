@@ -1,14 +1,14 @@
 title: Learn By Doing
 email: kartheek.gummaluri@gmail.com
 description: >-
-  This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.
+  This site is created to share my learnings.Please let me know if you have any
+  doubts regarding my postings.
 baseurl: ''
-url: ''
+url: 'http://127.0.0.1:4000/'
 twitter_username: jekyllrb
 github_username: kartheek91
 markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-# Google Analytics
 google_analytics: UA-138899027-1
