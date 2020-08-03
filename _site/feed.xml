@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-27T14:34:21+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Convert Emojis to text and Emoticons to text using emot package</title><link href="http://localhost:4000/2019/11/18/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html" rel="alternate" type="text/html" title="Convert Emojis to text and Emoticons to text using emot package" /><published>2019-11-18T00:00:00+05:30</published><updated>2019-11-18T00:00:00+05:30</updated><id>http://localhost:4000/2019/11/18/convert-emojis-to-text-and-emoticons-to-text-using-emot-package</id><content type="html" xml:base="http://localhost:4000/2019/11/18/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html">Here I will explain you how to convert emojis and emoticons to text.
-```
-data_path = &quot;D:/nlp/HelperCodes/&quot;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-03T17:48:42+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Convert Emojis to text and Emoticons to text using emot package</title><link href="http://localhost:4000/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html" rel="alternate" type="text/html" title="Convert Emojis to text and Emoticons to text using emot package" /><published>2020-08-03T17:47:06+05:30</published><updated>2020-08-03T17:47:06+05:30</updated><id>http://localhost:4000/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package</id><content type="html" xml:base="http://localhost:4000/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html">&lt;p&gt;Here I will explain you how to convert emojis and emoticons to text.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data_path = &quot;D:/nlp/HelperCodes/&quot;
 import sys
 import re
 import emot
@@ -22,8 +21,8 @@ def convert_emoticons(text):
 def remove_emoji(string):
   emoji_pattern = re.compile(&quot;[&quot;
                        u&quot;\U0001F600-\U0001F64F&quot;  # emoticons
-                       u&quot;\U0001F300-\U0001F5FF&quot;  # symbols &amp; pictographs
-                       u&quot;\U0001F680-\U0001F6FF&quot;  # transport &amp; map symbols
+                       u&quot;\U0001F300-\U0001F5FF&quot;  # symbols &amp;amp; pictographs
+                       u&quot;\U0001F680-\U0001F6FF&quot;  # transport &amp;amp; map symbols
                        u&quot;\U0001F1E0-\U0001F1FF&quot;  # flags (iOS)
                        u&quot;\U00002702-\U000027B0&quot;
                        u&quot;\U000024C2-\U0001F251&quot;
@@ -52,22 +51,21 @@ for code in emot.UNICODE_EMO:
     
 for code in emot.EMOTICONS:
     print( code  + &quot;=&quot; +  emot.EMOTICONS[code] + &quot;\n&quot;)**
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So here we  wrote a method called &lt;strong&gt;convert_emojis&lt;/strong&gt; where it will accept a string and you will get the text corresponding to emoji and here is the output.&lt;/p&gt;</content><author><name></name></author><summary type="html">Here I will explain you how to convert emojis and emoticons to text. ``` data_path = “D:/nlp/HelperCodes/” import sys import re import emot</summary></entry><entry><title type="html">Introduction to “Did You Mean “ feature in ElasticSearch</title><link href="http://localhost:4000/2019/04/20/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Introduction to “Did You Mean “ feature in ElasticSearch" /><published>2019-04-20T13:12:15+05:30</published><updated>2019-04-20T13:12:15+05:30</updated><id>http://localhost:4000/2019/04/20/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/2019/04/20/welcome-to-jekyll.html">In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about &quot;Completion Suggestor&quot;.
+
+There are 4 types of suggestors
+* Term Suggestor
+* Phrase Suggestor
+* Completion Suggestor
+* Context Suggestor
+
+So in recent times I have used a completion suggestor in one of my projects.The completion suggester provides auto-complete/search-as-you-type functionality. This is a navigational feature to guide users to relevant results as they are typing, improving search precision. It is not meant for spell correction or did-you-mean functionality like the term or phrase suggester
+
+I will expalin with a small example in understand better and here is the sample mapping
+
 ```
-So here we  wrote a method called **convert_emojis** where it will accept a string and you will get the text corresponding to emoji and here is the output.</content><author><name></name></author><summary type="html">Here I will explain you how to convert emojis and emoticons to text. ``` data_path = “D:/nlp/HelperCodes/” import sys import re import emot</summary></entry><entry><title type="html">Introduction to “Did You Mean “ feature in ElasticSearch</title><link href="http://localhost:4000/2019/04/20/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Introduction to “Did You Mean “ feature in ElasticSearch" /><published>2019-04-20T13:12:15+05:30</published><updated>2019-04-20T13:12:15+05:30</updated><id>http://localhost:4000/2019/04/20/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/2019/04/20/welcome-to-jekyll.html">&lt;p&gt;In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.&lt;/p&gt;
-
-&lt;p&gt;There are 4 types of suggestors&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Term Suggestor&lt;/li&gt;
-  &lt;li&gt;Phrase Suggestor&lt;/li&gt;
-  &lt;li&gt;Completion Suggestor&lt;/li&gt;
-  &lt;li&gt;Context Suggestor&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So in recent times I have used a completion suggestor in one of my projects.The completion suggester provides auto-complete/search-as-you-type functionality. This is a navigational feature to guide users to relevant results as they are typing, improving search precision. It is not meant for spell correction or did-you-mean functionality like the term or phrase suggester&lt;/p&gt;
-
-&lt;p&gt;I will expalin with a small example in understand better and here is the sample mapping&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -XPUT &quot;http://localhost:9200/sample&quot; -H 'Content-Type: application/json' -d'
+curl -XPUT &quot;http://localhost:9200/sample&quot; -H 'Content-Type: application/json' -d'
 {
   &quot;mappings&quot;: {
     &quot;doc&quot;: {
@@ -86,13 +84,14 @@ So here we  wrote a method called **convert_emojis** where it will accept a stri
     }
   }
 }'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;p&gt;In the above mapping we defined completion suggestor and we have used standard analyzer,it provides grammar based tokenization (based on the Unicode Text Segmentation algorithm, as specified in Unicode Standard Annex #29) and works well for most languages.&lt;/p&gt;
+In the above mapping we defined completion suggestor and we have used standard analyzer,it provides grammar based tokenization (based on the Unicode Text Segmentation algorithm, as specified in Unicode Standard Annex #29) and works well for most languages.
 
-&lt;p&gt;Now we index few documents&lt;/p&gt;
+Now we index few documents
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT sample/doc/1?refresh
+```
+PUT sample/doc/1?refresh
 {
   &quot;namesuggest&quot;: [
     {
@@ -113,13 +112,15 @@ PUT sample/doc/2?refresh
   ],
   &quot;fullname&quot;: &quot;Kiran Sangita&quot;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;p&gt;So in the above document we have parameter called weight, so weight is used as relevancy tuning of search results.This helps us  which one needs to bubble up first.&lt;/p&gt;
 
-&lt;p&gt;Now we will write a sample query to get better idea&lt;/p&gt;
+So in the above document we have parameter called weight, so weight is used as relevancy tuning of search results.This helps us  which one needs to bubble up first.
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -XPOST &quot;http://localhost:9200/sample/_search?pretty&quot; -H 'Content-Type: application/json' -d'
+Now we will write a sample query to get better idea
+
+```
+curl -XPOST &quot;http://localhost:9200/sample/_search?pretty&quot; -H 'Content-Type: application/json' -d'
 {
   &quot;suggest&quot;: {
     &quot;namesuggest&quot;: {
@@ -130,11 +131,12 @@ PUT sample/doc/2?refresh
     }
   }
 }'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;p&gt;So based on the above documents document-1 needs to be bubble up first because it has a weight of 10 where as the document -2 as weight 9.It will bubble up second.Please find results below.&lt;/p&gt;
+So based on the above documents document-1 needs to be bubble up first because it has a weight of 10 where as the document -2 as weight 9.It will bubble up second.Please find results below.
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+```
+{
   &quot;took&quot; : 8,
   &quot;timed_out&quot; : false,
   &quot;_shards&quot; : {
@@ -192,6 +194,6 @@ PUT sample/doc/2?refresh
     ]
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;p&gt;Thanks and stay tuned for further updates.&lt;/p&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.</summary></entry></feed>
+Thanks and stay tuned for further updates.</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.</summary></entry></feed>
