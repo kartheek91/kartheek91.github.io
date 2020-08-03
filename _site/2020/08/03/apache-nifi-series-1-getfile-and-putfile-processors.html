@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Apache-NiFi-Series-1 GetFile and PutFile Processors | Learn By Doing</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Apache-NiFi-Series-1 GetFile and PutFile Processors" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Apache NiFi GetFile and PutFile Processors Hi, In this post I’ll discuss on how to leverage Get and Put File Processors using Apache-NiFi" />
+<meta property="og:description" content="Apache NiFi GetFile and PutFile Processors Hi, In this post I’ll discuss on how to leverage Get and Put File Processors using Apache-NiFi" />
+<link rel="canonical" href="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html" />
+<meta property="og:url" content="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html" />
+<meta property="og:site_name" content="Learn By Doing" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-03T21:00:06+05:30" />
+<script type="application/ld+json">
+{"headline":"Apache-NiFi-Series-1 GetFile and PutFile Processors","dateModified":"2020-08-03T21:00:06+05:30","url":"http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html","datePublished":"2020-08-03T21:00:06+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html"},"description":"Apache NiFi GetFile and PutFile Processors Hi, In this post I’ll discuss on how to leverage Get and Put File Processors using Apache-NiFi","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Learn By Doing" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Learn By Doing</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Apache-NiFi-Series-1 GetFile and PutFile Processors</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-08-03T21:00:06+05:30" itemprop="datePublished">Aug 3, 2020
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="apache-nifi-getfile-and-putfile-processors">Apache NiFi GetFile and PutFile Processors</h1>
+<p>Hi, In this post I’ll discuss on how to leverage  <strong><em>Get and Put File Processors</em></strong> using  <strong><em>Apache-NiF</em>i</strong></p>
+
+<h1 id="introduction">Introduction</h1>
+<p><strong><em>Apache NiFi</em></strong> is a real time data ingestion platform, which can transfer and manage data transfer between different sources and destination systems. It supports a wide variety of data formats like logs, geo location data, social feeds, etc. It also supports many protocols like SFTP, HDFS, and KAFKA, etc. This support to wide variety of data sources and protocols making this platform popular in many IT organizations.</p>
+
+<p>So we will take two processors i.e. GetFile Processor, PutFile Processor and will try to establish relationship between two procesors. Our goal is to move the files from one location to another.</p>
+
+<h1 id="getfile-processor">GetFile Processor</h1>
+<p><strong><em>GetFile Processor</em></strong>  is used to fetch files of a specific format from a specific directory. It also provides other options to user for more control on fetching. We will discuss it in properties section below.So now we will add this processor.</p>
+
+<h1 id="steps-to-add-this-getfile-processor-to-the-workspace">Steps to add this GetFile Processor to the WorkSpace</h1>
+<ul>
+  <li>Drag the processor icon from the  menu and you will see the following window.</li>
+</ul>
+
+<p><img src="/addProcessor.png" alt="" /></p>
+
+<ul>
+  <li>Now we need to add GetFileProcessor, go to the top right corner and  in filter box type <strong>GetFile</strong> and  double click on the result then you willl processor getting added to the workspace.</li>
+</ul>
+
+<p><img src="/getFile1.png" alt="" /></p>
+
+<ul>
+  <li>Now we will set  <strong><em>GetFile Properties</em></strong>  which is important and without we can’t start the processor.</li>
+</ul>
+
+<p><img src="/getFile_Properties.png" alt="" /></p>
+
+<ul>
+  <li>So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can’t      start the processor. Let’s fill the properties and click on the <strong>Apply</strong> button.</li>
+</ul>
+
+<p><img src="/getFile_Configuration.png" alt="" /></p>
+
+<h1 id="putfile-processor">PutFile Processor</h1>
+<p><strong><em>PutFile Processor</em></strong> The PutFile processor is used to store the file from the data flow to a specific location. We will discuss it in properties section below.So now we will add this processor.</p>
+
+<h1 id="steps-to-add-this-putfile-processor-to-the-workspace">Steps to add this PutFile Processor to the WorkSpace</h1>
+<ul>
+  <li>
+    <p>We can replicate the above mentioned steps and try to  filter it out by <strong>PutFilter</strong> double click on it and you will end up with this screen.
+<img src="/getFile_putFile.png" alt="" /></p>
+  </li>
+  <li>So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can’t      start the processor. Let’s fill the properties in properties tab and don’t forget to check  <strong><em>sucess and failure</em></strong>  in setting tab.</li>
+  <li>Now click  <strong>Apply</strong> button.</li>
+</ul>
+
+<p><img src="/putfile_property.png" alt="" /></p>
+<h1 id="create-connection">Create Connection</h1>
+<ul>
+  <li>Now we will create connection between two processors and we will end up with the following screen.</li>
+</ul>
+
+<p><img src="/createconnection.png" alt="" /></p>
+
+<ul>
+  <li>Now we go to the input directory and I have copied <strong>100 pdf  files</strong>.</li>
+</ul>
+
+<p><img src="/input_directory.png" alt="" /></p>
+
+<ul>
+  <li>Now we are ready to start the processors, in order to start the processors right click on the workspace and click start. Then we are are good to go. For our understanding i will start processors individually.</li>
+</ul>
+
+<p><img src="/input_processor_start.png" alt="" /></p>
+
+<ul>
+  <li>So now we will see 100 items in the queue.</li>
+</ul>
+
+<p><img src="/quee100.png" alt="" /></p>
+
+<ul>
+  <li>Now we will start <strong>Put File Processor</strong>.</li>
+</ul>
+
+<p><img src="/putoutput.png" alt="" /></p>
+
+<ul>
+  <li>Finally now we will check  in the <strong>Output Directory</strong>.</li>
+</ul>
+
+<p><img src="/output_direcotry.png" alt="" /></p>
+
+<p>So this how we will leverage <strong>GetFile and PutFile Processors</strong>  using <strong>Apache NiFi</strong></p>
+
+<p>Thanks,<br />
+<strong><em>Kartheek Gummaluri</em></strong></p>
+
+  </div><a class="u-url" href="/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Learn By Doing</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Learn By Doing</li><li><a class="u-email" href="mailto:kartheek.gummaluri@gmail.com">kartheek.gummaluri@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/kartheek91"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">kartheek91</span></a></li><li><a href="https://www.twitter.com/jekyllrb"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jekyllrb</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

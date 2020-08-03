@@ -2,7 +2,9 @@
 title: Convert Emojis to text and Emoticons to text using emot package
 layout: post
 date: '2020-08-03 17:47:06'
-tags: []
+tags:
+- Python
+category: Dev
 ---
 
 Here I will explain you how to convert emojis and emoticons to text.
