@@ -7,7 +7,7 @@ date: '2021-01-01 22:00:46'
 ## Happy New Year 2021
  First of all, Thank you for all  following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.
 
-### Here is a brief list of odo’s I am planning to accomplish in 2021
+### Here is a brief list of todo’s that I am planning to accomplish in 2021
 
 * **Increase my blogging frequency**: I started blogging since 2 years, but i was like passive participant and I used to create posts perodically due to my work. I understand the value and importance of contributing to the community. So this year I again want to get in touch with developer communities and my fellow developers. So my target for this year and upcoming years is to post at least one article( of course useful ones) per week.
 
