@@ -1,94 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-03T21:00:07+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Apache-NiFi-Series-1 GetFile and PutFile Processors</title><link href="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html" rel="alternate" type="text/html" title="Apache-NiFi-Series-1 GetFile and PutFile Processors" /><published>2020-08-03T21:00:06+05:30</published><updated>2020-08-03T21:00:06+05:30</updated><id>http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors</id><content type="html" xml:base="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html">&lt;h1 id=&quot;apache-nifi-getfile-and-putfile-processors&quot;&gt;Apache NiFi GetFile and PutFile Processors&lt;/h1&gt;
-&lt;p&gt;Hi, In this post I’ll discuss on how to leverage  &lt;strong&gt;&lt;em&gt;Get and Put File Processors&lt;/em&gt;&lt;/strong&gt; using  &lt;strong&gt;&lt;em&gt;Apache-NiF&lt;/em&gt;i&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-01T22:09:20+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">MY PLANS FOR YEAR 2021</title><link href="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html" rel="alternate" type="text/html" title="MY PLANS FOR YEAR 2021" /><published>2021-01-01T22:00:46+05:30</published><updated>2021-01-01T22:00:46+05:30</updated><id>http://localhost:4000/2021/01/01/my-plans-for-year-2021</id><content type="html" xml:base="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html">&lt;h2 id=&quot;happy-new-year-2021&quot;&gt;Happy New Year 2021&lt;/h2&gt;
+&lt;p&gt;First of all, Thank you for all  following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.&lt;/p&gt;
 
-&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Apache NiFi&lt;/em&gt;&lt;/strong&gt; is a real time data ingestion platform, which can transfer and manage data transfer between different sources and destination systems. It supports a wide variety of data formats like logs, geo location data, social feeds, etc. It also supports many protocols like SFTP, HDFS, and KAFKA, etc. This support to wide variety of data sources and protocols making this platform popular in many IT organizations.&lt;/p&gt;
+&lt;h3 id=&quot;here-is-a-brief-list-of-odos-i-am-planning-to-accomplish-in-2021&quot;&gt;Here is a brief list of odo’s I am planning to accomplish in 2021&lt;/h3&gt;
 
-&lt;p&gt;So we will take two processors i.e. GetFile Processor, PutFile Processor and will try to establish relationship between two procesors. Our goal is to move the files from one location to another.&lt;/p&gt;
-
-&lt;h1 id=&quot;getfile-processor&quot;&gt;GetFile Processor&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;GetFile Processor&lt;/em&gt;&lt;/strong&gt;  is used to fetch files of a specific format from a specific directory. It also provides other options to user for more control on fetching. We will discuss it in properties section below.So now we will add this processor.&lt;/p&gt;
-
-&lt;h1 id=&quot;steps-to-add-this-getfile-processor-to-the-workspace&quot;&gt;Steps to add this GetFile Processor to the WorkSpace&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;Drag the processor icon from the  menu and you will see the following window.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/addProcessor.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Now we need to add GetFileProcessor, go to the top right corner and  in filter box type &lt;strong&gt;GetFile&lt;/strong&gt; and  double click on the result then you willl processor getting added to the workspace.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/getFile1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Now we will set  &lt;strong&gt;&lt;em&gt;GetFile Properties&lt;/em&gt;&lt;/strong&gt;  which is important and without we can’t start the processor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/getFile_Properties.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can’t      start the processor. Let’s fill the properties and click on the &lt;strong&gt;Apply&lt;/strong&gt; button.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/getFile_Configuration.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;putfile-processor&quot;&gt;PutFile Processor&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;PutFile Processor&lt;/em&gt;&lt;/strong&gt; The PutFile processor is used to store the file from the data flow to a specific location. We will discuss it in properties section below.So now we will add this processor.&lt;/p&gt;
-
-&lt;h1 id=&quot;steps-to-add-this-putfile-processor-to-the-workspace&quot;&gt;Steps to add this PutFile Processor to the WorkSpace&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;We can replicate the above mentioned steps and try to  filter it out by &lt;strong&gt;PutFilter&lt;/strong&gt; double click on it and you will end up with this screen.
-&lt;img src=&quot;/getFile_putFile.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Increase my blogging frequency&lt;/strong&gt;: I started blogging since 2 years, but i was like passive participant and I used to create posts perodically due to my work. I understand the value and importance of contributing to the community. So this year I again want to get in touch with developer communities and my fellow developers. So my target for this year and upcoming years is to post at least one article( of course useful ones) per week.&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can’t      start the processor. Let’s fill the properties in properties tab and don’t forget to check  &lt;strong&gt;&lt;em&gt;sucess and failure&lt;/em&gt;&lt;/strong&gt;  in setting tab.&lt;/li&gt;
-  &lt;li&gt;Now click  &lt;strong&gt;Apply&lt;/strong&gt; button.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Learn Apache Kafka in depth&lt;/strong&gt;:&lt;strong&gt;A&lt;/strong&gt;pache Kafka is a community distributed event streaming platform capable of handling trillions of events a day. Initially conceived as a messaging queue, Kafka is based on an abstraction of a distributed commit log. Since being created and open sourced by LinkedIn in 2011, Kafka has quickly evolved from messaging queue to a full-fledged event streaming platform.I have hands-on experience but I need to get my hands dirty in depth on  KsqlDb, Kafka-Api, Kafka-Cluser Architecture.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Use at least one programming language other than the ones which I frequently use&lt;/strong&gt;: Since 4  years I’m  working on Microsoft technologies and NoSql databases like ELK stack, Couchbase and MongoDb, I did write code in other programming languages like “Python” and did develop a good project using these technologies. But I was like a Nightwatchman ( If you follow cricket, especially test matches) working on these technologies. Of course, I strongly believe that Programming language should never be a barrier to implement ideas or thoughts for a good developer. At any given point of time, I believe that a good developer should be capable of writing code in any programming language. But of course there is a slight difference between writing code in a new programming language and excelling in that programming language. So I decided to learn and excel in “Python”. Reason for choosing Python is for 4 years I am using C# which is statically typed and I would like to the taste the dynamic nature of python now. Also, I am planning to learn about data engineering, Python provides some packages in those areas like NumPy, SciPi and many more. Also, another reason is I would like to explore Apache Spark and using PySpark I’ll be able to write map-reduce functions.&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/putfile_property.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h1 id=&quot;create-connection&quot;&gt;Create Connection&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;Now we will create connection between two processors and we will end up with the following screen.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;And the list is never ending but I would like to focus on these technologies and goals for this year and If time permits, I’ll be focusing on some other topics like exploring AWS cloud solutions such as AWS Athena, Azure cloud solutions such as Application Gateways, Azure Bastion etc and Red Hat OpenShift which is an open source container application platform based on the Kubernetes container orchestraton.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/createconnection.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Last but on the least I would like to thank my well wishers, mentors who has always been my constant support starting with my mentors Kiran Sangita, Siva AVKD, Pavan Arya, Sumath AWS, Aravind ELK and list continues……….&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Now we go to the input directory and I have copied &lt;strong&gt;100 pdf  files&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/input_directory.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Now we are ready to start the processors, in order to start the processors right click on the workspace and click start. Then we are are good to go. For our understanding i will start processors individually.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/input_processor_start.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;So now we will see 100 items in the queue.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/quee100.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Now we will start &lt;strong&gt;Put File Processor&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/putoutput.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Finally now we will check  in the &lt;strong&gt;Output Directory&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/output_direcotry.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So this how we will leverage &lt;strong&gt;GetFile and PutFile Processors&lt;/strong&gt;  using &lt;strong&gt;Apache NiFi&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;And once again I wish everyone a Happy New Year. Please do post your valuable suggestions, questions, and learnings, and let’s try to learn as much as possible this year.&lt;/p&gt;
 
 &lt;p&gt;Thanks,&lt;br /&gt;
-&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="APACHE" /><category term="NIFI" /><summary type="html">Apache NiFi GetFile and PutFile Processors Hi, In this post I’ll discuss on how to leverage Get and Put File Processors using Apache-NiFi</summary></entry><entry><title type="html">Convert Emojis to text and Emoticons to text using emot package</title><link href="http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html" rel="alternate" type="text/html" title="Convert Emojis to text and Emoticons to text using emot package" /><published>2020-08-03T17:47:06+05:30</published><updated>2020-08-03T17:47:06+05:30</updated><id>http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package</id><content type="html" xml:base="http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html">Here I will explain you how to convert emojis and emoticons to text.
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Happy New Year 2021 First of all, Thank you for all following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.</summary></entry><entry><title type="html">Apache-NiFi-Series-1 GetFile and PutFile Processors</title><link href="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html" rel="alternate" type="text/html" title="Apache-NiFi-Series-1 GetFile and PutFile Processors" /><published>2020-08-03T21:00:06+05:30</published><updated>2020-08-03T21:00:06+05:30</updated><id>http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors</id><content type="html" xml:base="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html"># Apache NiFi GetFile and PutFile Processors
+Hi, In this post I’ll discuss on how to leverage  ***Get and Put File Processors*** using  ***Apache-NiF*i**
+
+# Introduction 
+***Apache NiFi*** is a real time data ingestion platform, which can transfer and manage data transfer between different sources and destination systems. It supports a wide variety of data formats like logs, geo location data, social feeds, etc. It also supports many protocols like SFTP, HDFS, and KAFKA, etc. This support to wide variety of data sources and protocols making this platform popular in many IT organizations.
+
+So we will take two processors i.e. GetFile Processor, PutFile Processor and will try to establish relationship between two procesors. Our goal is to move the files from one location to another.
+
+#  GetFile Processor
+***GetFile Processor***  is used to fetch files of a specific format from a specific directory. It also provides other options to user for more control on fetching. We will discuss it in properties section below.So now we will add this processor.
+
+# Steps to add this GetFile Processor to the WorkSpace
+* Drag the processor icon from the  menu and you will see the following window.
+	
+![]({{ 'addProcessor.png' | relative_url }})
+
+* Now we need to add GetFileProcessor, go to the top right corner and  in filter box type **GetFile** and  double click on the result then you willl processor getting added to the workspace.
+
+![]({{ 'getFile1.png' | relative_url }})
+
+*  Now we will set  ***GetFile Properties***  which is important and without we can't start the processor.
+
+![]({{ 'getFile_Properties.png' | relative_url }})
+
+* So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can't      start the processor. Let's fill the properties and click on the **Apply** button.
+
+![]({{ 'getFile_Configuration.png' | relative_url }})
+
+#  PutFile Processor
+***PutFile Processor*** The PutFile processor is used to store the file from the data flow to a specific location. We will discuss it in properties section below.So now we will add this processor.
+
+# Steps to add this PutFile Processor to the WorkSpace
+* We can replicate the above mentioned steps and try to  filter it out by **PutFilter** double click on it and you will end up with this screen.
+![]({{ 'getFile_putFile.png' | relative_url }})
+
+* So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can't      start the processor. Let's fill the properties in properties tab and don't forget to check  ***sucess and failure***  in setting tab.
+* Now click  **Apply** button.
+
+![]({{ 'putfile_property.png' | relative_url }})
+#  Create Connection 
+*  Now we will create connection between two processors and we will end up with the following screen.
+
+![]({{ 'createconnection.png' | relative_url }})
+
+* Now we go to the input directory and I have copied **100 pdf  files**.
+
+![]({{ 'input_directory.png' | relative_url }})
+
+* Now we are ready to start the processors, in order to start the processors right click on the workspace and click start. Then we are are good to go. For our understanding i will start processors individually.
+
+![]({{ 'input_processor_start.png' | relative_url }})
+
+* So now we will see 100 items in the queue.
+
+![]({{ 'quee100.png' | relative_url }})
+
+* Now we will start **Put File Processor**.
+
+![]({{ 'putoutput.png' | relative_url }})
+
+* Finally now we will check  in the **Output Directory**.
+
+![]({{ 'output_direcotry.png' | relative_url }})
+
+
+So this how we will leverage **GetFile and PutFile Processors**  using **Apache NiFi**
+
+Thanks,&lt;br&gt;
+***Kartheek Gummaluri***</content><author><name></name></author><category term="APACHE" /><category term="NIFI" /><summary type="html">Apache NiFi GetFile and PutFile Processors Hi, In this post I’ll discuss on how to leverage Get and Put File Processors using Apache-NiFi</summary></entry><entry><title type="html">Convert Emojis to text and Emoticons to text using emot package</title><link href="http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html" rel="alternate" type="text/html" title="Convert Emojis to text and Emoticons to text using emot package" /><published>2020-08-03T17:47:06+05:30</published><updated>2020-08-03T17:47:06+05:30</updated><id>http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package</id><content type="html" xml:base="http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html">Here I will explain you how to convert emojis and emoticons to text.
 ```
 data_path = &quot;D:/nlp/HelperCodes/&quot;
 import sys
