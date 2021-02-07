@@ -1,4 +1,229 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-01T22:24:12+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">MY PLANS FOR YEAR 2021</title><link href="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html" rel="alternate" type="text/html" title="MY PLANS FOR YEAR 2021" /><published>2021-01-01T22:00:46+05:30</published><updated>2021-01-01T22:00:46+05:30</updated><id>http://localhost:4000/2021/01/01/my-plans-for-year-2021</id><content type="html" xml:base="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html">&lt;h2 id=&quot;happy-new-year-2021&quot;&gt;Happy New Year 2021&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-07T16:18:54+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Painless Scripting Language-Series-1</title><link href="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html" rel="alternate" type="text/html" title="Painless Scripting Language-Series-1" /><published>2021-02-07T13:15:20+05:30</published><updated>2021-02-07T13:15:20+05:30</updated><id>http://localhost:4000/2021/02/07/painless-scripting-language-series-1</id><content type="html" xml:base="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html">&lt;p&gt;Today we will learn about very intresting scripting language called &lt;strong&gt;Painless&lt;/strong&gt;. So let’s jump directy into the topic.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Painless:&lt;/em&gt;&lt;/strong&gt;
+It is a simple, secure scripting language designed specifically for use with Elasticsearch. It is the default scripting language for Elasticsearch and can safely be used for inline and stored scripts.In fact, most Painless scripts are also valid Groovy, and simple Groovy scripts are typically valid Painless.&lt;/p&gt;
+
+&lt;p&gt;Painless scripts are parsed and compiled using the ANTLR4 and ASM libraries. Painless scripts are compiled directly into Java byte code and executed against a standard Java Virtual Machine.
+You can use Painless anywhere scripts are used in Elasticsearch. Painless provides:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;It is fast performance.&lt;/li&gt;
+  &lt;li&gt;Safety: Fine-grained allowlist with method call/field granularity.&lt;/li&gt;
+  &lt;li&gt;Optional typing: Variables and parameters can use explicit types or the dynamic def type.&lt;/li&gt;
+  &lt;li&gt;Syntax: Extends a subset of Java’s syntax to provide additional scripting language features.&lt;/li&gt;
+  &lt;li&gt;Optimizations: Designed specifically for Elasticsearch scripting.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Painless Evolution:&lt;/em&gt;&lt;/strong&gt;
+Since the earlier versions of ES, it supported scripting, but the scripting language has evolved over the ES releases. Starting with MVEL prior version 1.4, Groovy (post version 1.4), and now the latest entry &lt;strong&gt;&lt;em&gt;Painless&lt;/em&gt;&lt;/strong&gt;  starting ES 5.0, the scripting in ES has evolved. A key reason for this evolution is for the above mentioned features.&lt;/p&gt;
+
+&lt;p&gt;Prior the release of &lt;strong&gt;&lt;em&gt;Painless&lt;/em&gt;&lt;/strong&gt; in ES 5.0, the majority of the security vulnerabilities that were reported in ES had to deal with vulnerabilities due to the scripting. Painless scripting language addresses these issues and is more secure, and faster than its predecessors. Starting ES 5.0, “Painless” is the default scripting language and its syntax is similar to &lt;strong&gt;Groovy&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;This blog takes it a level further and explains the various usages of scripting that would be very handy.&lt;/p&gt;
+
+&lt;p&gt;Before we can start using the scripts lets understand the syntax of scripts in ES.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;script&quot;: {
+ &quot;lang&quot;: &quot;...&quot;, 
+ &quot;inline&quot; | &quot;stored&quot;: &quot;...&quot;,
+ &quot;params&quot;: { ... }
+ }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;As shown above, the script syntax consists of three parts:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;The language the script is written in, which defaults to painless.&lt;/li&gt;
+  &lt;li&gt;The script itself which may be specified as source for an inline script or id for a stored script.&lt;/li&gt;
+  &lt;li&gt;Any named parameters that should be passed into the script.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Let’s illustrate how Painless works by loading some student stats into an Elasticsearch index:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT student/_bulk?refresh
+{&quot;index&quot;:{&quot;_id&quot;:1}}
+{&quot;first_name&quot;:&quot;kiran&quot;,&quot;last_name&quot;:&quot;sangita&quot;,&quot;score&quot;:[9,27,1],&quot;dob&quot;:&quot;1980/08/13&quot;}
+{&quot;index&quot;:{&quot;_id&quot;:2}}
+{&quot;first_name&quot;:&quot;kartheek&quot;,&quot;last_name&quot;:&quot;gummaluri&quot;,&quot;score&quot;:[19,37,12],&quot;dob&quot;:&quot;1991/12/28&quot;}
+{&quot;index&quot;:{&quot;_id&quot;:3}}
+{&quot;first_name&quot;:&quot;pavan&quot;,&quot;last_name&quot;:&quot;arya&quot;,&quot;score&quot;:[22,12,34],&quot;dob&quot;:&quot;1989/01/22&quot;}
+{&quot;index&quot;:{&quot;_id&quot;:4}}
+{&quot;first_name&quot;:&quot;murali&quot;,&quot;last_name&quot;:&quot;sangita&quot;,&quot;score&quot;:[10,2,44],&quot;dob&quot;:&quot;1990/04/15&quot;}
+{&quot;index&quot;:{&quot;_id&quot;:5}}
+{&quot;first_name&quot;:&quot;prudwi&quot;,&quot;last_name&quot;:&quot;seeramreddi&quot;,&quot;score&quot;:[12,22,14],&quot;dob&quot;:&quot;1991/08/17&quot;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Accessing Doc Values from Painless:&lt;/em&gt;&lt;/strong&gt;
+Document values can be accessed from a Map named doc.&lt;/p&gt;
+
+&lt;p&gt;For example, the following script calculates a student’s total score who name start’s with letter &lt;strong&gt;K&lt;/strong&gt;. This example uses a strongly typed int and a for loop.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET student/_search
+{
+  &quot;query&quot;: {
+    &quot;prefix&quot;: {
+      &quot;first_name&quot;: {
+        &quot;value&quot;: &quot;k&quot;
+      }
+    }
+  },
+  &quot;script_fields&quot;: {
+    &quot;total_score&quot;: {
+      &quot;script&quot;: {
+        &quot;lang&quot;: &quot;painless&quot;,
+        &quot;source&quot;: &quot;&quot;&quot;
+          int total = 0;
+          for (int i = 0; i &amp;lt; doc['score'].length; ++i) {
+            total += doc['score'][i];
+          
+          }
+          return total;
+        &quot;&quot;&quot;
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Result&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &quot;hits&quot; : [
+      {
+        &quot;_index&quot; : &quot;student&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;1&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;fields&quot; : {
+          &quot;total_score&quot; : [
+            37
+          ]
+        }
+      },
+      {
+        &quot;_index&quot; : &quot;student&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;2&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;fields&quot; : {
+          &quot;total_score&quot; : [
+            68
+          ]
+        }
+      }
+    ]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The following example uses a Painless script to sort the students by their combined first and last names. The names are accessed using doc[‘first_name’].keyword.value and doc[‘last_name’].keyword.value.
+&lt;strong&gt;&lt;em&gt;Query&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET student/_search
+{
+  &quot;query&quot;: {
+    &quot;match_all&quot;: {}
+  },
+  &quot;sort&quot;: {
+    &quot;_script&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;order&quot;: &quot;asc&quot;,
+      &quot;script&quot;: {
+        &quot;lang&quot;: &quot;painless&quot;,
+        &quot;source&quot;: &quot;doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value&quot;
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Result&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &quot;hits&quot; : [
+      {
+        &quot;_index&quot; : &quot;student&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;2&quot;,
+        &quot;_score&quot; : null,
+        &quot;_source&quot; : {
+          &quot;first_name&quot; : &quot;kartheek&quot;,
+          &quot;last_name&quot; : &quot;gummaluri&quot;,
+          &quot;score&quot; : [
+            19,
+            37,
+            12
+          ],
+          &quot;dob&quot; : &quot;1991/12/28&quot;
+        },
+        &quot;sort&quot; : [
+          &quot;kartheek gummaluri&quot;
+        ]
+      },
+      {
+        &quot;_index&quot; : &quot;student&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;1&quot;,
+        &quot;_score&quot; : null,
+        &quot;_source&quot; : {
+          &quot;first_name&quot; : &quot;kiran&quot;,
+          &quot;last_name&quot; : &quot;sangita&quot;,
+          &quot;score&quot; : [
+            9,
+            27,
+            1
+          ],
+          &quot;dob&quot; : &quot;1980/08/13&quot;
+        },
+        &quot;sort&quot; : [
+          &quot;kiran sangita&quot;
+        ]
+      },....]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Missing Values&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Now let learn how to query if we have missing values either in last_name, first_name.doc[‘field’].value throws an exception if the field is missing in a document.&lt;/p&gt;
+
+&lt;p&gt;To check if a document is missing a value, you can call doc[‘field’].size() == 0. So let’s add another document in the &lt;strong&gt;student&lt;/strong&gt; index.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT student/_doc/6
+{&quot;first_name&quot;:&quot;bala&quot;,&quot;score&quot;:[11,33,12],&quot;dob&quot;:&quot;1971/04/21&quot;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;If you observe in the above mentioned document we haven’t specified &lt;strong&gt;last_name&lt;/strong&gt; and now let’s re-run the above mentioned query which concatenates first_name and last_name.&lt;/p&gt;
+
+&lt;p&gt;After executing the above mentioned query we end up with run time error.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+        &quot;shard&quot;: 0,
+        &quot;index&quot;: &quot;student&quot;,
+        &quot;node&quot;: &quot;993H1-V5Qk6Qc2nOoZ0iuw&quot;,
+        &quot;reason&quot;: {
+          &quot;type&quot;: &quot;script_exception&quot;,
+          &quot;reason&quot;: &quot;runtime error&quot;,
+          &quot;script_stack&quot;: [
+            &quot;org.elasticsearch.index.fielddata.ScriptDocValues$Strings.get(ScriptDocValues.java:496)&quot;,
+            &quot;org.elasticsearch.index.fielddata.ScriptDocValues$Strings.getValue(ScriptDocValues.java:503)&quot;,
+            &quot;doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value&quot;,
+            &quot;                                                                ^---- HERE&quot;
+          ],
+          &quot;script&quot;: &quot;doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value&quot;,
+          &quot;lang&quot;: &quot;painless&quot;,
+          &quot;caused_by&quot;: {
+            &quot;type&quot;: &quot;illegal_state_exception&quot;,
+            &quot;reason&quot;: &quot;A document doesn't have a value for a field! Use doc[&amp;lt;field&amp;gt;].size()==0 to check if a document is missing a field!&quot;
+          }
+        }
+      }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;If you observe the reason session it clearly saying that we are trying to access document which doesn’t have a value for a field. It is also providing recommendation for us.Now let’s re-write the query.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+GET student/_search
+{
+  &quot;query&quot;: {
+   &quot;match_all&quot;: {}
+  },
+ &quot;script_fields&quot;: {
+   &quot;full_name&quot;: {
+     &quot;script&quot;: {
+       &quot;lang&quot;: &quot;painless&quot;,
+        &quot;source&quot;: &quot;&quot;&quot;if(doc['last_name.keyword'].size()&amp;gt;0 &amp;amp;&amp;amp; doc['first_name.keyword'].size()&amp;gt;0) {  return doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value}&quot;&quot;&quot;
+       
+     }
+   }
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This way we can overcome the above mentioned exception.Finally I will conclude with an important information and we can learn in depth in upcoming blogs.&lt;/p&gt;
+
+&lt;p&gt;The first time Elasticsearch sees a new script, it compiles it and stores the compiled version in a cache. Compilation can be a heavy process.&lt;/p&gt;
+
+&lt;p&gt;If you need to pass variables into the script, you should pass them in as named params instead of hard-coding values into the script itself. We will try to learn these topic in upcoming blog post with an real time example.&lt;/p&gt;
+
+&lt;p&gt;Thanks,&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="ELasticSearch" /><category term="Painless" /><summary type="html">Today we will learn about very intresting scripting language called Painless. So let’s jump directy into the topic.</summary></entry><entry><title type="html">MY PLANS FOR YEAR 2021</title><link href="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html" rel="alternate" type="text/html" title="MY PLANS FOR YEAR 2021" /><published>2021-01-01T22:00:46+05:30</published><updated>2021-01-01T22:00:46+05:30</updated><id>http://localhost:4000/2021/01/01/my-plans-for-year-2021</id><content type="html" xml:base="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html">&lt;h2 id=&quot;happy-new-year-2021&quot;&gt;Happy New Year 2021&lt;/h2&gt;
 &lt;p&gt;First of all, Thank you for all  following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.&lt;/p&gt;
 
 &lt;h3 id=&quot;here-is-a-brief-list-of-todos-that-i-am-planning-to-accomplish-in-2021&quot;&gt;Here is a brief list of todo’s that I am planning to accomplish in 2021&lt;/h3&gt;
@@ -22,77 +247,98 @@
 &lt;p&gt;And once again I wish everyone a Happy New Year. Please do post your valuable suggestions, questions, and learnings, and let’s try to learn as much as possible this year.&lt;/p&gt;
 
 &lt;p&gt;Thanks,&lt;br /&gt;
-&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Happy New Year 2021 First of all, Thank you for all following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.</summary></entry><entry><title type="html">Apache-NiFi-Series-1 GetFile and PutFile Processors</title><link href="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html" rel="alternate" type="text/html" title="Apache-NiFi-Series-1 GetFile and PutFile Processors" /><published>2020-08-03T21:00:06+05:30</published><updated>2020-08-03T21:00:06+05:30</updated><id>http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors</id><content type="html" xml:base="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html"># Apache NiFi GetFile and PutFile Processors
-Hi, In this post I’ll discuss on how to leverage  ***Get and Put File Processors*** using  ***Apache-NiF*i**
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Happy New Year 2021 First of all, Thank you for all following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.</summary></entry><entry><title type="html">Apache-NiFi-Series-1 GetFile and PutFile Processors</title><link href="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html" rel="alternate" type="text/html" title="Apache-NiFi-Series-1 GetFile and PutFile Processors" /><published>2020-08-03T21:00:06+05:30</published><updated>2020-08-03T21:00:06+05:30</updated><id>http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors</id><content type="html" xml:base="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html">&lt;h1 id=&quot;apache-nifi-getfile-and-putfile-processors&quot;&gt;Apache NiFi GetFile and PutFile Processors&lt;/h1&gt;
+&lt;p&gt;Hi, In this post I’ll discuss on how to leverage  &lt;strong&gt;&lt;em&gt;Get and Put File Processors&lt;/em&gt;&lt;/strong&gt; using  &lt;strong&gt;&lt;em&gt;Apache-NiF&lt;/em&gt;i&lt;/strong&gt;&lt;/p&gt;
 
-# Introduction 
-***Apache NiFi*** is a real time data ingestion platform, which can transfer and manage data transfer between different sources and destination systems. It supports a wide variety of data formats like logs, geo location data, social feeds, etc. It also supports many protocols like SFTP, HDFS, and KAFKA, etc. This support to wide variety of data sources and protocols making this platform popular in many IT organizations.
+&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Apache NiFi&lt;/em&gt;&lt;/strong&gt; is a real time data ingestion platform, which can transfer and manage data transfer between different sources and destination systems. It supports a wide variety of data formats like logs, geo location data, social feeds, etc. It also supports many protocols like SFTP, HDFS, and KAFKA, etc. This support to wide variety of data sources and protocols making this platform popular in many IT organizations.&lt;/p&gt;
 
-So we will take two processors i.e. GetFile Processor, PutFile Processor and will try to establish relationship between two procesors. Our goal is to move the files from one location to another.
+&lt;p&gt;So we will take two processors i.e. GetFile Processor, PutFile Processor and will try to establish relationship between two procesors. Our goal is to move the files from one location to another.&lt;/p&gt;
 
-#  GetFile Processor
-***GetFile Processor***  is used to fetch files of a specific format from a specific directory. It also provides other options to user for more control on fetching. We will discuss it in properties section below.So now we will add this processor.
+&lt;h1 id=&quot;getfile-processor&quot;&gt;GetFile Processor&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;GetFile Processor&lt;/em&gt;&lt;/strong&gt;  is used to fetch files of a specific format from a specific directory. It also provides other options to user for more control on fetching. We will discuss it in properties section below.So now we will add this processor.&lt;/p&gt;
 
-# Steps to add this GetFile Processor to the WorkSpace
-* Drag the processor icon from the  menu and you will see the following window.
-	
-![]({{ 'addProcessor.png' | relative_url }})
+&lt;h1 id=&quot;steps-to-add-this-getfile-processor-to-the-workspace&quot;&gt;Steps to add this GetFile Processor to the WorkSpace&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Drag the processor icon from the  menu and you will see the following window.&lt;/li&gt;
+&lt;/ul&gt;
 
-* Now we need to add GetFileProcessor, go to the top right corner and  in filter box type **GetFile** and  double click on the result then you willl processor getting added to the workspace.
+&lt;p&gt;&lt;img src=&quot;/addProcessor.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-![]({{ 'getFile1.png' | relative_url }})
+&lt;ul&gt;
+  &lt;li&gt;Now we need to add GetFileProcessor, go to the top right corner and  in filter box type &lt;strong&gt;GetFile&lt;/strong&gt; and  double click on the result then you willl processor getting added to the workspace.&lt;/li&gt;
+&lt;/ul&gt;
 
-*  Now we will set  ***GetFile Properties***  which is important and without we can't start the processor.
+&lt;p&gt;&lt;img src=&quot;/getFile1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-![]({{ 'getFile_Properties.png' | relative_url }})
+&lt;ul&gt;
+  &lt;li&gt;Now we will set  &lt;strong&gt;&lt;em&gt;GetFile Properties&lt;/em&gt;&lt;/strong&gt;  which is important and without we can’t start the processor.&lt;/li&gt;
+&lt;/ul&gt;
 
-* So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can't      start the processor. Let's fill the properties and click on the **Apply** button.
+&lt;p&gt;&lt;img src=&quot;/getFile_Properties.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-![]({{ 'getFile_Configuration.png' | relative_url }})
+&lt;ul&gt;
+  &lt;li&gt;So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can’t      start the processor. Let’s fill the properties and click on the &lt;strong&gt;Apply&lt;/strong&gt; button.&lt;/li&gt;
+&lt;/ul&gt;
 
-#  PutFile Processor
-***PutFile Processor*** The PutFile processor is used to store the file from the data flow to a specific location. We will discuss it in properties section below.So now we will add this processor.
+&lt;p&gt;&lt;img src=&quot;/getFile_Configuration.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-# Steps to add this PutFile Processor to the WorkSpace
-* We can replicate the above mentioned steps and try to  filter it out by **PutFilter** double click on it and you will end up with this screen.
-![]({{ 'getFile_putFile.png' | relative_url }})
+&lt;h1 id=&quot;putfile-processor&quot;&gt;PutFile Processor&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;PutFile Processor&lt;/em&gt;&lt;/strong&gt; The PutFile processor is used to store the file from the data flow to a specific location. We will discuss it in properties section below.So now we will add this processor.&lt;/p&gt;
 
-* So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can't      start the processor. Let's fill the properties in properties tab and don't forget to check  ***sucess and failure***  in setting tab.
-* Now click  **Apply** button.
+&lt;h1 id=&quot;steps-to-add-this-putfile-processor-to-the-workspace&quot;&gt;Steps to add this PutFile Processor to the WorkSpace&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;We can replicate the above mentioned steps and try to  filter it out by &lt;strong&gt;PutFilter&lt;/strong&gt; double click on it and you will end up with this screen.
+&lt;img src=&quot;/getFile_putFile.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can’t      start the processor. Let’s fill the properties in properties tab and don’t forget to check  &lt;strong&gt;&lt;em&gt;sucess and failure&lt;/em&gt;&lt;/strong&gt;  in setting tab.&lt;/li&gt;
+  &lt;li&gt;Now click  &lt;strong&gt;Apply&lt;/strong&gt; button.&lt;/li&gt;
+&lt;/ul&gt;
 
-![]({{ 'putfile_property.png' | relative_url }})
-#  Create Connection 
-*  Now we will create connection between two processors and we will end up with the following screen.
+&lt;p&gt;&lt;img src=&quot;/putfile_property.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;create-connection&quot;&gt;Create Connection&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Now we will create connection between two processors and we will end up with the following screen.&lt;/li&gt;
+&lt;/ul&gt;
 
-![]({{ 'createconnection.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/createconnection.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-* Now we go to the input directory and I have copied **100 pdf  files**.
+&lt;ul&gt;
+  &lt;li&gt;Now we go to the input directory and I have copied &lt;strong&gt;100 pdf  files&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 
-![]({{ 'input_directory.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/input_directory.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-* Now we are ready to start the processors, in order to start the processors right click on the workspace and click start. Then we are are good to go. For our understanding i will start processors individually.
+&lt;ul&gt;
+  &lt;li&gt;Now we are ready to start the processors, in order to start the processors right click on the workspace and click start. Then we are are good to go. For our understanding i will start processors individually.&lt;/li&gt;
+&lt;/ul&gt;
 
-![]({{ 'input_processor_start.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/input_processor_start.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-* So now we will see 100 items in the queue.
+&lt;ul&gt;
+  &lt;li&gt;So now we will see 100 items in the queue.&lt;/li&gt;
+&lt;/ul&gt;
 
-![]({{ 'quee100.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/quee100.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-* Now we will start **Put File Processor**.
+&lt;ul&gt;
+  &lt;li&gt;Now we will start &lt;strong&gt;Put File Processor&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 
-![]({{ 'putoutput.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/putoutput.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-* Finally now we will check  in the **Output Directory**.
+&lt;ul&gt;
+  &lt;li&gt;Finally now we will check  in the &lt;strong&gt;Output Directory&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 
-![]({{ 'output_direcotry.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/output_direcotry.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;So this how we will leverage &lt;strong&gt;GetFile and PutFile Processors&lt;/strong&gt;  using &lt;strong&gt;Apache NiFi&lt;/strong&gt;&lt;/p&gt;
 
-So this how we will leverage **GetFile and PutFile Processors**  using **Apache NiFi**
-
-Thanks,&lt;br&gt;
-***Kartheek Gummaluri***</content><author><name></name></author><category term="APACHE" /><category term="NIFI" /><summary type="html">Apache NiFi GetFile and PutFile Processors Hi, In this post I’ll discuss on how to leverage Get and Put File Processors using Apache-NiFi</summary></entry><entry><title type="html">Convert Emojis to text and Emoticons to text using emot package</title><link href="http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html" rel="alternate" type="text/html" title="Convert Emojis to text and Emoticons to text using emot package" /><published>2020-08-03T17:47:06+05:30</published><updated>2020-08-03T17:47:06+05:30</updated><id>http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package</id><content type="html" xml:base="http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html">Here I will explain you how to convert emojis and emoticons to text.
-```
-data_path = &quot;D:/nlp/HelperCodes/&quot;
+&lt;p&gt;Thanks,&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="APACHE" /><category term="NIFI" /><summary type="html">Apache NiFi GetFile and PutFile Processors Hi, In this post I’ll discuss on how to leverage Get and Put File Processors using Apache-NiFi</summary></entry><entry><title type="html">Convert Emojis to text and Emoticons to text using emot package</title><link href="http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html" rel="alternate" type="text/html" title="Convert Emojis to text and Emoticons to text using emot package" /><published>2020-08-03T17:47:06+05:30</published><updated>2020-08-03T17:47:06+05:30</updated><id>http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package</id><content type="html" xml:base="http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html">&lt;p&gt;Here I will explain you how to convert emojis and emoticons to text.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data_path = &quot;D:/nlp/HelperCodes/&quot;
 import sys
 import re
 import emot
@@ -114,8 +360,8 @@ def convert_emoticons(text):
 def remove_emoji(string):
   emoji_pattern = re.compile(&quot;[&quot;
                        u&quot;\U0001F600-\U0001F64F&quot;  # emoticons
-                       u&quot;\U0001F300-\U0001F5FF&quot;  # symbols &amp; pictographs
-                       u&quot;\U0001F680-\U0001F6FF&quot;  # transport &amp; map symbols
+                       u&quot;\U0001F300-\U0001F5FF&quot;  # symbols &amp;amp; pictographs
+                       u&quot;\U0001F680-\U0001F6FF&quot;  # transport &amp;amp; map symbols
                        u&quot;\U0001F1E0-\U0001F1FF&quot;  # flags (iOS)
                        u&quot;\U00002702-\U000027B0&quot;
                        u&quot;\U000024C2-\U0001F251&quot;
@@ -144,21 +390,22 @@ for code in emot.UNICODE_EMO:
     
 for code in emot.EMOTICONS:
     print( code  + &quot;=&quot; +  emot.EMOTICONS[code] + &quot;\n&quot;)**
-```
-So here we  wrote a method called **convert_emojis** where it will accept a string and you will get the text corresponding to emoji and here is the output.</content><author><name></name></author><category term="Dev" /><category term="Python" /><summary type="html">Here I will explain you how to convert emojis and emoticons to text. ``` data_path = “D:/nlp/HelperCodes/” import sys import re import emot</summary></entry><entry><title type="html">Introduction to “Did You Mean “ feature in ElasticSearch</title><link href="http://localhost:4000/2019/04/20/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Introduction to “Did You Mean “ feature in ElasticSearch" /><published>2019-04-20T13:12:15+05:30</published><updated>2019-04-20T13:12:15+05:30</updated><id>http://localhost:4000/2019/04/20/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/2019/04/20/welcome-to-jekyll.html">In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about &quot;Completion Suggestor&quot;.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So here we  wrote a method called &lt;strong&gt;convert_emojis&lt;/strong&gt; where it will accept a string and you will get the text corresponding to emoji and here is the output.&lt;/p&gt;</content><author><name></name></author><category term="Dev" /><category term="Python" /><summary type="html">Here I will explain you how to convert emojis and emoticons to text. ``` data_path = “D:/nlp/HelperCodes/” import sys import re import emot</summary></entry><entry><title type="html">Introduction to “Did You Mean “ feature in ElasticSearch</title><link href="http://localhost:4000/2019/04/20/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Introduction to “Did You Mean “ feature in ElasticSearch" /><published>2019-04-20T13:12:15+05:30</published><updated>2019-04-20T13:12:15+05:30</updated><id>http://localhost:4000/2019/04/20/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/2019/04/20/welcome-to-jekyll.html">&lt;p&gt;In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.&lt;/p&gt;
 
-There are 4 types of suggestors
-* Term Suggestor
-* Phrase Suggestor
-* Completion Suggestor
-* Context Suggestor
+&lt;p&gt;There are 4 types of suggestors&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Term Suggestor&lt;/li&gt;
+  &lt;li&gt;Phrase Suggestor&lt;/li&gt;
+  &lt;li&gt;Completion Suggestor&lt;/li&gt;
+  &lt;li&gt;Context Suggestor&lt;/li&gt;
+&lt;/ul&gt;
 
-So in recent times I have used a completion suggestor in one of my projects.The completion suggester provides auto-complete/search-as-you-type functionality. This is a navigational feature to guide users to relevant results as they are typing, improving search precision. It is not meant for spell correction or did-you-mean functionality like the term or phrase suggester
+&lt;p&gt;So in recent times I have used a completion suggestor in one of my projects.The completion suggester provides auto-complete/search-as-you-type functionality. This is a navigational feature to guide users to relevant results as they are typing, improving search precision. It is not meant for spell correction or did-you-mean functionality like the term or phrase suggester&lt;/p&gt;
 
-I will expalin with a small example in understand better and here is the sample mapping
+&lt;p&gt;I will expalin with a small example in understand better and here is the sample mapping&lt;/p&gt;
 
-```
-curl -XPUT &quot;http://localhost:9200/sample&quot; -H 'Content-Type: application/json' -d'
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -XPUT &quot;http://localhost:9200/sample&quot; -H 'Content-Type: application/json' -d'
 {
   &quot;mappings&quot;: {
     &quot;doc&quot;: {
@@ -177,14 +424,13 @@ curl -XPUT &quot;http://localhost:9200/sample&quot; -H 'Content-Type: applicatio
     }
   }
 }'
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-In the above mapping we defined completion suggestor and we have used standard analyzer,it provides grammar based tokenization (based on the Unicode Text Segmentation algorithm, as specified in Unicode Standard Annex #29) and works well for most languages.
+&lt;p&gt;In the above mapping we defined completion suggestor and we have used standard analyzer,it provides grammar based tokenization (based on the Unicode Text Segmentation algorithm, as specified in Unicode Standard Annex #29) and works well for most languages.&lt;/p&gt;
 
-Now we index few documents
+&lt;p&gt;Now we index few documents&lt;/p&gt;
 
-```
-PUT sample/doc/1?refresh
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT sample/doc/1?refresh
 {
   &quot;namesuggest&quot;: [
     {
@@ -205,15 +451,13 @@ PUT sample/doc/2?refresh
   ],
   &quot;fullname&quot;: &quot;Kiran Sangita&quot;
 }
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;So in the above document we have parameter called weight, so weight is used as relevancy tuning of search results.This helps us  which one needs to bubble up first.&lt;/p&gt;
 
-So in the above document we have parameter called weight, so weight is used as relevancy tuning of search results.This helps us  which one needs to bubble up first.
+&lt;p&gt;Now we will write a sample query to get better idea&lt;/p&gt;
 
-Now we will write a sample query to get better idea
-
-```
-curl -XPOST &quot;http://localhost:9200/sample/_search?pretty&quot; -H 'Content-Type: application/json' -d'
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -XPOST &quot;http://localhost:9200/sample/_search?pretty&quot; -H 'Content-Type: application/json' -d'
 {
   &quot;suggest&quot;: {
     &quot;namesuggest&quot;: {
@@ -224,12 +468,11 @@ curl -XPOST &quot;http://localhost:9200/sample/_search?pretty&quot; -H 'Content-
     }
   }
 }'
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-So based on the above documents document-1 needs to be bubble up first because it has a weight of 10 where as the document -2 as weight 9.It will bubble up second.Please find results below.
+&lt;p&gt;So based on the above documents document-1 needs to be bubble up first because it has a weight of 10 where as the document -2 as weight 9.It will bubble up second.Please find results below.&lt;/p&gt;
 
-```
-{
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
   &quot;took&quot; : 8,
   &quot;timed_out&quot; : false,
   &quot;_shards&quot; : {
@@ -287,6 +530,6 @@ So based on the above documents document-1 needs to be bubble up first because i
     ]
   }
 }
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Thanks and stay tuned for further updates.</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.</summary></entry></feed>
+&lt;p&gt;Thanks and stay tuned for further updates.&lt;/p&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.</summary></entry></feed>
