@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-25T13:49:44+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Introduction to Runtime Fields in ElasticSearch</title><link href="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html" rel="alternate" type="text/html" title="Introduction to Runtime Fields in ElasticSearch" /><published>2021-02-25T08:53:15+05:30</published><updated>2021-02-25T08:53:15+05:30</updated><id>http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch</id><content type="html" xml:base="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html">&lt;p&gt;Hi all today I wanted to share with you once of the most awaited topic since I started learning elasticsearch. We used to have a product called &lt;strong&gt;Mycareer.com&lt;/strong&gt; where we used elasticsearch and indexed around 20 miilion resumes. Everytime due to the aggressive timelines and incremental development we are in a situation where we need to add couple of properties to an existing index . Till now we have only one solution i.e adding a new properties to the exitsing mapping, creating new index based on the new mapping and try to reindex the data by passing source and destination index. It is a tedious job correct so that’s the reason elasticsearch  came up with &lt;strong&gt;Data Streams&lt;/strong&gt; and  I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with solution called Runtime Fields.Please make note that  it is available in  &lt;strong&gt;Beta&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-25T21:11:23+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Introduction to Runtime Fields in ElasticSearch</title><link href="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html" rel="alternate" type="text/html" title="Introduction to Runtime Fields in ElasticSearch" /><published>2021-02-25T08:53:15+05:30</published><updated>2021-02-25T08:53:15+05:30</updated><id>http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch</id><content type="html" xml:base="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html">&lt;p&gt;Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called &lt;strong&gt;MyCareer.com&lt;/strong&gt; where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with &lt;strong&gt;Data Streams&lt;/strong&gt; and  I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that  it is available in  &lt;strong&gt;Beta&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Runtime Fields&lt;/strong&gt; : A runtime field is a field that is evaluated at query time. It enables us with following fetaures i.e.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Runtime Fields&lt;/strong&gt;: A runtime field is a field that is evaluated at query time. It enables us with the following features i.e.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Add fields to existing documents without reindexing your data&lt;/li&gt;
@@ -21,7 +21,7 @@
 &lt;p&gt;&lt;strong&gt;Disadvantages&lt;/strong&gt; :
 																					&lt;em&gt;Queries&lt;/em&gt; against runtime fields can be expensive, so data that you commonly search or filter on should still be mapped to indexed fields. Runtime fields can also decrease search speed, even though your index size is smaller.&lt;/p&gt;
 
-&lt;p&gt;Now  let’s make our hands dirty by adding runtime fields.&lt;/p&gt;
+&lt;p&gt;Now let’s make our hands dirty by adding runtime fields.&lt;/p&gt;
 
 &lt;p&gt;Creating sample &lt;strong&gt;employee&lt;/strong&gt; index:&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT employee
@@ -70,7 +70,7 @@ Output:
   }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;So now we try to insert couple of sample documents to the employee index.&lt;/p&gt;
+&lt;p&gt;So now we try to insert a couple of sample documents into the employee index.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT employee/_doc/1
 {
@@ -95,7 +95,7 @@ PUT employee/_doc/3
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Now we will check mapping again and this we will see  age , fullname as runtime fields.&lt;/p&gt;
+&lt;p&gt;Now we will check mapping again and we will see age, full name as runtime fields.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_mapping
 Output: 
@@ -130,7 +130,7 @@ Output:
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Now let’s write a small query to search documents having age greater than 29.&lt;/p&gt;
+&lt;p&gt;Now let’s write a small query to search documents having an age greater than 29.&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search
 {
   &quot;query&quot;: {
@@ -170,9 +170,9 @@ Output:
       }
     ]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;This way we simply queried using runtime field and as mentioned earlier this field is not an indexed field but still we are able to retrieve the results.&lt;/p&gt;
+&lt;p&gt;This way we simply queried using runtime field and as mentioned earlier this field is not indexed but still, we can retrieve the results.&lt;/p&gt;
 
-&lt;p&gt;Now let’s something new out of it like we can create the concatenation of two fields with a static string as follows:&lt;/p&gt;
+&lt;p&gt;Now lets something new out of it like we can create the concatenation of two fields with a static string as follows:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search
 {
@@ -194,7 +194,7 @@ Output:
   }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;We defined the field &lt;strong&gt;concatenated_field&lt;/strong&gt; in the runtime_mappings section. We used a short Painless script that defines how the value of concatenated_field will be calculated per document (using + to indicate concatenation of the value of the fullname field with the static string ‘:’ and the value of the age field). We then used the field concatenated_field in the query. When defining a Painless script to use with runtime fields, you must include emit to return calculated values.&lt;/p&gt;
+&lt;p&gt;We defined the field &lt;strong&gt;concatenated_field&lt;/strong&gt; in the runtime_mappings section. We used a short Painless script that defines how the value of concatenated_field will be calculated per document (using + to indicate concatenation of the value of the full name field with the static string ‘:’ and the value of the age field). We then used the field concatenated_field in the query. When defining a Painless script to use with runtime fields, you must include emit to return calculated values.&lt;/p&gt;
 
 &lt;p&gt;Result:&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
@@ -299,7 +299,7 @@ Output:
         }
       }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;If we want to see &lt;strong&gt;concatenated_field&lt;/strong&gt; then we need to specify implicitly in &lt;strong&gt;fields&lt;/strong&gt; section.&lt;/p&gt;
+&lt;p&gt;If we want to see &lt;strong&gt;concatenated_field&lt;/strong&gt; then we need to specify implicitly in the &lt;strong&gt;fields&lt;/strong&gt; section.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search
 {
@@ -337,7 +337,7 @@ Output:
 &lt;p&gt;This is how we can make use of &lt;strong&gt;Runtime Fields&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Thanks &lt;br /&gt;
-&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">Hi all today I wanted to share with you once of the most awaited topic since I started learning elasticsearch. We used to have a product called Mycareer.com where we used elasticsearch and indexed around 20 miilion resumes. Everytime due to the aggressive timelines and incremental development we are in a situation where we need to add couple of properties to an existing index . Till now we have only one solution i.e adding a new properties to the exitsing mapping, creating new index based on the new mapping and try to reindex the data by passing source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with Data Streams and I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with solution called Runtime Fields.Please make note that it is available in Beta</summary></entry><entry><title type="html">Painless Scripting Language-Series-1</title><link href="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html" rel="alternate" type="text/html" title="Painless Scripting Language-Series-1" /><published>2021-02-07T13:15:20+05:30</published><updated>2021-02-07T13:15:20+05:30</updated><id>http://localhost:4000/2021/02/07/painless-scripting-language-series-1</id><content type="html" xml:base="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html">&lt;p&gt;Today we will learn about very intresting scripting language called &lt;strong&gt;Painless&lt;/strong&gt;. So let’s jump directy into the topic.&lt;/p&gt;
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called MyCareer.com where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with Data Streams and I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that it is available in Beta</summary></entry><entry><title type="html">Painless Scripting Language-Series-1</title><link href="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html" rel="alternate" type="text/html" title="Painless Scripting Language-Series-1" /><published>2021-02-07T13:15:20+05:30</published><updated>2021-02-07T13:15:20+05:30</updated><id>http://localhost:4000/2021/02/07/painless-scripting-language-series-1</id><content type="html" xml:base="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html">&lt;p&gt;Today we will learn about very intresting scripting language called &lt;strong&gt;Painless&lt;/strong&gt;. So let’s jump directy into the topic.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Painless:&lt;/em&gt;&lt;/strong&gt;
 It is a simple, secure scripting language designed specifically for use with Elasticsearch. It is the default scripting language for Elasticsearch and can safely be used for inline and stored scripts.In fact, most Painless scripts are also valid Groovy, and simple Groovy scripts are typically valid Painless.&lt;/p&gt;

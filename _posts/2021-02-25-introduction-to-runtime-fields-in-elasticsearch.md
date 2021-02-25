@@ -6,9 +6,9 @@ tags:
 - ELasticSearch
 ---
 
-Hi all today I wanted to share with you once of the most awaited topic since I started learning elasticsearch. We used to have a product called **Mycareer.com** where we used elasticsearch and indexed around 20 miilion resumes. Everytime due to the aggressive timelines and incremental development we are in a situation where we need to add couple of properties to an existing index . Till now we have only one solution i.e adding a new properties to the exitsing mapping, creating new index based on the new mapping and try to reindex the data by passing source and destination index. It is a tedious job correct so that's the reason elasticsearch  came up with **Data Streams** and  I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with solution called Runtime Fields.Please make note that  it is available in  **Beta** 
+Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called **MyCareer.com** where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that's the reason elasticsearch came up with **Data Streams** and  I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that  it is available in  **Beta** 
 
-**Runtime Fields** : A runtime field is a field that is evaluated at query time. It enables us with following fetaures i.e.
+**Runtime Fields**: A runtime field is a field that is evaluated at query time. It enables us with the following features i.e.
 
 * Add fields to existing documents without reindexing your data
 * Start working with your data without understanding how it’s structured
@@ -25,7 +25,7 @@ Queries against runtime fields are considered expensive. If search.**allow_expen
 **Disadvantages** :
 																					*Queries* against runtime fields can be expensive, so data that you commonly search or filter on should still be mapped to indexed fields. Runtime fields can also decrease search speed, even though your index size is smaller.
 
-Now  let's make our hands dirty by adding runtime fields.
+Now let's make our hands dirty by adding runtime fields.
 
 Creating sample **employee** index:
 ```
@@ -76,7 +76,7 @@ Output:
   }
 }
 ```
-So now we try to insert couple of sample documents to the employee index.
+So now we try to insert a couple of sample documents into the employee index.
 
 ```
 PUT employee/_doc/1
@@ -102,7 +102,7 @@ PUT employee/_doc/3
 }
 ```
 
-Now we will check mapping again and this we will see  age , fullname as runtime fields.
+Now we will check mapping again and we will see age, full name as runtime fields.
 
 ```
 GET employee/_mapping
@@ -138,7 +138,7 @@ Output:
 }
 ```
 
-Now let's write a small query to search documents having age greater than 29.
+Now let's write a small query to search documents having an age greater than 29.
 ```
 GET employee/_search
 {
@@ -180,9 +180,9 @@ Result:
       }
     ]
 ```
-This way we simply queried using runtime field and as mentioned earlier this field is not an indexed field but still we are able to retrieve the results.
+This way we simply queried using runtime field and as mentioned earlier this field is not indexed but still, we can retrieve the results.
 
-Now let's something new out of it like we can create the concatenation of two fields with a static string as follows:
+Now lets something new out of it like we can create the concatenation of two fields with a static string as follows:
 
 ```
 GET employee/_search
@@ -205,7 +205,7 @@ GET employee/_search
   }
 }
 ```
-We defined the field **concatenated_field** in the runtime_mappings section. We used a short Painless script that defines how the value of concatenated_field will be calculated per document (using + to indicate concatenation of the value of the fullname field with the static string ‘:’ and the value of the age field). We then used the field concatenated_field in the query. When defining a Painless script to use with runtime fields, you must include emit to return calculated values.
+We defined the field **concatenated_field** in the runtime_mappings section. We used a short Painless script that defines how the value of concatenated_field will be calculated per document (using + to indicate concatenation of the value of the full name field with the static string ‘:’ and the value of the age field). We then used the field concatenated_field in the query. When defining a Painless script to use with runtime fields, you must include emit to return calculated values.
 
 Result:
 ```
@@ -315,7 +315,7 @@ Now let's see the result as I mentioned earlier we will not see **concatenated_f
         }
       }
 ```
-If we want to see **concatenated_field** then we need to specify implicitly in **fields** section.
+If we want to see **concatenated_field** then we need to specify implicitly in the **fields** section.
 
 ```
 GET employee/_search

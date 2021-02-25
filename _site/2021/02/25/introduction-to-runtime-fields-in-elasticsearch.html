@@ -7,15 +7,15 @@
 <meta name="generator" content="Jekyll v3.8.7" />
 <meta property="og:title" content="Introduction to Runtime Fields in ElasticSearch" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Hi all today I wanted to share with you once of the most awaited topic since I started learning elasticsearch. We used to have a product called Mycareer.com where we used elasticsearch and indexed around 20 miilion resumes. Everytime due to the aggressive timelines and incremental development we are in a situation where we need to add couple of properties to an existing index . Till now we have only one solution i.e adding a new properties to the exitsing mapping, creating new index based on the new mapping and try to reindex the data by passing source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with Data Streams and I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with solution called Runtime Fields.Please make note that it is available in Beta" />
-<meta property="og:description" content="Hi all today I wanted to share with you once of the most awaited topic since I started learning elasticsearch. We used to have a product called Mycareer.com where we used elasticsearch and indexed around 20 miilion resumes. Everytime due to the aggressive timelines and incremental development we are in a situation where we need to add couple of properties to an existing index . Till now we have only one solution i.e adding a new properties to the exitsing mapping, creating new index based on the new mapping and try to reindex the data by passing source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with Data Streams and I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with solution called Runtime Fields.Please make note that it is available in Beta" />
+<meta name="description" content="Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called MyCareer.com where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with Data Streams and I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that it is available in Beta" />
+<meta property="og:description" content="Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called MyCareer.com where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with Data Streams and I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that it is available in Beta" />
 <link rel="canonical" href="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html" />
 <meta property="og:url" content="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html" />
 <meta property="og:site_name" content="Learn By Doing" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-02-25T08:53:15+05:30" />
 <script type="application/ld+json">
-{"dateModified":"2021-02-25T08:53:15+05:30","datePublished":"2021-02-25T08:53:15+05:30","url":"http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html","headline":"Introduction to Runtime Fields in ElasticSearch","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html"},"description":"Hi all today I wanted to share with you once of the most awaited topic since I started learning elasticsearch. We used to have a product called Mycareer.com where we used elasticsearch and indexed around 20 miilion resumes. Everytime due to the aggressive timelines and incremental development we are in a situation where we need to add couple of properties to an existing index . Till now we have only one solution i.e adding a new properties to the exitsing mapping, creating new index based on the new mapping and try to reindex the data by passing source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with Data Streams and I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with solution called Runtime Fields.Please make note that it is available in Beta","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"dateModified":"2021-02-25T08:53:15+05:30","datePublished":"2021-02-25T08:53:15+05:30","url":"http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html","headline":"Introduction to Runtime Fields in ElasticSearch","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html"},"description":"Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called MyCareer.com where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with Data Streams and I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that it is available in Beta","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Learn By Doing" /></head>
 <body><header class="site-header" role="banner">
@@ -45,9 +45,9 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>Hi all today I wanted to share with you once of the most awaited topic since I started learning elasticsearch. We used to have a product called <strong>Mycareer.com</strong> where we used elasticsearch and indexed around 20 miilion resumes. Everytime due to the aggressive timelines and incremental development we are in a situation where we need to add couple of properties to an existing index . Till now we have only one solution i.e adding a new properties to the exitsing mapping, creating new index based on the new mapping and try to reindex the data by passing source and destination index. It is a tedious job correct so that’s the reason elasticsearch  came up with <strong>Data Streams</strong> and  I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with solution called Runtime Fields.Please make note that  it is available in  <strong>Beta</strong></p>
+    <p>Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called <strong>MyCareer.com</strong> where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with <strong>Data Streams</strong> and  I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that  it is available in  <strong>Beta</strong></p>
 
-<p><strong>Runtime Fields</strong> : A runtime field is a field that is evaluated at query time. It enables us with following fetaures i.e.</p>
+<p><strong>Runtime Fields</strong>: A runtime field is a field that is evaluated at query time. It enables us with the following features i.e.</p>
 
 <ul>
   <li>Add fields to existing documents without reindexing your data</li>
@@ -68,7 +68,7 @@
 <p><strong>Disadvantages</strong> :
 																					<em>Queries</em> against runtime fields can be expensive, so data that you commonly search or filter on should still be mapped to indexed fields. Runtime fields can also decrease search speed, even though your index size is smaller.</p>
 
-<p>Now  let’s make our hands dirty by adding runtime fields.</p>
+<p>Now let’s make our hands dirty by adding runtime fields.</p>
 
 <p>Creating sample <strong>employee</strong> index:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT employee
@@ -117,7 +117,7 @@ Output:
   }
 }
 </code></pre></div></div>
-<p>So now we try to insert couple of sample documents to the employee index.</p>
+<p>So now we try to insert a couple of sample documents into the employee index.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT employee/_doc/1
 {
@@ -142,7 +142,7 @@ PUT employee/_doc/3
 }
 </code></pre></div></div>
 
-<p>Now we will check mapping again and this we will see  age , fullname as runtime fields.</p>
+<p>Now we will check mapping again and we will see age, full name as runtime fields.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_mapping
 Output: 
@@ -177,7 +177,7 @@ Output:
 }
 </code></pre></div></div>
 
-<p>Now let’s write a small query to search documents having age greater than 29.</p>
+<p>Now let’s write a small query to search documents having an age greater than 29.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_search
 {
   "query": {
@@ -217,9 +217,9 @@ Output:
       }
     ]
 </code></pre></div></div>
-<p>This way we simply queried using runtime field and as mentioned earlier this field is not an indexed field but still we are able to retrieve the results.</p>
+<p>This way we simply queried using runtime field and as mentioned earlier this field is not indexed but still, we can retrieve the results.</p>
 
-<p>Now let’s something new out of it like we can create the concatenation of two fields with a static string as follows:</p>
+<p>Now lets something new out of it like we can create the concatenation of two fields with a static string as follows:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_search
 {
@@ -241,7 +241,7 @@ Output:
   }
 }
 </code></pre></div></div>
-<p>We defined the field <strong>concatenated_field</strong> in the runtime_mappings section. We used a short Painless script that defines how the value of concatenated_field will be calculated per document (using + to indicate concatenation of the value of the fullname field with the static string ‘:’ and the value of the age field). We then used the field concatenated_field in the query. When defining a Painless script to use with runtime fields, you must include emit to return calculated values.</p>
+<p>We defined the field <strong>concatenated_field</strong> in the runtime_mappings section. We used a short Painless script that defines how the value of concatenated_field will be calculated per document (using + to indicate concatenation of the value of the full name field with the static string ‘:’ and the value of the age field). We then used the field concatenated_field in the query. When defining a Painless script to use with runtime fields, you must include emit to return calculated values.</p>
 
 <p>Result:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"hits" : [
@@ -346,7 +346,7 @@ Output:
         }
       }
 </code></pre></div></div>
-<p>If we want to see <strong>concatenated_field</strong> then we need to specify implicitly in <strong>fields</strong> section.</p>
+<p>If we want to see <strong>concatenated_field</strong> then we need to specify implicitly in the <strong>fields</strong> section.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_search
 {
