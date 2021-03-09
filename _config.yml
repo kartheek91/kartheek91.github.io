@@ -12,3 +12,8 @@ theme: minima
 plugins:
   - jekyll-feed
 google_analytics: UA-138899027-1
+---
+layout: default
+comments: true
+# other options
+---
