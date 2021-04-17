@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-17T14:28:27+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client</title><link href="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html" rel="alternate" type="text/html" title="Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client" /><published>2021-04-17T13:50:56+05:30</published><updated>2021-04-17T13:50:56+05:30</updated><id>http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client</id><content type="html" xml:base="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html">&lt;p&gt;To get started with the usage of &lt;strong&gt;Verbatim&lt;/strong&gt;, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-17T14:40:40+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client</title><link href="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html" rel="alternate" type="text/html" title="Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client" /><published>2021-04-17T13:50:56+05:30</published><updated>2021-04-17T13:50:56+05:30</updated><id>http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client</id><content type="html" xml:base="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html">&lt;p&gt;To get started with the usage of &lt;strong&gt;Verbatim&lt;/strong&gt;, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.&lt;/p&gt;
 
 &lt;p&gt;So I created an index called sample with the following mapping with defaults primary and replica shards with  1.&lt;/p&gt;
 
@@ -210,8 +210,12 @@ A verbatim query will be serialized and sent in the request to Elasticsearch, by
 
 &lt;p&gt;&lt;img src=&quot;/output2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;This way we can make use of Verbatim Query. &lt;br /&gt;
-Thanks &lt;br /&gt;
+&lt;p&gt;This way we can make use of Verbatim Query. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;: &lt;br /&gt;
+&lt;a href=&quot;http://&quot;&gt;https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/verbatim-and-strict-query-usage.html#verbatim-and-strict-query-usage&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks &lt;br /&gt;
 &lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
