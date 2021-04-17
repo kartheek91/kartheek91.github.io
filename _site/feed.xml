@@ -1,4 +1,239 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-17T23:04:07+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Getting Started with AWS-Athena</title><link href="http://localhost:4000/2021/03/17/getting-started-with-aws-athena.html" rel="alternate" type="text/html" title="Getting Started with AWS-Athena" /><published>2021-03-17T19:42:15+05:30</published><updated>2021-03-17T19:42:15+05:30</updated><id>http://localhost:4000/2021/03/17/getting-started-with-aws-athena</id><content type="html" xml:base="http://localhost:4000/2021/03/17/getting-started-with-aws-athena.html">&lt;p&gt;&lt;strong&gt;Introduction to AWS Athena&lt;/strong&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-17T14:28:27+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client</title><link href="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html" rel="alternate" type="text/html" title="Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client" /><published>2021-04-17T13:50:56+05:30</published><updated>2021-04-17T13:50:56+05:30</updated><id>http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client</id><content type="html" xml:base="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html">&lt;p&gt;To get started with the usage of &lt;strong&gt;Verbatim&lt;/strong&gt;, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.&lt;/p&gt;
+
+&lt;p&gt;So I created an index called sample with the following mapping with defaults primary and replica shards with  1.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mapping:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT sample
+{
+  &quot;sample&quot; : {
+    &quot;mappings&quot; : {
+      &quot;properties&quot; : {
+        &quot;address&quot; : {
+          &quot;type&quot; : &quot;text&quot;,
+          &quot;fields&quot; : {
+            &quot;keyword&quot; : {
+              &quot;type&quot; : &quot;keyword&quot;,
+              &quot;ignore_above&quot; : 256
+            }
+          }
+        },
+        &quot;name&quot; : {
+          &quot;type&quot; : &quot;text&quot;,
+          &quot;fields&quot; : {
+            &quot;keyword&quot; : {
+              &quot;type&quot; : &quot;keyword&quot;,
+              &quot;ignore_above&quot; : 256
+            }
+          }
+        },
+        &quot;role&quot; : {
+          &quot;type&quot; : &quot;text&quot;,
+          &quot;fields&quot; : {
+            &quot;keyword&quot; : {
+              &quot;type&quot; : &quot;keyword&quot;,
+              &quot;ignore_above&quot; : 256
+            }
+          }
+        }
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we need to insert a couple of documents into the sample index. Once we completed indexing in the sample index.  We can check whether documents got created or not by using the below-mentioned query.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET sample/_search
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Result:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
+      {
+        &quot;_index&quot; : &quot;sample&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;1&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;name&quot; : &quot;kiran sangita&quot;,
+          &quot;address&quot; : &quot;visalakshinagar&quot;,
+          &quot;role&quot; : &quot;CEO&quot;
+        }
+      },
+      {
+        &quot;_index&quot; : &quot;sample&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;2&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;name&quot; : &quot;pavan arya&quot;,
+          &quot;address&quot; : &quot;&quot;,
+          &quot;role&quot; : &quot;architect&quot;
+        }
+      },
+      {
+        &quot;_index&quot; : &quot;sample&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;3&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;name&quot; : &quot;kartheek gummaluri&quot;,
+          &quot;address&quot; : &quot;&quot;,
+          &quot;role&quot; : &quot;developer&quot;
+        }
+      },
+      {
+        &quot;_index&quot; : &quot;sample&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;4&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;name&quot; : &quot;pavan arya&quot;,
+          &quot;address&quot; : &quot;chinnamushidiwada&quot;,
+          &quot;role&quot; : &quot;developer&quot;
+        }
+      }
+    ]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now we need to write a query to fetch a document having name=”pavan arya” and adress= “”&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET sample/_search
+{
+  &quot;query&quot;: {
+    &quot;constant_score&quot;: {
+      &quot;filter&quot;: {
+        &quot;bool&quot;: {
+          &quot;must&quot;: [
+            {
+              &quot;term&quot;: {
+                &quot;name.keyword&quot;: {
+                  &quot;value&quot;: &quot;pavan arya&quot;
+                }
+              }
+            },
+            {
+              &quot;term&quot;:{
+                &quot;address.keyword&quot;:&quot;&quot;
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
+	{
+		&quot;_index&quot; : &quot;sample&quot;,
+		&quot;_type&quot; : &quot;_doc&quot;,
+		&quot;_id&quot; : &quot;2&quot;,
+		&quot;_score&quot; : 1.0,
+		&quot;_source&quot; : {
+			&quot;name&quot; : &quot;pavan arya&quot;,
+			&quot;address&quot; : &quot;&quot;,
+			&quot;role&quot; : &quot;architect&quot;
+		}
+	}
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can see the accurate result based on the filter criteria in the above result. But the actual problem is with the NEST client when we try to write the same query in the c# Nest client we are not able to add a filter with empty string criteria.&lt;/p&gt;
+
+&lt;p&gt;So I wrote a small method in the c# console application, to search the sample index with the above-mentioned filters.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; public async Task&amp;lt;bool&amp;gt; VerbatimExample()
+        {
+            
+            var searchResults = await _repository.EsClient().SearchAsync&amp;lt;SampleViewModel&amp;gt;(s =&amp;gt; s
+             .Index(&quot;sample&quot;)
+             .Query(q =&amp;gt; q
+                 .ConstantScore(c =&amp;gt; c
+                     .Filter(f =&amp;gt; f
+                         .Bool(b =&amp;gt; b
+                             .Must(m =&amp;gt; m.Term(t =&amp;gt; t.Field(&quot;address.keyword&quot;).Value(string.Empty)) &amp;amp;&amp;amp;
+                                        m.Term(t=&amp;gt; t.Field(&quot;name.keyword&quot;).Value(&quot;pavan arya&quot;))))))));
+            if (searchResults.IsValid)
+            {
+                foreach (var dcoument in searchResults.Documents)
+                {
+                    Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(dcoument, Formatting.Indented));
+                }
+                return true;
+            }
+            return false;
+        }
+
+
+        public class SampleViewModel
+        {
+            public string name { get; set; }
+            public string role { get; set; }
+            public string address { get; set; }
+        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Result from the above method:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/output.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;But actually, we need to get only one document rather than we got two documents. Let check how the high-level NEST client internally framed the above-mentioned query.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/debug.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the above image in the request section, we are not able to see the address filter that we added in our query. Elastic Nest client will follow some conditional checks during the query conversion so that’s the reason we are unable to see the address filter in the above-mentioned query.&lt;/p&gt;
+
+&lt;p&gt;For me, it took a good amount of time to find the solution. I posted in the elasticsearch forum for the same. I have gone through the .NET elasticsearch NEST API documentation, there we have a section called NEST Specific Queries in that I found &lt;strong&gt;Verbatim&lt;/strong&gt; &lt;strong&gt;Query&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Verbatim&lt;/strong&gt; 
+A verbatim query will be serialized and sent in the request to Elasticsearch, bypassing NEST’s conditionless checks.&lt;/p&gt;
+
+&lt;p&gt;So let’s add Verbatim to the existing query.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  var searchResults = await _repository.EsClient().SearchAsync&amp;lt;SampleViewModel&amp;gt;(s =&amp;gt; s
+             .Index(&quot;sample&quot;)
+             .Query(q =&amp;gt; q
+                 .ConstantScore(c =&amp;gt; c
+                     .Filter(f =&amp;gt; f
+                         .Bool(b =&amp;gt; b
+                             .Must(m =&amp;gt; m.Term(t =&amp;gt; t.Field(&quot;address.keyword&quot;).Value(string.Empty).Verbatim()) &amp;amp;&amp;amp;
+                                        m.Term(t=&amp;gt; t.Field(&quot;name.keyword&quot;).Value(&quot;pavan arya&quot;))))))));
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/output1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, we can see the address filter and we got accurate results from the query.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/output2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This way we can make use of Verbatim Query. &lt;br /&gt;
+Thanks &lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-kartheek91-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+&lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="ELasticSearch" /><category term="c#" /><category term="NEST" /><summary type="html">To get started with the usage of Verbatim, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.</summary></entry><entry><title type="html">Getting Started with AWS-Athena</title><link href="http://localhost:4000/2021/03/17/getting-started-with-aws-athena.html" rel="alternate" type="text/html" title="Getting Started with AWS-Athena" /><published>2021-03-17T19:42:15+05:30</published><updated>2021-03-17T19:42:15+05:30</updated><id>http://localhost:4000/2021/03/17/getting-started-with-aws-athena</id><content type="html" xml:base="http://localhost:4000/2021/03/17/getting-started-with-aws-athena.html">&lt;p&gt;&lt;strong&gt;Introduction to AWS Athena&lt;/strong&gt;
 &lt;em&gt;Amazon Athena&lt;/em&gt; is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Features&lt;/strong&gt;:&lt;/p&gt;
