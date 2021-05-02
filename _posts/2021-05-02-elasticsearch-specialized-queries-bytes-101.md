@@ -1,5 +1,5 @@
 ---
-title: Elasticsearch Specialized Query Bytes-101
+title: Hands-on Elasticsearch Specialized Queries
 layout: post
 date: '2021-05-02 21:52:30'
 tags:
