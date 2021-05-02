@@ -244,5 +244,12 @@ GET drug_pinned/_search
 ```
 In this way, we can make use of **Wrapper  Query**.
 
+**References**:
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wrapper-query.html#query-dsl-wrapper-query
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-pinned-query.html
+
+
 Thanks <br>
 ***Kartheek Gummaluri***
