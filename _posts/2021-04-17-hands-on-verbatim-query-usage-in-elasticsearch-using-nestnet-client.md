@@ -229,7 +229,7 @@ Now, we can see the address filter and we got accurate results from the query.
 This way we can make use of Verbatim Query. <br>
 
 **References**: <br>
-{%https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/verbatim-and-strict-query-usage.html#verbatim-and-strict-query-usage%}
+https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/verbatim-and-strict-query-usage.html#verbatim-and-strict-query-usage
 
 Thanks <br>
 ***Kartheek Gummaluri***
