@@ -8,8 +8,7 @@ tags:
 
 Hi all, today we will learn about a couple of specialized queries in elasticsearch. This group contains queries that do not fit into the other groups:
 
-**Pinned Query**: 
-																				***Pinned Query*** is one of the cool features of elasticsearch. To set the context,  I'm working on a medical product where I need to populate specific drugs based on the pharmacist's ease of use irrespective of the business logic in drug dropdown. So, for this problem statement, I came across this query which would be the exact solution.
+***Pinned Query***  is one of the cool features of elasticsearch. To set the context,  I'm working on a medical product where I need to populate specific drugs based on the pharmacist's ease of use irrespective of the business logic in drug dropdown. So, for this problem statement, I came across this query which would be the exact solution.
 
 **Let's create a sample mapping for demonstrating the pinned query**:
 
