@@ -1,4 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-02T22:06:27+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Hands-on Elasticsearch Specialized Queries</title><link href="http://localhost:4000/2021/05/02/elasticsearch-specialized-queries-bytes-101.html" rel="alternate" type="text/html" title="Hands-on Elasticsearch Specialized Queries" /><published>2021-05-02T21:52:30+05:30</published><updated>2021-05-02T21:52:30+05:30</updated><id>http://localhost:4000/2021/05/02/elasticsearch-specialized-queries-bytes-101</id><content type="html" xml:base="http://localhost:4000/2021/05/02/elasticsearch-specialized-queries-bytes-101.html">&lt;p&gt;Hi all, today we will learn about a couple of specialized queries in elasticsearch. This group contains queries that do not fit into the other groups:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-13T14:56:17+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Hands on Multi-Host Networking with Docker Overlay Driver</title><link href="http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver.html" rel="alternate" type="text/html" title="Hands on Multi-Host Networking with Docker Overlay Driver" /><published>2021-06-13T12:41:31+05:30</published><updated>2021-06-13T12:41:31+05:30</updated><id>http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver</id><content type="html" xml:base="http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver.html">&lt;p&gt;Hi all, today we will learn about Multi-Host Networking with Docker Overlay Driver. The main idea is to make containers of different hosts talk to each other.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/multi-host-overlay.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For making things simple, let’s consider two nodes of different subnets. In each node, we will have SandBox installed with a bridge driver. Now VXLAN tunnel endpoint gets created, attached to the bridge. Now VXLAN tunnel gets created. It will act as an overlay network. It is a single Layer2 broadcast domain.&lt;/p&gt;
+
+&lt;p&gt;So each container is attached to the virtual adapter to connect to the bridge driver. Let’s say container 1 wants to connect to container two,  which are in different hosts. So, container one will create a virtual adapter and will attach it to the bridge driver. This bridge driver internally communicates via a virtual ethernet endpoint through a VXLAN tunnel. In this way, we can talk to container two from container one. We need to same to communicate vice-versa.&lt;/p&gt;
+
+&lt;p&gt;To make our hands dirty, we need to have two ubuntu virtual machines. Docker installed on both the virtual machines. We also need to enable the following ports 4789-UDP, 7946 UDP/TCP, and 2377 TCP.&lt;/p&gt;
+
+&lt;p&gt;For time being I already created two virtual machines in azure cloud environment.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/vms_list.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we will try to login into the virtual machines.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/vm_login.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we need to enable swarm mode in node 1 with the following command.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker swarm init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The above command will enable node one as a manager and will generate a token to add a manager to this swarm.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/node1_swarm.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we will paste this command in node two.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker swarm join --token SWMTKN-1-5kd2q3hvp3kh8cynnxzaiu3dpj3rrhy9fym6wgxr0dbs9vk8dp-3x84cvrsti8fwrgkbzlkiuhwq 10.0.0.4:2377
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/node2_output.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now let’s check the active nodes by the following command.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker node ls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/node_1_ls.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we will check the networks in the docker by using the following command.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker network ls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/docker_network.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;docker_gwbridge is the local bridge that acts as a gateway for the outside world.&lt;/p&gt;
+
+&lt;p&gt;Now, we will create custom overlay network with the following command.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; docker network create -d overlay ps-over
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/network_create.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the above image, the newly created network &lt;strong&gt;ps-bridge&lt;/strong&gt; is scoped to the swarm.&lt;/p&gt;
+
+&lt;p&gt;It should be available in both nodes. Let us check the same command in node two.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/docker_networkd2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So, we are not able to see correct? Any guess why we are not able to see the newly created in node two. The answer is docker has a lazy approach. It will not create a network on worker nodes immediately.&lt;/p&gt;
+
+&lt;p&gt;Now we will create a docker service with two replicas. Then we will attach the &lt;strong&gt;ps-network&lt;/strong&gt; to the service.To create a service we need to use following command.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker service create --name ps-svc --network ps-over --replicas 2 alpine sleep 1d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/docker_service.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s check whether service got created or not with the following command.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker service ps ps-svc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/docker_service_check.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So, now lets do docker network inspect so that we can get to know VXLANId, container details.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker network isnpect ps-over
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/docker_inspect.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the above output we get to know the containers that are participated in the  &lt;strong&gt;ps-over&lt;/strong&gt; overlay network, &lt;strong&gt;vxlanid_list&lt;/strong&gt; and their &lt;strong&gt;IPV4&lt;/strong&gt; ips. We can also the run same command in node-two and we will see the same result.&lt;/p&gt;
+
+&lt;p&gt;So let’s ping node-2 ip address &lt;strong&gt;192.0.0.4&lt;/strong&gt; from node-1.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping 192.0.0.4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/nod1-output.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So let’s ping node-1 ip address &lt;strong&gt;10.0.0.4&lt;/strong&gt;  from node-2.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping 10.0.0.4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/node-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;By this way we can establish connectinon between two container using &lt;strong&gt;Overlay Driver.&lt;/strong&gt;
+Thanks &lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-kartheek91-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+&lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="Docker" /><category term="Ubuntu" /><summary type="html">Hi all, today we will learn about Multi-Host Networking with Docker Overlay Driver. The main idea is to make containers of different hosts talk to each other.</summary></entry><entry><title type="html">Hands-on Elasticsearch Specialized Queries</title><link href="http://localhost:4000/2021/05/02/elasticsearch-specialized-queries-bytes-101.html" rel="alternate" type="text/html" title="Hands-on Elasticsearch Specialized Queries" /><published>2021-05-02T21:52:30+05:30</published><updated>2021-05-02T21:52:30+05:30</updated><id>http://localhost:4000/2021/05/02/elasticsearch-specialized-queries-bytes-101</id><content type="html" xml:base="http://localhost:4000/2021/05/02/elasticsearch-specialized-queries-bytes-101.html">&lt;p&gt;Hi all, today we will learn about a couple of specialized queries in elasticsearch. This group contains queries that do not fit into the other groups:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Pinned Query&lt;/em&gt;&lt;/strong&gt;  is one of the cool features of elasticsearch. To set the context,  I’m working on a medical product where I need to populate specific drugs based on the pharmacist’s ease of use irrespective of the business logic in drug dropdown. So, for this problem statement, I came across this query which would be the exact solution.&lt;/p&gt;
 
@@ -256,13 +373,12 @@ So let’s convert the pinned query to a base64 encoded string. Will pass the st
     })();
 &lt;/script&gt;
 
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">Hi all, today we will learn about a couple of specialized queries in elasticsearch. This group contains queries that do not fit into the other groups:</summary></entry><entry><title type="html">Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client</title><link href="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html" rel="alternate" type="text/html" title="Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client" /><published>2021-04-17T13:50:56+05:30</published><updated>2021-04-17T13:50:56+05:30</updated><id>http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client</id><content type="html" xml:base="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html">To get started with the usage of **Verbatim**, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">Hi all, today we will learn about a couple of specialized queries in elasticsearch. This group contains queries that do not fit into the other groups:</summary></entry><entry><title type="html">Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client</title><link href="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html" rel="alternate" type="text/html" title="Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client" /><published>2021-04-17T13:50:56+05:30</published><updated>2021-04-17T13:50:56+05:30</updated><id>http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client</id><content type="html" xml:base="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html">&lt;p&gt;To get started with the usage of &lt;strong&gt;Verbatim&lt;/strong&gt;, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.&lt;/p&gt;
 
-So I created an index called sample with the following mapping with defaults primary and replica shards with  1.
+&lt;p&gt;So I created an index called sample with the following mapping with defaults primary and replica shards with  1.&lt;/p&gt;
 
-**Mapping:**
-```
-PUT sample
+&lt;p&gt;&lt;strong&gt;Mapping:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT sample
 {
   &quot;sample&quot; : {
     &quot;mappings&quot; : {
@@ -298,17 +414,15 @@ PUT sample
     }
   }
 }
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Now we need to insert a couple of documents into the sample index. Once we completed indexing in the sample index.  We can check whether documents got created or not by using the below-mentioned query.
+&lt;p&gt;Now we need to insert a couple of documents into the sample index. Once we completed indexing in the sample index.  We can check whether documents got created or not by using the below-mentioned query.&lt;/p&gt;
 
-```
-GET sample/_search
-```
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET sample/_search
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Result:
-```
-&quot;hits&quot; : [
+&lt;p&gt;Result:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
       {
         &quot;_index&quot; : &quot;sample&quot;,
         &quot;_type&quot; : &quot;_doc&quot;,
@@ -354,12 +468,11 @@ Result:
         }
       }
     ]
-```
-Now we need to write a query to fetch a document having name=&quot;pavan arya&quot; and adress= &quot;&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now we need to write a query to fetch a document having name=”pavan arya” and adress= “”&lt;/p&gt;
 
-**Query**:
-```
-GET sample/_search
+&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET sample/_search
 {
   &quot;query&quot;: {
     &quot;constant_score&quot;: {
@@ -384,40 +497,39 @@ GET sample/_search
     }
   }
 }
-```
-**Output**:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;:&lt;/p&gt;
 
-
-	&quot;hits&quot; : [
-		{
-			&quot;_index&quot; : &quot;sample&quot;,
-			&quot;_type&quot; : &quot;_doc&quot;,
-			&quot;_id&quot; : &quot;2&quot;,
-			&quot;_score&quot; : 1.0,
-			&quot;_source&quot; : {
-				&quot;name&quot; : &quot;pavan arya&quot;,
-				&quot;address&quot; : &quot;&quot;,
-				&quot;role&quot; : &quot;architect&quot;
-			}
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
+	{
+		&quot;_index&quot; : &quot;sample&quot;,
+		&quot;_type&quot; : &quot;_doc&quot;,
+		&quot;_id&quot; : &quot;2&quot;,
+		&quot;_score&quot; : 1.0,
+		&quot;_source&quot; : {
+			&quot;name&quot; : &quot;pavan arya&quot;,
+			&quot;address&quot; : &quot;&quot;,
+			&quot;role&quot; : &quot;architect&quot;
 		}
-	]
+	}
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-We can see the accurate result based on the filter criteria in the above result. But the actual problem is with the NEST client when we try to write the same query in the c# Nest client we are not able to add a filter with empty string criteria.
+&lt;p&gt;We can see the accurate result based on the filter criteria in the above result. But the actual problem is with the NEST client when we try to write the same query in the c# Nest client we are not able to add a filter with empty string criteria.&lt;/p&gt;
 
-So I wrote a small method in the c# console application, to search the sample index with the above-mentioned filters. 
+&lt;p&gt;So I wrote a small method in the c# console application, to search the sample index with the above-mentioned filters.&lt;/p&gt;
 
-```
- public async Task&lt;bool&gt; VerbatimExample()
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; public async Task&amp;lt;bool&amp;gt; VerbatimExample()
         {
             
-            var searchResults = await _repository.EsClient().SearchAsync&lt;SampleViewModel&gt;(s =&gt; s
+            var searchResults = await _repository.EsClient().SearchAsync&amp;lt;SampleViewModel&amp;gt;(s =&amp;gt; s
              .Index(&quot;sample&quot;)
-             .Query(q =&gt; q
-                 .ConstantScore(c =&gt; c
-                     .Filter(f =&gt; f
-                         .Bool(b =&gt; b
-                             .Must(m =&gt; m.Term(t =&gt; t.Field(&quot;address.keyword&quot;).Value(string.Empty)) &amp;&amp;
-                                        m.Term(t=&gt; t.Field(&quot;name.keyword&quot;).Value(&quot;pavan arya&quot;))))))));
+             .Query(q =&amp;gt; q
+                 .ConstantScore(c =&amp;gt; c
+                     .Filter(f =&amp;gt; f
+                         .Bool(b =&amp;gt; b
+                             .Must(m =&amp;gt; m.Term(t =&amp;gt; t.Field(&quot;address.keyword&quot;).Value(string.Empty)) &amp;amp;&amp;amp;
+                                        m.Term(t=&amp;gt; t.Field(&quot;name.keyword&quot;).Value(&quot;pavan arya&quot;))))))));
             if (searchResults.IsValid)
             {
                 foreach (var dcoument in searchResults.Documents)
@@ -436,52 +548,50 @@ So I wrote a small method in the c# console application, to search the sample in
             public string role { get; set; }
             public string address { get; set; }
         }
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Result from the above method:
+&lt;p&gt;Result from the above method:&lt;/p&gt;
 
-![]({{ 'output.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/output.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-But actually, we need to get only one document rather than we got two documents. Let check how the high-level NEST client internally framed the above-mentioned query.
+&lt;p&gt;But actually, we need to get only one document rather than we got two documents. Let check how the high-level NEST client internally framed the above-mentioned query.&lt;/p&gt;
 
-![]({{ 'debug.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/debug.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-In the above image in the request section, we are not able to see the address filter that we added in our query. Elastic Nest client will follow some conditional checks during the query conversion so that's the reason we are unable to see the address filter in the above-mentioned query.
+&lt;p&gt;In the above image in the request section, we are not able to see the address filter that we added in our query. Elastic Nest client will follow some conditional checks during the query conversion so that’s the reason we are unable to see the address filter in the above-mentioned query.&lt;/p&gt;
 
-For me, it took a good amount of time to find the solution. I posted in the elasticsearch forum for the same. I have gone through the .NET elasticsearch NEST API documentation, there we have a section called NEST Specific Queries in that I found **Verbatim** **Query**. 
+&lt;p&gt;For me, it took a good amount of time to find the solution. I posted in the elasticsearch forum for the same. I have gone through the .NET elasticsearch NEST API documentation, there we have a section called NEST Specific Queries in that I found &lt;strong&gt;Verbatim&lt;/strong&gt; &lt;strong&gt;Query&lt;/strong&gt;.&lt;/p&gt;
 
-**Verbatim** 
-A verbatim query will be serialized and sent in the request to Elasticsearch, bypassing NEST’s conditionless checks.
+&lt;p&gt;&lt;strong&gt;Verbatim&lt;/strong&gt; 
+A verbatim query will be serialized and sent in the request to Elasticsearch, bypassing NEST’s conditionless checks.&lt;/p&gt;
 
-So let's add Verbatim to the existing query.
+&lt;p&gt;So let’s add Verbatim to the existing query.&lt;/p&gt;
 
-```
-  var searchResults = await _repository.EsClient().SearchAsync&lt;SampleViewModel&gt;(s =&gt; s
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  var searchResults = await _repository.EsClient().SearchAsync&amp;lt;SampleViewModel&amp;gt;(s =&amp;gt; s
              .Index(&quot;sample&quot;)
-             .Query(q =&gt; q
-                 .ConstantScore(c =&gt; c
-                     .Filter(f =&gt; f
-                         .Bool(b =&gt; b
-                             .Must(m =&gt; m.Term(t =&gt; t.Field(&quot;address.keyword&quot;).Value(string.Empty).Verbatim()) &amp;&amp;
-                                        m.Term(t=&gt; t.Field(&quot;name.keyword&quot;).Value(&quot;pavan arya&quot;))))))));
-```
+             .Query(q =&amp;gt; q
+                 .ConstantScore(c =&amp;gt; c
+                     .Filter(f =&amp;gt; f
+                         .Bool(b =&amp;gt; b
+                             .Must(m =&amp;gt; m.Term(t =&amp;gt; t.Field(&quot;address.keyword&quot;).Value(string.Empty).Verbatim()) &amp;amp;&amp;amp;
+                                        m.Term(t=&amp;gt; t.Field(&quot;name.keyword&quot;).Value(&quot;pavan arya&quot;))))))));
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-![]({{ 'output1.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/output1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-Now, we can see the address filter and we got accurate results from the query.
+&lt;p&gt;Now, we can see the address filter and we got accurate results from the query.&lt;/p&gt;
 
-**Output:**
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
 
-![]({{ 'output2.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/output2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-This way we can make use of Verbatim Query. &lt;br&gt;
+&lt;p&gt;This way we can make use of Verbatim Query. &lt;br /&gt;&lt;/p&gt;
 
-**References**: &lt;br&gt;
-https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/verbatim-and-strict-query-usage.html#verbatim-and-strict-query-usage
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;: &lt;br /&gt;
+https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/verbatim-and-strict-query-usage.html#verbatim-and-strict-query-usage&lt;/p&gt;
 
-Thanks &lt;br&gt;
-***Kartheek Gummaluri***
-
+&lt;p&gt;Thanks &lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
 &lt;script&gt;
@@ -501,80 +611,106 @@ Thanks &lt;br&gt;
     (d.head || d.body).appendChild(s);
     })();
 &lt;/script&gt;
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="ELasticSearch" /><category term="c#" /><category term="NEST" /><summary type="html">To get started with the usage of Verbatim, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.</summary></entry><entry><title type="html">Getting Started with AWS-Athena</title><link href="http://localhost:4000/2021/03/17/getting-started-with-aws-athena.html" rel="alternate" type="text/html" title="Getting Started with AWS-Athena" /><published>2021-03-17T19:42:15+05:30</published><updated>2021-03-17T19:42:15+05:30</updated><id>http://localhost:4000/2021/03/17/getting-started-with-aws-athena</id><content type="html" xml:base="http://localhost:4000/2021/03/17/getting-started-with-aws-athena.html">**Introduction to AWS Athena**
-*Amazon Athena* is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL.
 
-**Features**:
-* Athena is serverless. So there is no infrastructure to set up or manage,   and you pay only for the queries you run.
-* It scales automatically and also executes queries in parallel.
-* Results are fast even with large data sets and complex queries.
-* Athena helps you to analyze unstructured, semi-structured, and structured data stored in amazon s3. eg: Apache Web Logs, CSV, TSV, Text file with custom delimiters, JSON, etc.
-* We can access Athena using AWS management console, JDBC or ODBC connection, Athena API, Athena CLI.
-* It is Cost-effective - We pay only for S3 which is quite cheap, and externally we pay per query. Per query cost - 5 dollars per Terabyte scan for S3.
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="ELasticSearch" /><category term="c#" /><category term="NEST" /><summary type="html">To get started with the usage of Verbatim, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.</summary></entry><entry><title type="html">Getting Started with AWS-Athena</title><link href="http://localhost:4000/2021/03/17/getting-started-with-aws-athena.html" rel="alternate" type="text/html" title="Getting Started with AWS-Athena" /><published>2021-03-17T19:42:15+05:30</published><updated>2021-03-17T19:42:15+05:30</updated><id>http://localhost:4000/2021/03/17/getting-started-with-aws-athena</id><content type="html" xml:base="http://localhost:4000/2021/03/17/getting-started-with-aws-athena.html">&lt;p&gt;&lt;strong&gt;Introduction to AWS Athena&lt;/strong&gt;
+&lt;em&gt;Amazon Athena&lt;/em&gt; is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL.&lt;/p&gt;
 
-**Presto (SQL on anything)**:
-Athena uses Presto as a managed service. Presto is an in-memory distributed SQL engine, which came out of Facebook. It reads data from anywhere and actually processes data from where it lives; hence it can be connected to a variety of connectors including HDFS, S3, MongoDB, MySQL, Postgres, Redshift, SQL Server. It has the power to handle hundreds of concurrent queries on a single cluster. That means we don’t have to maintain complex clusters.
+&lt;p&gt;&lt;strong&gt;Features&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Athena is serverless. So there is no infrastructure to set up or manage,   and you pay only for the queries you run.&lt;/li&gt;
+  &lt;li&gt;It scales automatically and also executes queries in parallel.&lt;/li&gt;
+  &lt;li&gt;Results are fast even with large data sets and complex queries.&lt;/li&gt;
+  &lt;li&gt;Athena helps you to analyze unstructured, semi-structured, and structured data stored in amazon s3. eg: Apache Web Logs, CSV, TSV, Text file with custom delimiters, JSON, etc.&lt;/li&gt;
+  &lt;li&gt;We can access Athena using AWS management console, JDBC or ODBC connection, Athena API, Athena CLI.&lt;/li&gt;
+  &lt;li&gt;It is Cost-effective - We pay only for S3 which is quite cheap, and externally we pay per query. Per query cost - 5 dollars per Terabyte scan for S3.&lt;/li&gt;
+&lt;/ul&gt;
 
-So it supports commands like creating a table, nested queries, multiple joins. We can also partition the data based on any column, not just date and time, but can also make a combination of several columns. It uses Hive QL for DDL, and Presto while querying the data.\
+&lt;p&gt;&lt;strong&gt;Presto (SQL on anything)&lt;/strong&gt;:
+Athena uses Presto as a managed service. Presto is an in-memory distributed SQL engine, which came out of Facebook. It reads data from anywhere and actually processes data from where it lives; hence it can be connected to a variety of connectors including HDFS, S3, MongoDB, MySQL, Postgres, Redshift, SQL Server. It has the power to handle hundreds of concurrent queries on a single cluster. That means we don’t have to maintain complex clusters.&lt;/p&gt;
 
-**Querying data from S3-Bucket using Athena**:
-*  We took sample data set from https://www.kaggle.com/shivamb/netflix-shows which is of CSV format and uploaded it to s3://kartheek-athena/ which is test bucket.
-	![]({{ 'second_athena.png' | relative_url }})
-	
-*  On global search type Athena and select Athena-Query data in S3 using SQL.
-	
-	![]({{ 'first_athena.png' | relative_url }})
-	
-*  Now you will see the following screen,  we need to click on **Connect Data Source**.
+&lt;p&gt;So it supports commands like creating a table, nested queries, multiple joins. We can also partition the data based on any column, not just date and time, but can also make a combination of several columns. It uses Hive QL for DDL, and Presto while querying the data.\&lt;/p&gt;
 
- 	![]({{ 'thrid_athena.png' | relative_url }})
-	
-*   Here we need to choose where our data is located, I will select Query data in Amazon S3  and will click on the Next button.
+&lt;p&gt;&lt;strong&gt;Querying data from S3-Bucket using Athena&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;We took sample data set from https://www.kaggle.com/shivamb/netflix-shows which is of CSV format and uploaded it to s3://kartheek-athena/ which is test bucket.
+ &lt;img src=&quot;/second_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;On global search type Athena and select Athena-Query data in S3 using SQL.&lt;/p&gt;
 
- 	![]({{ 'fourth_athena.png' | relative_url }})
-	
-* Now we need to specify connection details i.e Athena will connect to your data stored in Amazon S3 and use AWS Glue Data Catalog to store metadata, such as table and column names.
+    &lt;p&gt;&lt;img src=&quot;/first_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now you will see the following screen,  we need to click on &lt;strong&gt;Connect Data Source&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-* This can be done in two ways i.e setup a crawler in AWS Glue to retrieve schema information automatically and another way is to add a table and enter schema information manually.
- 	![]({{ 'fifth_athena.png' | relative_url }})
-	
-* This can be done in two ways i.e setup a crawler in AWS Glue to retrieve schema information automatically and another way is to add a table and enter schema information manually.
+ 	&lt;img src=&quot;/thrid_athena.png&quot; alt=&quot;&quot; /&gt;
 
-* Select the second option and click on the continue to add table button.
-	![]({{ 'sixth_athena.png' | relative_url }})
-	
-* Here we need to specify the database name, table name, and location of the input data set and click on the next button.
+&lt;ul&gt;
+  &lt;li&gt;Here we need to choose where our data is located, I will select Query data in Amazon S3  and will click on the Next button.&lt;/li&gt;
+&lt;/ul&gt;
 
-* Now we need to select data format i.e CSV and click on the next button.
-	![]({{ 'seventh_athena.png' | relative_url }})
+ 	&lt;img src=&quot;/fourth_athena.png&quot; alt=&quot;&quot; /&gt;
 
-* Add columns for the table, in order to add multiple columns at a time, we can click on the   **bulk add columns** .
-![]({{ 'eighth_athena.png' | relative_url }})
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now we need to specify connection details i.e Athena will connect to your data stored in Amazon S3 and use AWS Glue Data Catalog to store metadata, such as table and column names.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;This can be done in two ways i.e setup a crawler in AWS Glue to retrieve schema information automatically and another way is to add a table and enter schema information manually.
+ 	&lt;img src=&quot;/fifth_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;This can be done in two ways i.e setup a crawler in AWS Glue to retrieve schema information automatically and another way is to add a table and enter schema information manually.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Select the second option and click on the continue to add table button.
+  &lt;img src=&quot;/sixth_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Here we need to specify the database name, table name, and location of the input data set and click on the next button.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now we need to select data format i.e CSV and click on the next button.
+  &lt;img src=&quot;/seventh_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add columns for the table, in order to add multiple columns at a time, we can click on the   &lt;strong&gt;bulk add columns&lt;/strong&gt; .
+&lt;img src=&quot;/eighth_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Define schema for the table and click on the next button.
+&lt;img src=&quot;/ninth_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Partitions are the way to group specific information and it is option and we can proceed further by clicking on the 
+&lt;strong&gt;Create table&lt;/strong&gt; button.
+&lt;img src=&quot;/tenth_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It will redirects us to the &lt;strong&gt;Query Editor&lt;/strong&gt; screen&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-* Define schema for the table and click on the next button.
-![]({{ 'ninth_athena.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/elevth_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-* Partitions are the way to group specific information and it is option and we can proceed further by clicking on the 
-**Create table** button.
-![]({{ 'tenth_athena.png' | relative_url }})
+&lt;ul&gt;
+  &lt;li&gt;Now we can start querying data by writing simple queries.&lt;/li&gt;
+&lt;/ul&gt;
 
-* It will redirects us to the **Query Editor** screen 
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT COUNT(*)  AS TotalRows FROM &quot;athenatest&quot;.&quot;netflix_info&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;&lt;/p&gt;
 
-![]({{ 'elevth_athena.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/12_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-* Now we can start querying data by writing simple queries.
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Query2&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-```
-SELECT COUNT(*)  AS TotalRows FROM &quot;athenatest&quot;.&quot;netflix_info&quot;
-```
-**Result**
-
-![]({{ '12_athena.png' | relative_url }})
-
-* **Query2**
-
-```
-SELECT Title,
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT Title,
          Director,
          Country,
          Rating
@@ -582,14 +718,14 @@ FROM &quot;athenatest&quot;.&quot;netflix_info&quot;
 WHERE Type = 'Movie'
         AND COUNTRY != ''
 ORDER BY  COUNTRY ASC;
-```
-**Result**
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;&lt;/p&gt;
 
-![]({{ '13_athena.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/13_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-By this way we can  make use of SQL to Query S3 files with **AWS Athena**
-Thanks &lt;br&gt;
-***Kartheek Gummaluri***
+&lt;p&gt;By this way we can  make use of SQL to Query S3 files with &lt;strong&gt;AWS Athena&lt;/strong&gt;
+Thanks &lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
 &lt;script&gt;
     /**
@@ -608,30 +744,34 @@ Thanks &lt;br&gt;
     (d.head || d.body).appendChild(s);
     })();
 &lt;/script&gt;
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="AWS" /><category term="ATHENA" /><category term="ServerlessAnalyticsTool" /><summary type="html">Introduction to AWS Athena Amazon Athena is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL.</summary></entry><entry><title type="html">Introduction to Runtime Fields in ElasticSearch</title><link href="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html" rel="alternate" type="text/html" title="Introduction to Runtime Fields in ElasticSearch" /><published>2021-02-25T08:53:15+05:30</published><updated>2021-02-25T08:53:15+05:30</updated><id>http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch</id><content type="html" xml:base="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html">Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called **MyCareer.com** where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that's the reason elasticsearch came up with **Data Streams** and  I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that  it is available in  **Beta** 
 
-**Runtime Fields**: A runtime field is a field that is evaluated at query time. It enables us with the following features i.e.
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="AWS" /><category term="ATHENA" /><category term="ServerlessAnalyticsTool" /><summary type="html">Introduction to AWS Athena Amazon Athena is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL.</summary></entry><entry><title type="html">Introduction to Runtime Fields in ElasticSearch</title><link href="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html" rel="alternate" type="text/html" title="Introduction to Runtime Fields in ElasticSearch" /><published>2021-02-25T08:53:15+05:30</published><updated>2021-02-25T08:53:15+05:30</updated><id>http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch</id><content type="html" xml:base="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html">&lt;p&gt;Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called &lt;strong&gt;MyCareer.com&lt;/strong&gt; where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with &lt;strong&gt;Data Streams&lt;/strong&gt; and  I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that  it is available in  &lt;strong&gt;Beta&lt;/strong&gt;&lt;/p&gt;
 
-* Add fields to existing documents without reindexing your data
-* Start working with your data without understanding how it’s structured
-* Override the value returned from an indexed field at query time
-* Define fields for a specific use without modifying the underlying schema
+&lt;p&gt;&lt;strong&gt;Runtime Fields&lt;/strong&gt;: A runtime field is a field that is evaluated at query time. It enables us with the following features i.e.&lt;/p&gt;
 
-Queries against runtime fields are considered expensive. If search.**allow_expensive_queries is set to false**, expensive queries are not allowed and Elasticsearch will reject any queries against runtime fields.
+&lt;ul&gt;
+  &lt;li&gt;Add fields to existing documents without reindexing your data&lt;/li&gt;
+  &lt;li&gt;Start working with your data without understanding how it’s structured&lt;/li&gt;
+  &lt;li&gt;Override the value returned from an indexed field at query time&lt;/li&gt;
+  &lt;li&gt;Define fields for a specific use without modifying the underlying schema&lt;/li&gt;
+&lt;/ul&gt;
 
-**Advantages**:
-* Runtime fields aren’t indexed, adding a runtime field doesn’t increase the index size.
-*  We can define runtime fields directly in the index mapping, saving storage costs and increasing ingestion speed. 
-* When you define a runtime field, you can immediately use it in search requests, aggregations, filtering, and sorting.
+&lt;p&gt;Queries against runtime fields are considered expensive. If search.&lt;strong&gt;allow_expensive_queries is set to false&lt;/strong&gt;, expensive queries are not allowed and Elasticsearch will reject any queries against runtime fields.&lt;/p&gt;
 
-**Disadvantages** :
-																					*Queries* against runtime fields can be expensive, so data that you commonly search or filter on should still be mapped to indexed fields. Runtime fields can also decrease search speed, even though your index size is smaller.
+&lt;p&gt;&lt;strong&gt;Advantages&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Runtime fields aren’t indexed, adding a runtime field doesn’t increase the index size.&lt;/li&gt;
+  &lt;li&gt;We can define runtime fields directly in the index mapping, saving storage costs and increasing ingestion speed.&lt;/li&gt;
+  &lt;li&gt;When you define a runtime field, you can immediately use it in search requests, aggregations, filtering, and sorting.&lt;/li&gt;
+&lt;/ul&gt;
 
-Now let's make our hands dirty by adding runtime fields.
+&lt;p&gt;&lt;strong&gt;Disadvantages&lt;/strong&gt; :
+																					&lt;em&gt;Queries&lt;/em&gt; against runtime fields can be expensive, so data that you commonly search or filter on should still be mapped to indexed fields. Runtime fields can also decrease search speed, even though your index size is smaller.&lt;/p&gt;
 
-Creating sample **employee** index:
-```
-PUT employee
+&lt;p&gt;Now let’s make our hands dirty by adding runtime fields.&lt;/p&gt;
+
+&lt;p&gt;Creating sample &lt;strong&gt;employee&lt;/strong&gt; index:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT employee
 {
   &quot;mappings&quot;: {
     &quot;dynamic&quot;: &quot;runtime&quot;,
@@ -651,10 +791,9 @@ PUT employee
     }
   }
 }
-```
-Now we will check the employee mapping
-```
-GET employee/_mapping
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now we will check the employee mapping&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_mapping
 Output:
 {
   &quot;employee&quot; : {
@@ -677,11 +816,10 @@ Output:
     }
   }
 }
-```
-So now we try to insert a couple of sample documents into the employee index.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So now we try to insert a couple of sample documents into the employee index.&lt;/p&gt;
 
-```
-PUT employee/_doc/1
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT employee/_doc/1
 {
   &quot;name&quot;:&quot;Kiran Sangita&quot;,
   &quot;dob&quot;:&quot;1980-04-01&quot;,
@@ -702,12 +840,11 @@ PUT employee/_doc/3
   &quot;fullname&quot;:&quot;Pavan Arya&quot;,
   &quot;age&quot;:&quot;34&quot;
 }
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Now we will check mapping again and we will see age, full name as runtime fields.
+&lt;p&gt;Now we will check mapping again and we will see age, full name as runtime fields.&lt;/p&gt;
 
-```
-GET employee/_mapping
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_mapping
 Output: 
 {
   &quot;employee&quot; : {
@@ -738,11 +875,10 @@ Output:
     }
   }
 }
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Now let's write a small query to search documents having an age greater than 29.
-```
-GET employee/_search
+&lt;p&gt;Now let’s write a small query to search documents having an age greater than 29.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search
 {
   &quot;query&quot;: {
     &quot;range&quot;: {
@@ -752,10 +888,9 @@ GET employee/_search
     }
   }
 }
-```
-Result:
-```
-&quot;hits&quot; : [
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Result:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
       {
         &quot;_index&quot; : &quot;employee&quot;,
         &quot;_type&quot; : &quot;_doc&quot;,
@@ -781,13 +916,12 @@ Result:
         }
       }
     ]
-```
-This way we simply queried using runtime field and as mentioned earlier this field is not indexed but still, we can retrieve the results.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This way we simply queried using runtime field and as mentioned earlier this field is not indexed but still, we can retrieve the results.&lt;/p&gt;
 
-Now lets something new out of it like we can create the concatenation of two fields with a static string as follows:
+&lt;p&gt;Now lets something new out of it like we can create the concatenation of two fields with a static string as follows:&lt;/p&gt;
 
-```
-GET employee/_search
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search
 {
   &quot;runtime_mappings&quot;: {
     &quot;concatenated_field&quot;: {
@@ -806,12 +940,11 @@ GET employee/_search
     }
   }
 }
-```
-We defined the field **concatenated_field** in the runtime_mappings section. We used a short Painless script that defines how the value of concatenated_field will be calculated per document (using + to indicate concatenation of the value of the full name field with the static string ‘:’ and the value of the age field). We then used the field concatenated_field in the query. When defining a Painless script to use with runtime fields, you must include emit to return calculated values.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;We defined the field &lt;strong&gt;concatenated_field&lt;/strong&gt; in the runtime_mappings section. We used a short Painless script that defines how the value of concatenated_field will be calculated per document (using + to indicate concatenation of the value of the full name field with the static string ‘:’ and the value of the age field). We then used the field concatenated_field in the query. When defining a Painless script to use with runtime fields, you must include emit to return calculated values.&lt;/p&gt;
 
-Result:
-```
-&quot;hits&quot; : [
+&lt;p&gt;Result:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
       {
         &quot;_index&quot; : &quot;employee&quot;,
         &quot;_type&quot; : &quot;_doc&quot;,
@@ -830,11 +963,10 @@ Result:
         }
       }
     ]
-```
-If we find that **concatenated_field** is a field that we want to use in multiple queries without having to define it per query, we can simply add it to the mapping by making the call:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;If we find that &lt;strong&gt;concatenated_field&lt;/strong&gt; is a field that we want to use in multiple queries without having to define it per query, we can simply add it to the mapping by making the call:&lt;/p&gt;
 
-```
- PUT employee/_mapping
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; PUT employee/_mapping
  {
    &quot;runtime&quot;: {
      &quot;concatenated_field&quot;: {
@@ -845,12 +977,11 @@ If we find that **concatenated_field** is a field that we want to use in multipl
      } 
    } 
  }
-```
-Now we will again check the mappings of the employee index, this time you will see **concatenated_field** will be added in the mapping.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now we will again check the mappings of the employee index, this time you will see &lt;strong&gt;concatenated_field&lt;/strong&gt; will be added in the mapping.&lt;/p&gt;
 
-***Output***: 
-```
-GET employee/_mapping
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Output&lt;/em&gt;&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_mapping
 {
   &quot;employee&quot; : {
     &quot;mappings&quot; : {
@@ -887,11 +1018,10 @@ GET employee/_mapping
     }
   }
 }
-```
-And then the query does not have to include the definition of the field, for example:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;And then the query does not have to include the definition of the field, for example:&lt;/p&gt;
 
-```
-GET employee/_search
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search
 {
   &quot;query&quot;: {
     &quot;match&quot;: {
@@ -899,12 +1029,11 @@ GET employee/_search
     }
   }
 }
-```
-Now let's see the result as I mentioned earlier we will not see **concatenated_field** in the source document.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now let’s see the result as I mentioned earlier we will not see &lt;strong&gt;concatenated_field&lt;/strong&gt; in the source document.&lt;/p&gt;
 
-***Output***:
-```
- {
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Output&lt;/em&gt;&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; {
         &quot;_index&quot; : &quot;employee&quot;,
         &quot;_type&quot; : &quot;_doc&quot;,
         &quot;_id&quot; : &quot;1&quot;,
@@ -916,11 +1045,10 @@ Now let's see the result as I mentioned earlier we will not see **concatenated_f
           &quot;age&quot; : &quot;45&quot;
         }
       }
-```
-If we want to see **concatenated_field** then we need to specify implicitly in the **fields** section.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;If we want to see &lt;strong&gt;concatenated_field&lt;/strong&gt; then we need to specify implicitly in the &lt;strong&gt;fields&lt;/strong&gt; section.&lt;/p&gt;
 
-```
-GET employee/_search
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search
 {
   &quot;fields&quot;: [
     &quot;concatenated_field&quot;
@@ -931,10 +1059,9 @@ GET employee/_search
     }
   }
 }
-```
-***Output***:
-```
- &quot;hits&quot; : [
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Output&lt;/em&gt;&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &quot;hits&quot; : [
       {
         &quot;_index&quot; : &quot;employee&quot;,
         &quot;_type&quot; : &quot;_doc&quot;,
@@ -953,11 +1080,11 @@ GET employee/_search
         }
       }
     ]
-```
-This is how we can make use of **Runtime Fields**.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This is how we can make use of &lt;strong&gt;Runtime Fields&lt;/strong&gt;.&lt;/p&gt;
 
-Thanks &lt;br&gt;
-***Kartheek Gummaluri***
+&lt;p&gt;Thanks &lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
 &lt;script&gt;
     /**
@@ -976,44 +1103,47 @@ Thanks &lt;br&gt;
     (d.head || d.body).appendChild(s);
     })();
 &lt;/script&gt;
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called MyCareer.com where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with Data Streams and I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that it is available in Beta</summary></entry><entry><title type="html">Painless Scripting Language-Series-1</title><link href="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html" rel="alternate" type="text/html" title="Painless Scripting Language-Series-1" /><published>2021-02-07T13:15:20+05:30</published><updated>2021-02-07T13:15:20+05:30</updated><id>http://localhost:4000/2021/02/07/painless-scripting-language-series-1</id><content type="html" xml:base="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html">Today we will learn about very intresting scripting language called **Painless**. So let's jump directy into the topic.
 
-***Painless:***
-It is a simple, secure scripting language designed specifically for use with Elasticsearch. It is the default scripting language for Elasticsearch and can safely be used for inline and stored scripts.In fact, most Painless scripts are also valid Groovy, and simple Groovy scripts are typically valid Painless.
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called MyCareer.com where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with Data Streams and I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that it is available in Beta</summary></entry><entry><title type="html">Painless Scripting Language-Series-1</title><link href="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html" rel="alternate" type="text/html" title="Painless Scripting Language-Series-1" /><published>2021-02-07T13:15:20+05:30</published><updated>2021-02-07T13:15:20+05:30</updated><id>http://localhost:4000/2021/02/07/painless-scripting-language-series-1</id><content type="html" xml:base="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html">&lt;p&gt;Today we will learn about very intresting scripting language called &lt;strong&gt;Painless&lt;/strong&gt;. So let’s jump directy into the topic.&lt;/p&gt;
 
-Painless scripts are parsed and compiled using the ANTLR4 and ASM libraries. Painless scripts are compiled directly into Java byte code and executed against a standard Java Virtual Machine.
-You can use Painless anywhere scripts are used in Elasticsearch. Painless provides:
-* It is fast performance.
-* Safety: Fine-grained allowlist with method call/field granularity.
-* Optional typing: Variables and parameters can use explicit types or the dynamic def type.
-* Syntax: Extends a subset of Java’s syntax to provide additional scripting language features.
-* Optimizations: Designed specifically for Elasticsearch scripting.
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Painless:&lt;/em&gt;&lt;/strong&gt;
+It is a simple, secure scripting language designed specifically for use with Elasticsearch. It is the default scripting language for Elasticsearch and can safely be used for inline and stored scripts.In fact, most Painless scripts are also valid Groovy, and simple Groovy scripts are typically valid Painless.&lt;/p&gt;
 
-***Painless Evolution:***
-Since the earlier versions of ES, it supported scripting, but the scripting language has evolved over the ES releases. Starting with MVEL prior version 1.4, Groovy (post version 1.4), and now the latest entry ***Painless***  starting ES 5.0, the scripting in ES has evolved. A key reason for this evolution is for the above mentioned features.
+&lt;p&gt;Painless scripts are parsed and compiled using the ANTLR4 and ASM libraries. Painless scripts are compiled directly into Java byte code and executed against a standard Java Virtual Machine.
+You can use Painless anywhere scripts are used in Elasticsearch. Painless provides:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;It is fast performance.&lt;/li&gt;
+  &lt;li&gt;Safety: Fine-grained allowlist with method call/field granularity.&lt;/li&gt;
+  &lt;li&gt;Optional typing: Variables and parameters can use explicit types or the dynamic def type.&lt;/li&gt;
+  &lt;li&gt;Syntax: Extends a subset of Java’s syntax to provide additional scripting language features.&lt;/li&gt;
+  &lt;li&gt;Optimizations: Designed specifically for Elasticsearch scripting.&lt;/li&gt;
+&lt;/ul&gt;
 
-Prior the release of ***Painless*** in ES 5.0, the majority of the security vulnerabilities that were reported in ES had to deal with vulnerabilities due to the scripting. Painless scripting language addresses these issues and is more secure, and faster than its predecessors. Starting ES 5.0, “Painless” is the default scripting language and its syntax is similar to **Groovy**.
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Painless Evolution:&lt;/em&gt;&lt;/strong&gt;
+Since the earlier versions of ES, it supported scripting, but the scripting language has evolved over the ES releases. Starting with MVEL prior version 1.4, Groovy (post version 1.4), and now the latest entry &lt;strong&gt;&lt;em&gt;Painless&lt;/em&gt;&lt;/strong&gt;  starting ES 5.0, the scripting in ES has evolved. A key reason for this evolution is for the above mentioned features.&lt;/p&gt;
 
-This blog takes it a level further and explains the various usages of scripting that would be very handy.
+&lt;p&gt;Prior the release of &lt;strong&gt;&lt;em&gt;Painless&lt;/em&gt;&lt;/strong&gt; in ES 5.0, the majority of the security vulnerabilities that were reported in ES had to deal with vulnerabilities due to the scripting. Painless scripting language addresses these issues and is more secure, and faster than its predecessors. Starting ES 5.0, “Painless” is the default scripting language and its syntax is similar to &lt;strong&gt;Groovy&lt;/strong&gt;.&lt;/p&gt;
 
-Before we can start using the scripts lets understand the syntax of scripts in ES.
+&lt;p&gt;This blog takes it a level further and explains the various usages of scripting that would be very handy.&lt;/p&gt;
 
-```
-&quot;script&quot;: {
+&lt;p&gt;Before we can start using the scripts lets understand the syntax of scripts in ES.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;script&quot;: {
  &quot;lang&quot;: &quot;...&quot;, 
  &quot;inline&quot; | &quot;stored&quot;: &quot;...&quot;,
  &quot;params&quot;: { ... }
  }
-```
-As shown above, the script syntax consists of three parts:
-1. The language the script is written in, which defaults to painless.
-2. The script itself which may be specified as source for an inline script or id for a stored script.
-3. Any named parameters that should be passed into the script.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;As shown above, the script syntax consists of three parts:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;The language the script is written in, which defaults to painless.&lt;/li&gt;
+  &lt;li&gt;The script itself which may be specified as source for an inline script or id for a stored script.&lt;/li&gt;
+  &lt;li&gt;Any named parameters that should be passed into the script.&lt;/li&gt;
+&lt;/ol&gt;
 
-Let’s illustrate how Painless works by loading some student stats into an Elasticsearch index:
+&lt;p&gt;Let’s illustrate how Painless works by loading some student stats into an Elasticsearch index:&lt;/p&gt;
 
-```
-PUT student/_bulk?refresh
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT student/_bulk?refresh
 {&quot;index&quot;:{&quot;_id&quot;:1}}
 {&quot;first_name&quot;:&quot;kiran&quot;,&quot;last_name&quot;:&quot;sangita&quot;,&quot;score&quot;:[9,27,1],&quot;dob&quot;:&quot;1980/08/13&quot;}
 {&quot;index&quot;:{&quot;_id&quot;:2}}
@@ -1024,13 +1154,12 @@ PUT student/_bulk?refresh
 {&quot;first_name&quot;:&quot;murali&quot;,&quot;last_name&quot;:&quot;sangita&quot;,&quot;score&quot;:[10,2,44],&quot;dob&quot;:&quot;1990/04/15&quot;}
 {&quot;index&quot;:{&quot;_id&quot;:5}}
 {&quot;first_name&quot;:&quot;prudwi&quot;,&quot;last_name&quot;:&quot;seeramreddi&quot;,&quot;score&quot;:[12,22,14],&quot;dob&quot;:&quot;1991/08/17&quot;}
-```
-***Accessing Doc Values from Painless:***
-Document values can be accessed from a Map named doc.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Accessing Doc Values from Painless:&lt;/em&gt;&lt;/strong&gt;
+Document values can be accessed from a Map named doc.&lt;/p&gt;
 
-For example, the following script calculates a student’s total score who name start's with letter **K**. This example uses a strongly typed int and a for loop.
-```
-GET student/_search
+&lt;p&gt;For example, the following script calculates a student’s total score who name start’s with letter &lt;strong&gt;K&lt;/strong&gt;. This example uses a strongly typed int and a for loop.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET student/_search
 {
   &quot;query&quot;: {
     &quot;prefix&quot;: {
@@ -1045,7 +1174,7 @@ GET student/_search
         &quot;lang&quot;: &quot;painless&quot;,
         &quot;source&quot;: &quot;&quot;&quot;
           int total = 0;
-          for (int i = 0; i &lt; doc['score'].length; ++i) {
+          for (int i = 0; i &amp;lt; doc['score'].length; ++i) {
             total += doc['score'][i];
           
           }
@@ -1055,10 +1184,9 @@ GET student/_search
     }
   }
 }
-```
-***Result***
-```
- &quot;hits&quot; : [
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Result&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &quot;hits&quot; : [
       {
         &quot;_index&quot; : &quot;student&quot;,
         &quot;_type&quot; : &quot;_doc&quot;,
@@ -1082,11 +1210,10 @@ GET student/_search
         }
       }
     ]
-```
-The following example uses a Painless script to sort the students by their combined first and last names. The names are accessed using doc['first_name'].keyword.value and doc['last_name'].keyword.value.
-***Query***
-```
-GET student/_search
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The following example uses a Painless script to sort the students by their combined first and last names. The names are accessed using doc[‘first_name’].keyword.value and doc[‘last_name’].keyword.value.
+&lt;strong&gt;&lt;em&gt;Query&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET student/_search
 {
   &quot;query&quot;: {
     &quot;match_all&quot;: {}
@@ -1102,10 +1229,9 @@ GET student/_search
     }
   }
 }
-```
-***Result***
-```
-  &quot;hits&quot; : [
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Result&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &quot;hits&quot; : [
       {
         &quot;_index&quot; : &quot;student&quot;,
         &quot;_type&quot; : &quot;_doc&quot;,
@@ -1144,21 +1270,19 @@ GET student/_search
           &quot;kiran sangita&quot;
         ]
       },....]
-```
-***Missing Values***
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Missing Values&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
-Now let learn how to query if we have missing values either in last_name, first_name.doc['field'].value throws an exception if the field is missing in a document.
+&lt;p&gt;Now let learn how to query if we have missing values either in last_name, first_name.doc[‘field’].value throws an exception if the field is missing in a document.&lt;/p&gt;
 
-To check if a document is missing a value, you can call doc['field'].size() == 0. So let's add another document in the **student** index.
-```
-PUT student/_doc/6
+&lt;p&gt;To check if a document is missing a value, you can call doc[‘field’].size() == 0. So let’s add another document in the &lt;strong&gt;student&lt;/strong&gt; index.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT student/_doc/6
 {&quot;first_name&quot;:&quot;bala&quot;,&quot;score&quot;:[11,33,12],&quot;dob&quot;:&quot;1971/04/21&quot;}
-```
-If you observe in the above mentioned document we haven't specified **last_name** and now let's re-run the above mentioned query which concatenates first_name and last_name.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;If you observe in the above mentioned document we haven’t specified &lt;strong&gt;last_name&lt;/strong&gt; and now let’s re-run the above mentioned query which concatenates first_name and last_name.&lt;/p&gt;
 
-After executing the above mentioned query we end up with run time error.
-```
-{
+&lt;p&gt;After executing the above mentioned query we end up with run time error.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
         &quot;shard&quot;: 0,
         &quot;index&quot;: &quot;student&quot;,
         &quot;node&quot;: &quot;993H1-V5Qk6Qc2nOoZ0iuw&quot;,
@@ -1175,14 +1299,13 @@ After executing the above mentioned query we end up with run time error.
           &quot;lang&quot;: &quot;painless&quot;,
           &quot;caused_by&quot;: {
             &quot;type&quot;: &quot;illegal_state_exception&quot;,
-            &quot;reason&quot;: &quot;A document doesn't have a value for a field! Use doc[&lt;field&gt;].size()==0 to check if a document is missing a field!&quot;
+            &quot;reason&quot;: &quot;A document doesn't have a value for a field! Use doc[&amp;lt;field&amp;gt;].size()==0 to check if a document is missing a field!&quot;
           }
         }
       }
-```
-If you observe the reason session it clearly saying that we are trying to access document which doesn't have a value for a field. It is also providing recommendation for us.Now let's re-write the query.
-```
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;If you observe the reason session it clearly saying that we are trying to access document which doesn’t have a value for a field. It is also providing recommendation for us.Now let’s re-write the query.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 GET student/_search
 {
   &quot;query&quot;: {
@@ -1192,109 +1315,136 @@ GET student/_search
    &quot;full_name&quot;: {
      &quot;script&quot;: {
        &quot;lang&quot;: &quot;painless&quot;,
-        &quot;source&quot;: &quot;&quot;&quot;if(doc['last_name.keyword'].size()&gt;0 &amp;&amp; doc['first_name.keyword'].size()&gt;0) {  return doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value}&quot;&quot;&quot;
+        &quot;source&quot;: &quot;&quot;&quot;if(doc['last_name.keyword'].size()&amp;gt;0 &amp;amp;&amp;amp; doc['first_name.keyword'].size()&amp;gt;0) {  return doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value}&quot;&quot;&quot;
        
      }
    }
  }
 }
-```
-This way we can overcome the above mentioned exception.Finally I will conclude with an important information and we can learn in depth in upcoming blogs.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This way we can overcome the above mentioned exception.Finally I will conclude with an important information and we can learn in depth in upcoming blogs.&lt;/p&gt;
 
-The first time Elasticsearch sees a new script, it compiles it and stores the compiled version in a cache. Compilation can be a heavy process.
+&lt;p&gt;The first time Elasticsearch sees a new script, it compiles it and stores the compiled version in a cache. Compilation can be a heavy process.&lt;/p&gt;
 
-If you need to pass variables into the script, you should pass them in as named params instead of hard-coding values into the script itself. We will try to learn these topic in upcoming blog post with an real time example.
+&lt;p&gt;If you need to pass variables into the script, you should pass them in as named params instead of hard-coding values into the script itself. We will try to learn these topic in upcoming blog post with an real time example.&lt;/p&gt;
 
-Thanks,&lt;br&gt;
-***Kartheek Gummaluri***</content><author><name></name></author><category term="ELasticSearch" /><category term="Painless" /><summary type="html">Today we will learn about very intresting scripting language called Painless. So let’s jump directy into the topic.</summary></entry><entry><title type="html">MY PLANS FOR YEAR 2021</title><link href="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html" rel="alternate" type="text/html" title="MY PLANS FOR YEAR 2021" /><published>2021-01-01T22:00:46+05:30</published><updated>2021-01-01T22:00:46+05:30</updated><id>http://localhost:4000/2021/01/01/my-plans-for-year-2021</id><content type="html" xml:base="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html">## Happy New Year 2021
- First of all, Thank you for all  following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.
+&lt;p&gt;Thanks,&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="ELasticSearch" /><category term="Painless" /><summary type="html">Today we will learn about very intresting scripting language called Painless. So let’s jump directy into the topic.</summary></entry><entry><title type="html">MY PLANS FOR YEAR 2021</title><link href="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html" rel="alternate" type="text/html" title="MY PLANS FOR YEAR 2021" /><published>2021-01-01T22:00:46+05:30</published><updated>2021-01-01T22:00:46+05:30</updated><id>http://localhost:4000/2021/01/01/my-plans-for-year-2021</id><content type="html" xml:base="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html">&lt;h2 id=&quot;happy-new-year-2021&quot;&gt;Happy New Year 2021&lt;/h2&gt;
+&lt;p&gt;First of all, Thank you for all  following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.&lt;/p&gt;
 
-### Here is a brief list of todo’s that I am planning to accomplish in 2021
+&lt;h3 id=&quot;here-is-a-brief-list-of-todos-that-i-am-planning-to-accomplish-in-2021&quot;&gt;Here is a brief list of todo’s that I am planning to accomplish in 2021&lt;/h3&gt;
 
-* **Increase my blogging frequency**: I started blogging since 2 years, but i was like passive participant and I used to create posts perodically due to my work. I understand the value and importance of contributing to the community. So this year I again want to get in touch with developer communities and my fellow developers. So my target for this year and upcoming years is to post at least one article( of course useful ones) per week.
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Increase my blogging frequency&lt;/strong&gt;: I started blogging since 2 years, but i was like passive participant and I used to create posts perodically due to my work. I understand the value and importance of contributing to the community. So this year I again want to get in touch with developer communities and my fellow developers. So my target for this year and upcoming years is to post at least one article( of course useful ones) per week.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Learn Apache Kafka in depth&lt;/strong&gt;:&lt;strong&gt;A&lt;/strong&gt;pache Kafka is a community distributed event streaming platform capable of handling trillions of events a day. Initially conceived as a messaging queue, Kafka is based on an abstraction of a distributed commit log. Since being created and open sourced by LinkedIn in 2011, Kafka has quickly evolved from messaging queue to a full-fledged event streaming platform.I have hands-on experience but I need to get my hands dirty in depth on  KsqlDb, Kafka-Api, Kafka-Cluser Architecture.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Use at least one programming language other than the ones which I frequently use&lt;/strong&gt;: Since 4  years I’m  working on Microsoft technologies and NoSql databases like ELK stack, Couchbase and MongoDb, I did write code in other programming languages like “Python” and did develop a good project using these technologies. But I was like a Nightwatchman ( If you follow cricket, especially test matches) working on these technologies. Of course, I strongly believe that Programming language should never be a barrier to implement ideas or thoughts for a good developer. At any given point of time, I believe that a good developer should be capable of writing code in any programming language. But of course there is a slight difference between writing code in a new programming language and excelling in that programming language. So I decided to learn and excel in “Python”. Reason for choosing Python is for 4 years I am using C# which is statically typed and I would like to the taste the dynamic nature of python now. Also, I am planning to learn about data engineering, Python provides some packages in those areas like NumPy, SciPi and many more. Also, another reason is I would like to explore Apache Spark and using PySpark I’ll be able to write map-reduce functions.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-* **Learn Apache Kafka in depth**:**A**pache Kafka is a community distributed event streaming platform capable of handling trillions of events a day. Initially conceived as a messaging queue, Kafka is based on an abstraction of a distributed commit log. Since being created and open sourced by LinkedIn in 2011, Kafka has quickly evolved from messaging queue to a full-fledged event streaming platform.I have hands-on experience but I need to get my hands dirty in depth on  KsqlDb, Kafka-Api, Kafka-Cluser Architecture.
+&lt;p&gt;And the list is never ending but I would like to focus on these technologies and goals for this year and If time permits, I’ll be focusing on some other topics like exploring AWS cloud solutions such as AWS Athena, Azure cloud solutions such as Application Gateways, Azure Bastion etc and Red Hat OpenShift which is an open source container application platform based on the Kubernetes container orchestraton.&lt;/p&gt;
 
-* **Use at least one programming language other than the ones which I frequently use**: Since 4  years I'm  working on Microsoft technologies and NoSql databases like ELK stack, Couchbase and MongoDb, I did write code in other programming languages like “Python” and did develop a good project using these technologies. But I was like a Nightwatchman ( If you follow cricket, especially test matches) working on these technologies. Of course, I strongly believe that Programming language should never be a barrier to implement ideas or thoughts for a good developer. At any given point of time, I believe that a good developer should be capable of writing code in any programming language. But of course there is a slight difference between writing code in a new programming language and excelling in that programming language. So I decided to learn and excel in “Python”. Reason for choosing Python is for 4 years I am using C# which is statically typed and I would like to the taste the dynamic nature of python now. Also, I am planning to learn about data engineering, Python provides some packages in those areas like NumPy, SciPi and many more. Also, another reason is I would like to explore Apache Spark and using PySpark I’ll be able to write map-reduce functions.
+&lt;p&gt;Last but on the least I would like to thank my well wishers, mentors who has always been my constant support starting with my mentors Kiran Sangita, Siva AVKD, Pavan Arya, Sumath AWS, Aravind ELK and list continues……….&lt;/p&gt;
 
-And the list is never ending but I would like to focus on these technologies and goals for this year and If time permits, I’ll be focusing on some other topics like exploring AWS cloud solutions such as AWS Athena, Azure cloud solutions such as Application Gateways, Azure Bastion etc and Red Hat OpenShift which is an open source container application platform based on the Kubernetes container orchestraton.
+&lt;p&gt;And once again I wish everyone a Happy New Year. Please do post your valuable suggestions, questions, and learnings, and let’s try to learn as much as possible this year.&lt;/p&gt;
 
-Last but on the least I would like to thank my well wishers, mentors who has always been my constant support starting with my mentors Kiran Sangita, Siva AVKD, Pavan Arya, Sumath AWS, Aravind ELK and list continues.......... 
+&lt;p&gt;Thanks,&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Happy New Year 2021 First of all, Thank you for all following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.</summary></entry><entry><title type="html">Apache-NiFi-Series-1 GetFile and PutFile Processors</title><link href="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html" rel="alternate" type="text/html" title="Apache-NiFi-Series-1 GetFile and PutFile Processors" /><published>2020-08-03T21:00:06+05:30</published><updated>2020-08-03T21:00:06+05:30</updated><id>http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors</id><content type="html" xml:base="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html">&lt;h1 id=&quot;apache-nifi-getfile-and-putfile-processors&quot;&gt;Apache NiFi GetFile and PutFile Processors&lt;/h1&gt;
+&lt;p&gt;Hi, In this post I’ll discuss on how to leverage  &lt;strong&gt;&lt;em&gt;Get and Put File Processors&lt;/em&gt;&lt;/strong&gt; using  &lt;strong&gt;&lt;em&gt;Apache-NiF&lt;/em&gt;i&lt;/strong&gt;&lt;/p&gt;
 
-And once again I wish everyone a Happy New Year. Please do post your valuable suggestions, questions, and learnings, and let’s try to learn as much as possible this year.
+&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Apache NiFi&lt;/em&gt;&lt;/strong&gt; is a real time data ingestion platform, which can transfer and manage data transfer between different sources and destination systems. It supports a wide variety of data formats like logs, geo location data, social feeds, etc. It also supports many protocols like SFTP, HDFS, and KAFKA, etc. This support to wide variety of data sources and protocols making this platform popular in many IT organizations.&lt;/p&gt;
 
-Thanks,&lt;br&gt;
-***Kartheek Gummaluri***</content><author><name></name></author><summary type="html">Happy New Year 2021 First of all, Thank you for all following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.</summary></entry><entry><title type="html">Apache-NiFi-Series-1 GetFile and PutFile Processors</title><link href="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html" rel="alternate" type="text/html" title="Apache-NiFi-Series-1 GetFile and PutFile Processors" /><published>2020-08-03T21:00:06+05:30</published><updated>2020-08-03T21:00:06+05:30</updated><id>http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors</id><content type="html" xml:base="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html"># Apache NiFi GetFile and PutFile Processors
-Hi, In this post I’ll discuss on how to leverage  ***Get and Put File Processors*** using  ***Apache-NiF*i**
+&lt;p&gt;So we will take two processors i.e. GetFile Processor, PutFile Processor and will try to establish relationship between two procesors. Our goal is to move the files from one location to another.&lt;/p&gt;
 
-# Introduction 
-***Apache NiFi*** is a real time data ingestion platform, which can transfer and manage data transfer between different sources and destination systems. It supports a wide variety of data formats like logs, geo location data, social feeds, etc. It also supports many protocols like SFTP, HDFS, and KAFKA, etc. This support to wide variety of data sources and protocols making this platform popular in many IT organizations.
+&lt;h1 id=&quot;getfile-processor&quot;&gt;GetFile Processor&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;GetFile Processor&lt;/em&gt;&lt;/strong&gt;  is used to fetch files of a specific format from a specific directory. It also provides other options to user for more control on fetching. We will discuss it in properties section below.So now we will add this processor.&lt;/p&gt;
 
-So we will take two processors i.e. GetFile Processor, PutFile Processor and will try to establish relationship between two procesors. Our goal is to move the files from one location to another.
+&lt;h1 id=&quot;steps-to-add-this-getfile-processor-to-the-workspace&quot;&gt;Steps to add this GetFile Processor to the WorkSpace&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Drag the processor icon from the  menu and you will see the following window.&lt;/li&gt;
+&lt;/ul&gt;
 
-#  GetFile Processor
-***GetFile Processor***  is used to fetch files of a specific format from a specific directory. It also provides other options to user for more control on fetching. We will discuss it in properties section below.So now we will add this processor.
+&lt;p&gt;&lt;img src=&quot;/addProcessor.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-# Steps to add this GetFile Processor to the WorkSpace
-* Drag the processor icon from the  menu and you will see the following window.
-	
-![]({{ 'addProcessor.png' | relative_url }})
+&lt;ul&gt;
+  &lt;li&gt;Now we need to add GetFileProcessor, go to the top right corner and  in filter box type &lt;strong&gt;GetFile&lt;/strong&gt; and  double click on the result then you willl processor getting added to the workspace.&lt;/li&gt;
+&lt;/ul&gt;
 
-* Now we need to add GetFileProcessor, go to the top right corner and  in filter box type **GetFile** and  double click on the result then you willl processor getting added to the workspace.
+&lt;p&gt;&lt;img src=&quot;/getFile1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-![]({{ 'getFile1.png' | relative_url }})
+&lt;ul&gt;
+  &lt;li&gt;Now we will set  &lt;strong&gt;&lt;em&gt;GetFile Properties&lt;/em&gt;&lt;/strong&gt;  which is important and without we can’t start the processor.&lt;/li&gt;
+&lt;/ul&gt;
 
-*  Now we will set  ***GetFile Properties***  which is important and without we can't start the processor.
+&lt;p&gt;&lt;img src=&quot;/getFile_Properties.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-![]({{ 'getFile_Properties.png' | relative_url }})
+&lt;ul&gt;
+  &lt;li&gt;So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can’t      start the processor. Let’s fill the properties and click on the &lt;strong&gt;Apply&lt;/strong&gt; button.&lt;/li&gt;
+&lt;/ul&gt;
 
-* So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can't      start the processor. Let's fill the properties and click on the **Apply** button.
+&lt;p&gt;&lt;img src=&quot;/getFile_Configuration.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-![]({{ 'getFile_Configuration.png' | relative_url }})
+&lt;h1 id=&quot;putfile-processor&quot;&gt;PutFile Processor&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;PutFile Processor&lt;/em&gt;&lt;/strong&gt; The PutFile processor is used to store the file from the data flow to a specific location. We will discuss it in properties section below.So now we will add this processor.&lt;/p&gt;
 
-#  PutFile Processor
-***PutFile Processor*** The PutFile processor is used to store the file from the data flow to a specific location. We will discuss it in properties section below.So now we will add this processor.
+&lt;h1 id=&quot;steps-to-add-this-putfile-processor-to-the-workspace&quot;&gt;Steps to add this PutFile Processor to the WorkSpace&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;We can replicate the above mentioned steps and try to  filter it out by &lt;strong&gt;PutFilter&lt;/strong&gt; double click on it and you will end up with this screen.
+&lt;img src=&quot;/getFile_putFile.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can’t      start the processor. Let’s fill the properties in properties tab and don’t forget to check  &lt;strong&gt;&lt;em&gt;sucess and failure&lt;/em&gt;&lt;/strong&gt;  in setting tab.&lt;/li&gt;
+  &lt;li&gt;Now click  &lt;strong&gt;Apply&lt;/strong&gt; button.&lt;/li&gt;
+&lt;/ul&gt;
 
-# Steps to add this PutFile Processor to the WorkSpace
-* We can replicate the above mentioned steps and try to  filter it out by **PutFilter** double click on it and you will end up with this screen.
-![]({{ 'getFile_putFile.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/putfile_property.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;create-connection&quot;&gt;Create Connection&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Now we will create connection between two processors and we will end up with the following screen.&lt;/li&gt;
+&lt;/ul&gt;
 
-* So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can't      start the processor. Let's fill the properties in properties tab and don't forget to check  ***sucess and failure***  in setting tab.
-* Now click  **Apply** button.
+&lt;p&gt;&lt;img src=&quot;/createconnection.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-![]({{ 'putfile_property.png' | relative_url }})
-#  Create Connection 
-*  Now we will create connection between two processors and we will end up with the following screen.
+&lt;ul&gt;
+  &lt;li&gt;Now we go to the input directory and I have copied &lt;strong&gt;100 pdf  files&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 
-![]({{ 'createconnection.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/input_directory.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-* Now we go to the input directory and I have copied **100 pdf  files**.
+&lt;ul&gt;
+  &lt;li&gt;Now we are ready to start the processors, in order to start the processors right click on the workspace and click start. Then we are are good to go. For our understanding i will start processors individually.&lt;/li&gt;
+&lt;/ul&gt;
 
-![]({{ 'input_directory.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/input_processor_start.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-* Now we are ready to start the processors, in order to start the processors right click on the workspace and click start. Then we are are good to go. For our understanding i will start processors individually.
+&lt;ul&gt;
+  &lt;li&gt;So now we will see 100 items in the queue.&lt;/li&gt;
+&lt;/ul&gt;
 
-![]({{ 'input_processor_start.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/quee100.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-* So now we will see 100 items in the queue.
+&lt;ul&gt;
+  &lt;li&gt;Now we will start &lt;strong&gt;Put File Processor&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 
-![]({{ 'quee100.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/putoutput.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-* Now we will start **Put File Processor**.
+&lt;ul&gt;
+  &lt;li&gt;Finally now we will check  in the &lt;strong&gt;Output Directory&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 
-![]({{ 'putoutput.png' | relative_url }})
+&lt;p&gt;&lt;img src=&quot;/output_direcotry.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-* Finally now we will check  in the **Output Directory**.
+&lt;p&gt;So this how we will leverage &lt;strong&gt;GetFile and PutFile Processors&lt;/strong&gt;  using &lt;strong&gt;Apache NiFi&lt;/strong&gt;&lt;/p&gt;
 
-![]({{ 'output_direcotry.png' | relative_url }})
-
-
-So this how we will leverage **GetFile and PutFile Processors**  using **Apache NiFi**
-
-Thanks,&lt;br&gt;
-***Kartheek Gummaluri***</content><author><name></name></author><category term="APACHE" /><category term="NIFI" /><summary type="html">Apache NiFi GetFile and PutFile Processors Hi, In this post I’ll discuss on how to leverage Get and Put File Processors using Apache-NiFi</summary></entry><entry><title type="html">Convert Emojis to text and Emoticons to text using emot package</title><link href="http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html" rel="alternate" type="text/html" title="Convert Emojis to text and Emoticons to text using emot package" /><published>2020-08-03T17:47:06+05:30</published><updated>2020-08-03T17:47:06+05:30</updated><id>http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package</id><content type="html" xml:base="http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html">Here I will explain you how to convert emojis and emoticons to text.
-```
-data_path = &quot;D:/nlp/HelperCodes/&quot;
+&lt;p&gt;Thanks,&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="APACHE" /><category term="NIFI" /><summary type="html">Apache NiFi GetFile and PutFile Processors Hi, In this post I’ll discuss on how to leverage Get and Put File Processors using Apache-NiFi</summary></entry><entry><title type="html">Convert Emojis to text and Emoticons to text using emot package</title><link href="http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html" rel="alternate" type="text/html" title="Convert Emojis to text and Emoticons to text using emot package" /><published>2020-08-03T17:47:06+05:30</published><updated>2020-08-03T17:47:06+05:30</updated><id>http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package</id><content type="html" xml:base="http://localhost:4000/dev/2020/08/03/convert-emojis-to-text-and-emoticons-to-text-using-emot-package.html">&lt;p&gt;Here I will explain you how to convert emojis and emoticons to text.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data_path = &quot;D:/nlp/HelperCodes/&quot;
 import sys
 import re
 import emot
@@ -1316,8 +1466,8 @@ def convert_emoticons(text):
 def remove_emoji(string):
   emoji_pattern = re.compile(&quot;[&quot;
                        u&quot;\U0001F600-\U0001F64F&quot;  # emoticons
-                       u&quot;\U0001F300-\U0001F5FF&quot;  # symbols &amp; pictographs
-                       u&quot;\U0001F680-\U0001F6FF&quot;  # transport &amp; map symbols
+                       u&quot;\U0001F300-\U0001F5FF&quot;  # symbols &amp;amp; pictographs
+                       u&quot;\U0001F680-\U0001F6FF&quot;  # transport &amp;amp; map symbols
                        u&quot;\U0001F1E0-\U0001F1FF&quot;  # flags (iOS)
                        u&quot;\U00002702-\U000027B0&quot;
                        u&quot;\U000024C2-\U0001F251&quot;
@@ -1346,21 +1496,22 @@ for code in emot.UNICODE_EMO:
     
 for code in emot.EMOTICONS:
     print( code  + &quot;=&quot; +  emot.EMOTICONS[code] + &quot;\n&quot;)**
-```
-So here we  wrote a method called **convert_emojis** where it will accept a string and you will get the text corresponding to emoji and here is the output.</content><author><name></name></author><category term="Dev" /><category term="Python" /><summary type="html">Here I will explain you how to convert emojis and emoticons to text. ``` data_path = “D:/nlp/HelperCodes/” import sys import re import emot</summary></entry><entry><title type="html">Introduction to “Did You Mean “ feature in ElasticSearch</title><link href="http://localhost:4000/2019/04/20/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Introduction to “Did You Mean “ feature in ElasticSearch" /><published>2019-04-20T13:12:15+05:30</published><updated>2019-04-20T13:12:15+05:30</updated><id>http://localhost:4000/2019/04/20/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/2019/04/20/welcome-to-jekyll.html">In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about &quot;Completion Suggestor&quot;.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So here we  wrote a method called &lt;strong&gt;convert_emojis&lt;/strong&gt; where it will accept a string and you will get the text corresponding to emoji and here is the output.&lt;/p&gt;</content><author><name></name></author><category term="Dev" /><category term="Python" /><summary type="html">Here I will explain you how to convert emojis and emoticons to text. ``` data_path = “D:/nlp/HelperCodes/” import sys import re import emot</summary></entry><entry><title type="html">Introduction to “Did You Mean “ feature in ElasticSearch</title><link href="http://localhost:4000/2019/04/20/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Introduction to “Did You Mean “ feature in ElasticSearch" /><published>2019-04-20T13:12:15+05:30</published><updated>2019-04-20T13:12:15+05:30</updated><id>http://localhost:4000/2019/04/20/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/2019/04/20/welcome-to-jekyll.html">&lt;p&gt;In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.&lt;/p&gt;
 
-There are 4 types of suggestors
-* Term Suggestor
-* Phrase Suggestor
-* Completion Suggestor
-* Context Suggestor
+&lt;p&gt;There are 4 types of suggestors&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Term Suggestor&lt;/li&gt;
+  &lt;li&gt;Phrase Suggestor&lt;/li&gt;
+  &lt;li&gt;Completion Suggestor&lt;/li&gt;
+  &lt;li&gt;Context Suggestor&lt;/li&gt;
+&lt;/ul&gt;
 
-So in recent times I have used a completion suggestor in one of my projects.The completion suggester provides auto-complete/search-as-you-type functionality. This is a navigational feature to guide users to relevant results as they are typing, improving search precision. It is not meant for spell correction or did-you-mean functionality like the term or phrase suggester
+&lt;p&gt;So in recent times I have used a completion suggestor in one of my projects.The completion suggester provides auto-complete/search-as-you-type functionality. This is a navigational feature to guide users to relevant results as they are typing, improving search precision. It is not meant for spell correction or did-you-mean functionality like the term or phrase suggester&lt;/p&gt;
 
-I will expalin with a small example in understand better and here is the sample mapping
+&lt;p&gt;I will expalin with a small example in understand better and here is the sample mapping&lt;/p&gt;
 
-```
-curl -XPUT &quot;http://localhost:9200/sample&quot; -H 'Content-Type: application/json' -d'
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -XPUT &quot;http://localhost:9200/sample&quot; -H 'Content-Type: application/json' -d'
 {
   &quot;mappings&quot;: {
     &quot;doc&quot;: {
@@ -1379,14 +1530,13 @@ curl -XPUT &quot;http://localhost:9200/sample&quot; -H 'Content-Type: applicatio
     }
   }
 }'
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-In the above mapping we defined completion suggestor and we have used standard analyzer,it provides grammar based tokenization (based on the Unicode Text Segmentation algorithm, as specified in Unicode Standard Annex #29) and works well for most languages.
+&lt;p&gt;In the above mapping we defined completion suggestor and we have used standard analyzer,it provides grammar based tokenization (based on the Unicode Text Segmentation algorithm, as specified in Unicode Standard Annex #29) and works well for most languages.&lt;/p&gt;
 
-Now we index few documents
+&lt;p&gt;Now we index few documents&lt;/p&gt;
 
-```
-PUT sample/doc/1?refresh
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT sample/doc/1?refresh
 {
   &quot;namesuggest&quot;: [
     {
@@ -1407,15 +1557,13 @@ PUT sample/doc/2?refresh
   ],
   &quot;fullname&quot;: &quot;Kiran Sangita&quot;
 }
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;So in the above document we have parameter called weight, so weight is used as relevancy tuning of search results.This helps us  which one needs to bubble up first.&lt;/p&gt;
 
-So in the above document we have parameter called weight, so weight is used as relevancy tuning of search results.This helps us  which one needs to bubble up first.
+&lt;p&gt;Now we will write a sample query to get better idea&lt;/p&gt;
 
-Now we will write a sample query to get better idea
-
-```
-curl -XPOST &quot;http://localhost:9200/sample/_search?pretty&quot; -H 'Content-Type: application/json' -d'
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -XPOST &quot;http://localhost:9200/sample/_search?pretty&quot; -H 'Content-Type: application/json' -d'
 {
   &quot;suggest&quot;: {
     &quot;namesuggest&quot;: {
@@ -1426,12 +1574,11 @@ curl -XPOST &quot;http://localhost:9200/sample/_search?pretty&quot; -H 'Content-
     }
   }
 }'
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-So based on the above documents document-1 needs to be bubble up first because it has a weight of 10 where as the document -2 as weight 9.It will bubble up second.Please find results below.
+&lt;p&gt;So based on the above documents document-1 needs to be bubble up first because it has a weight of 10 where as the document -2 as weight 9.It will bubble up second.Please find results below.&lt;/p&gt;
 
-```
-{
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
   &quot;took&quot; : 8,
   &quot;timed_out&quot; : false,
   &quot;_shards&quot; : {
@@ -1489,6 +1636,6 @@ So based on the above documents document-1 needs to be bubble up first because i
     ]
   }
 }
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Thanks and stay tuned for further updates.</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.</summary></entry></feed>
+&lt;p&gt;Thanks and stay tuned for further updates.&lt;/p&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.</summary></entry></feed>
