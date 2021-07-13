@@ -1,4 +1,322 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-13T14:56:17+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Hands on Multi-Host Networking with Docker Overlay Driver</title><link href="http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver.html" rel="alternate" type="text/html" title="Hands on Multi-Host Networking with Docker Overlay Driver" /><published>2021-06-13T12:41:31+05:30</published><updated>2021-06-13T12:41:31+05:30</updated><id>http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver</id><content type="html" xml:base="http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver.html">&lt;p&gt;Hi all, today we will learn about Multi-Host Networking with Docker Overlay Driver. The main idea is to make containers of different hosts talk to each other.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-13T23:40:50+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Hands-on Elasticsearch Search Templates</title><link href="http://localhost:4000/2021/07/13/hands-on-elasticsearch-search-templates.html" rel="alternate" type="text/html" title="Hands-on Elasticsearch Search Templates" /><published>2021-07-13T22:00:53+05:30</published><updated>2021-07-13T22:00:53+05:30</updated><id>http://localhost:4000/2021/07/13/hands-on-elasticsearch-search-templates</id><content type="html" xml:base="http://localhost:4000/2021/07/13/hands-on-elasticsearch-search-templates.html">&lt;p&gt;Hello all, today I’m going to share my knowledge regarding Search Templates in Elasticsearch.Today when I’m going through the  Elastic documentation randomly, I got attention to this feature. I thought if I  could share my thoughts on this feature, it would be very informative for the audience who were working on the ELK stack.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Search Templates&lt;/strong&gt;: A search template is a stored search you can run with different variables.
+Let’s consider a real-world example where we have two indices employee and the address. We need to populate the default results set when the user clicks on these menu items. The results set should be in descending order and need to show the top 5 documents. These are the criteria that apply to most of the functionalities.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:
+We will write a filtered search query for an employee as well as the address indices. We will get the top 5 documents.  For example, your functionality needs documents from ten different indices based on the same criteria. So, here we will pass the same filters for ten indices.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Optimistic Solution&lt;/strong&gt;:
+We will create a search template by binding the search criteria. Then we will validate the search template. Once validation is successful,  then we will run a template search.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Creating a Search Template&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT _scripts/indices-default-template
+{
+  &quot;script&quot;: {
+    &quot;lang&quot;: &quot;mustache&quot;,
+    &quot;source&quot;: {
+      &quot;query&quot;: {
+        &quot;match_all&quot;: {}
+      },
+      &quot;from&quot;: &quot;&quot;,
+      &quot;size&quot;: &quot;&quot;
+    },
+    &quot;params&quot;: {
+      &quot;query_string&quot;: &quot;My query string&quot;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Search templates must use a lang of &lt;strong&gt;mustache&lt;/strong&gt;, typically enclosed in double curly brackets:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Validating Search Template&lt;/strong&gt;
+We can validate the search template before executing it. It will give us some insights into your query structure. So that we can modify the template if we have any issues. Let’s validate our query.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;POST _render/template
+{
+  &quot;source&quot;: {
+    &quot;query&quot;: {
+      &quot;match_all&quot;: {}
+    },
+    &quot;from&quot;: &quot;&quot;,
+    &quot;size&quot;: &quot;&quot;
+  },
+  &quot;params&quot;: {
+    &quot;from&quot;: 20,
+    &quot;size&quot;: 10
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+  &quot;template_output&quot; : {
+    &quot;query&quot; : {
+      &quot;match_all&quot; : { }
+    },
+    &quot;from&quot; : &quot;1&quot;,
+    &quot;size&quot; : &quot;3&quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Running the template search&lt;/strong&gt;:
+Now we will pass index name, template-id, and params for the template search query. We can specify different params for each request based on our requirement.
+&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search/template
+{
+  &quot;id&quot;: &quot;indices-default-template&quot;,
+  &quot;params&quot;: {
+    &quot;from&quot;: 0,
+    &quot;size&quot;: 2
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we are querying employee index with template id i&lt;strong&gt;ndices-default template&lt;/strong&gt; and having params from and size as o,2. It means we are asking elasticsearch to fetch two documents with offset as zero.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : {
+    &quot;total&quot; : {
+      &quot;value&quot; : 4,
+      &quot;relation&quot; : &quot;eq&quot;
+    },
+    &quot;max_score&quot; : 1.0,
+    &quot;hits&quot; : [
+      {
+        &quot;_index&quot; : &quot;employee&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;2&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;name&quot; : &quot;Murali Sangita&quot;,
+          &quot;company&quot; : &quot;Sails Software Solutions&quot;,
+          &quot;age&quot; : 28,
+          &quot;experience&quot; : 5,
+          &quot;skills&quot; : [
+            &quot;angular&quot;,
+            &quot;aws&quot;
+          ],
+          &quot;role&quot; : &quot;Senior Software Engineer&quot;
+        }
+      },
+      {
+        &quot;_index&quot; : &quot;employee&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;1&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;name&quot; : &quot;Kiran Sangita&quot;,
+          &quot;company&quot; : &quot;Sails Software Solutions&quot;,
+          &quot;age&quot; : 50,
+          &quot;experience&quot; : 20,
+          &quot;skills&quot; : [
+            &quot;c#&quot;,
+            &quot;ELK&quot;,
+            &quot;Azure&quot;
+          ],
+          &quot;role&quot; : &quot;CEO&quot;
+        }
+      }
+    ]
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This way, we can make use of this feature efficiently. Let’s call this search template with another index &lt;strong&gt;student&lt;/strong&gt;. 
+&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET student/_search/template
+{
+  &quot;id&quot;: &quot;indices-default-template&quot;,
+  &quot;params&quot;: {
+    &quot;from&quot;: 0,
+    &quot;size&quot;: 4
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : {
+    &quot;total&quot; : {
+      &quot;value&quot; : 4,
+      &quot;relation&quot; : &quot;eq&quot;
+    },
+    &quot;max_score&quot; : 1.0,
+    &quot;hits&quot; : [
+      {
+        &quot;_index&quot; : &quot;student&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;1&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;name&quot; : &quot;Kiran Sangita&quot;,
+          &quot;class&quot; : &quot;5&quot;
+        }
+      },
+      {
+        &quot;_index&quot; : &quot;student&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;2&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;name&quot; : &quot;Murali Sangita&quot;,
+          &quot;class&quot; : &quot;8&quot;
+        }
+      },
+      {
+        &quot;_index&quot; : &quot;student&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;3&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;name&quot; : &quot;Pavan arya&quot;,
+          &quot;class&quot; : &quot;12&quot;
+        }
+      },
+      {
+        &quot;_index&quot; : &quot;student&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;4&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;name&quot; : &quot;kartheek gummaluri&quot;,
+          &quot;class&quot; : &quot;1&quot;
+        }
+      }
+    ]
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This way,  we are making use of this search template for multiple indices.
+Now let’s create another complex search template.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT _scripts/employee-template
+{
+  &quot;script&quot;: {
+    &quot;lang&quot;: &quot;mustache&quot;,
+    &quot;source&quot;: {
+      &quot;query&quot;: {
+        &quot;bool&quot;: {
+          &quot;must&quot;: [
+            {
+              &quot;match&quot;: {
+                &quot;company&quot;: &quot;&quot;
+              }
+            },
+            {
+              &quot;range&quot;: {
+                &quot;experience&quot;: {
+                  &quot;gt&quot;: &quot;&quot;
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  &quot;params&quot;: {
+    &quot;company&quot;: &quot;&quot;,
+    &quot;experience&quot;: &quot;&quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search/template
+{
+  &quot;id&quot;: &quot;employee-template&quot;,
+  &quot;params&quot;: {
+    &quot;company&quot;: &quot;sails&quot;,
+    &quot;experience&quot;: 10
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
+      {
+        &quot;_index&quot; : &quot;employee&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;1&quot;,
+        &quot;_score&quot; : 1.0870113,
+        &quot;_source&quot; : {
+          &quot;name&quot; : &quot;Kiran Sangita&quot;,
+          &quot;company&quot; : &quot;Sails Software Solutions&quot;,
+          &quot;age&quot; : 50,
+          &quot;experience&quot; : 20,
+          &quot;skills&quot; : [
+            &quot;c#&quot;,
+            &quot;ELK&quot;,
+            &quot;Azure&quot;
+          ],
+          &quot;role&quot; : &quot;CEO&quot;
+        }
+      },
+      {
+        &quot;_index&quot; : &quot;employee&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;3&quot;,
+        &quot;_score&quot; : 1.0870113,
+        &quot;_source&quot; : {
+          &quot;name&quot; : &quot;Pavan Arya&quot;,
+          &quot;company&quot; : &quot;Sails Software Solutions&quot;,
+          &quot;age&quot; : 35,
+          &quot;experience&quot; : 16,
+          &quot;skills&quot; : [
+            &quot;elk&quot;,
+            &quot;aws&quot;,
+            &quot;azure&quot;,
+            &quot;c#&quot;,
+            &quot;docker&quot;,
+            &quot;Kubernetes&quot;
+          ],
+          &quot;role&quot; : &quot;CTO&quot;
+        }
+      }
+    ]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Here we wrote a query to fetch results, having experience greater than &lt;strong&gt;ten years **and employee should belong to **Sails Software Solutions&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To retrieve all Search templated within the cluster&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET _cluster/state/metadata?pretty&amp;amp;filter_path=metadata.stored_scripts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+  &quot;metadata&quot; : {
+    &quot;stored_scripts&quot; : {
+      &quot;candidate-template&quot; : {
+        &quot;lang&quot; : &quot;mustache&quot;,
+        &quot;source&quot; : &quot;&quot;&quot;{&quot;query&quot;:{&quot;match&quot;:{&quot;company&quot;:&quot;&quot;}},&quot;from&quot;:&quot;&quot;,&quot;size&quot;:&quot;&quot;}&quot;&quot;&quot;,
+        &quot;options&quot; : {
+          &quot;content_type&quot; : &quot;application/json; charset=UTF-8&quot;
+        }
+      },
+      &quot;indices-default-template&quot; : {
+        &quot;lang&quot; : &quot;mustache&quot;,
+        &quot;source&quot; : &quot;&quot;&quot;{&quot;query&quot;:{&quot;match_all&quot;:{}},&quot;from&quot;:&quot;&quot;,&quot;size&quot;:&quot;&quot;}&quot;&quot;&quot;,
+        &quot;options&quot; : {
+          &quot;content_type&quot; : &quot;application/json; charset=UTF-8&quot;
+        }
+      },
+      &quot;employee-template&quot; : {
+        &quot;lang&quot; : &quot;mustache&quot;,
+        &quot;source&quot; : &quot;&quot;&quot;{&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:[{&quot;match&quot;:{&quot;company&quot;:&quot;&quot;}},{&quot;range&quot;:{&quot;experience&quot;:{&quot;gt&quot;:&quot;&quot;}}}]}}}&quot;&quot;&quot;,
+        &quot;options&quot; : {
+          &quot;content_type&quot; : &quot;application/json; charset=UTF-8&quot;
+        }
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can explore a lot in this topic, but the above-mentioned examples are more than enough to get started. You can explore from here on your own in order to make your hands dirty. Please check out this link for further reference
+https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html#search-template&lt;/p&gt;
+
+&lt;p&gt;Regards
+&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">Hello all, today I’m going to share my knowledge regarding Search Templates in Elasticsearch.Today when I’m going through the Elastic documentation randomly, I got attention to this feature. I thought if I could share my thoughts on this feature, it would be very informative for the audience who were working on the ELK stack.</summary></entry><entry><title type="html">Hands on Multi-Host Networking with Docker Overlay Driver</title><link href="http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver.html" rel="alternate" type="text/html" title="Hands on Multi-Host Networking with Docker Overlay Driver" /><published>2021-06-13T12:41:31+05:30</published><updated>2021-06-13T12:41:31+05:30</updated><id>http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver</id><content type="html" xml:base="http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver.html">&lt;p&gt;Hi all, today we will learn about Multi-Host Networking with Docker Overlay Driver. The main idea is to make containers of different hosts talk to each other.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/multi-host-overlay.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -1497,145 +1815,4 @@ for code in emot.UNICODE_EMO:
 for code in emot.EMOTICONS:
     print( code  + &quot;=&quot; +  emot.EMOTICONS[code] + &quot;\n&quot;)**
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;So here we  wrote a method called &lt;strong&gt;convert_emojis&lt;/strong&gt; where it will accept a string and you will get the text corresponding to emoji and here is the output.&lt;/p&gt;</content><author><name></name></author><category term="Dev" /><category term="Python" /><summary type="html">Here I will explain you how to convert emojis and emoticons to text. ``` data_path = “D:/nlp/HelperCodes/” import sys import re import emot</summary></entry><entry><title type="html">Introduction to “Did You Mean “ feature in ElasticSearch</title><link href="http://localhost:4000/2019/04/20/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Introduction to “Did You Mean “ feature in ElasticSearch" /><published>2019-04-20T13:12:15+05:30</published><updated>2019-04-20T13:12:15+05:30</updated><id>http://localhost:4000/2019/04/20/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/2019/04/20/welcome-to-jekyll.html">&lt;p&gt;In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.&lt;/p&gt;
-
-&lt;p&gt;There are 4 types of suggestors&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Term Suggestor&lt;/li&gt;
-  &lt;li&gt;Phrase Suggestor&lt;/li&gt;
-  &lt;li&gt;Completion Suggestor&lt;/li&gt;
-  &lt;li&gt;Context Suggestor&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So in recent times I have used a completion suggestor in one of my projects.The completion suggester provides auto-complete/search-as-you-type functionality. This is a navigational feature to guide users to relevant results as they are typing, improving search precision. It is not meant for spell correction or did-you-mean functionality like the term or phrase suggester&lt;/p&gt;
-
-&lt;p&gt;I will expalin with a small example in understand better and here is the sample mapping&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -XPUT &quot;http://localhost:9200/sample&quot; -H 'Content-Type: application/json' -d'
-{
-  &quot;mappings&quot;: {
-    &quot;doc&quot;: {
-      &quot;properties&quot;: {
-        &quot;namesuggest&quot;: {
-          &quot;type&quot;: &quot;completion&quot;,
-          &quot;analyzer&quot;: &quot;standard&quot;,
-          &quot;preserve_separators&quot;: true,
-          &quot;preserve_position_increments&quot;: true,
-          &quot;max_input_length&quot;: 50
-        },
-        &quot;fullname&quot;: {
-          &quot;type&quot;: &quot;text&quot;
-        }
-      }
-    }
-  }
-}'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In the above mapping we defined completion suggestor and we have used standard analyzer,it provides grammar based tokenization (based on the Unicode Text Segmentation algorithm, as specified in Unicode Standard Annex #29) and works well for most languages.&lt;/p&gt;
-
-&lt;p&gt;Now we index few documents&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT sample/doc/1?refresh
-{
-  &quot;namesuggest&quot;: [
-    {
-      &quot;input&quot;: &quot;Kartheek Gummaluri&quot;,
-      &quot;weight&quot;: 10
-    }
-  ],
-  &quot;fullname&quot;: &quot;Kartheek Gummaluri&quot;
-}
-
-PUT sample/doc/2?refresh
-{
-  &quot;namesuggest&quot;: [
-    {
-      &quot;input&quot;: &quot;Kiran Sangita&quot;,
-      &quot;weight&quot;: 6
-    }
-  ],
-  &quot;fullname&quot;: &quot;Kiran Sangita&quot;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;So in the above document we have parameter called weight, so weight is used as relevancy tuning of search results.This helps us  which one needs to bubble up first.&lt;/p&gt;
-
-&lt;p&gt;Now we will write a sample query to get better idea&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -XPOST &quot;http://localhost:9200/sample/_search?pretty&quot; -H 'Content-Type: application/json' -d'
-{
-  &quot;suggest&quot;: {
-    &quot;namesuggest&quot;: {
-      &quot;prefix&quot;: &quot;k&quot;,
-      &quot;completion&quot;: {
-        &quot;field&quot;: &quot;namesuggest&quot;
-      }
-    }
-  }
-}'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;So based on the above documents document-1 needs to be bubble up first because it has a weight of 10 where as the document -2 as weight 9.It will bubble up second.Please find results below.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-  &quot;took&quot; : 8,
-  &quot;timed_out&quot; : false,
-  &quot;_shards&quot; : {
-    &quot;total&quot; : 5,
-    &quot;successful&quot; : 5,
-    &quot;skipped&quot; : 0,
-    &quot;failed&quot; : 0
-  },
-  &quot;hits&quot; : {
-    &quot;total&quot; : 0,
-    &quot;max_score&quot; : 0.0,
-    &quot;hits&quot; : [ ]
-  },
-  &quot;suggest&quot; : {
-    &quot;namesuggest&quot; : [
-      {
-        &quot;text&quot; : &quot;k&quot;,
-        &quot;offset&quot; : 0,
-        &quot;length&quot; : 1,
-        &quot;options&quot; : [
-          {
-            &quot;text&quot; : &quot;Kartheek Gummaluri&quot;,
-            &quot;_index&quot; : &quot;sample&quot;,
-            &quot;_type&quot; : &quot;doc&quot;,
-            &quot;_id&quot; : &quot;1&quot;,
-            &quot;_score&quot; : 10.0,
-            &quot;_source&quot; : {
-              &quot;namesuggest&quot; : [
-                {
-                  &quot;input&quot; : &quot;Kartheek Gummaluri&quot;,
-                  &quot;weight&quot; : 10
-                }
-              ],
-              &quot;fullname&quot; : &quot;Kartheek Gummaluri&quot;
-            }
-          },
-          {
-            &quot;text&quot; : &quot;Kiran Sangita&quot;,
-            &quot;_index&quot; : &quot;sample&quot;,
-            &quot;_type&quot; : &quot;doc&quot;,
-            &quot;_id&quot; : &quot;2&quot;,
-            &quot;_score&quot; : 6.0,
-            &quot;_source&quot; : {
-              &quot;namesuggest&quot; : [
-                {
-                  &quot;input&quot; : &quot;Kiran Sangita&quot;,
-                  &quot;weight&quot; : 6
-                }
-              ],
-              &quot;fullname&quot; : &quot;Kiran Sangita&quot;
-            }
-          }
-        ]
-      }
-    ]
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Thanks and stay tuned for further updates.&lt;/p&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">In this post I will explain you the different types of suggestors that elasticsearch is providing and I will give you brief about “Completion Suggestor”.</summary></entry></feed>
+&lt;p&gt;So here we  wrote a method called &lt;strong&gt;convert_emojis&lt;/strong&gt; where it will accept a string and you will get the text corresponding to emoji and here is the output.&lt;/p&gt;</content><author><name></name></author><category term="Dev" /><category term="Python" /><summary type="html">Here I will explain you how to convert emojis and emoticons to text. ``` data_path = “D:/nlp/HelperCodes/” import sys import re import emot</summary></entry></feed>
