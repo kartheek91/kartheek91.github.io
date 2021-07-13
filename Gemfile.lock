@@ -35,7 +35,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (6.0.4)
     backports (3.18.1)
@@ -131,7 +131,7 @@ GEM
       middleware
       thor
       thread_safe
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     rack (1.6.13)
     rack-protection (1.5.5)
       rack
@@ -203,7 +203,6 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2020.1)
       tzinfo (>= 1.0.0)
-    wdm (0.1.1)
 
 PLATFORMS
   ruby
@@ -222,7 +221,6 @@ DEPENDENCIES
   minima (~> 2.0)
   rough
   tzinfo-data
-  wdm (~> 0.1.0)
 
 BUNDLED WITH
    1.17.3
