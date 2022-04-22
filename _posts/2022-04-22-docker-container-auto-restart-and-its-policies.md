@@ -2,7 +2,8 @@
 title: Docker Container Auto Restart Policies
 layout: post
 date: '2022-04-22 21:23:24'
-tags: []
+tags:
+- Docker
 ---
 
 Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the **Nginx** container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state
