@@ -39,3 +39,5 @@ gem 'jekyll-sitemap'
 # This is for Admin portal
 gem 'jekyll-admin', group: :jekyll_plugins
 
+
+gem "webrick", "~> 1.7"

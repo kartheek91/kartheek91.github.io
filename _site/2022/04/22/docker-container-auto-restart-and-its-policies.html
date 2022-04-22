@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Docker Container Auto Restart Policies | Learn By Doing</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Docker Container Auto Restart Policies" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the Nginx container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state" />
+<meta property="og:description" content="Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the Nginx container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state" />
+<link rel="canonical" href="http://localhost:4000/2022/04/22/docker-container-auto-restart-and-its-policies.html" />
+<meta property="og:url" content="http://localhost:4000/2022/04/22/docker-container-auto-restart-and-its-policies.html" />
+<meta property="og:site_name" content="Learn By Doing" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-22T21:23:24+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Docker Container Auto Restart Policies" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2022/04/22/docker-container-auto-restart-and-its-policies.html"},"url":"http://localhost:4000/2022/04/22/docker-container-auto-restart-and-its-policies.html","headline":"Docker Container Auto Restart Policies","dateModified":"2022-04-22T21:23:24+05:30","datePublished":"2022-04-22T21:23:24+05:30","description":"Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the Nginx container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Learn By Doing" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Learn By Doing</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Docker Container Auto Restart Policies</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-04-22T21:23:24+05:30" itemprop="datePublished">Apr 22, 2022
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the <strong>Nginx</strong> container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state</p>
+
+<p><strong>Why and what is happening behind the scenes?</strong>
+When we try to start the container, it will have No as default. It will not start when the containers exist or when the docker daemon gets restarted.</p>
+
+<p><strong><em>Docker</em></strong> provides restart policies to control whether your containers start automatically when they exit or when the docker daemon gets restarted. Please make note that restart policies will apply only to containers.</p>
+
+<p>We can specify the restart policy using the –restart flag with the docker run command.</p>
+
+<p><strong>Restart Policies</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Flag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>no</td>
+      <td>Do not automatically restart the container(the default).</td>
+    </tr>
+    <tr>
+      <td>on-failure</td>
+      <td>Restart the container if it exists due to an error, which manifests as a non-zero exit code.</td>
+    </tr>
+    <tr>
+      <td>unless-stopped</td>
+      <td>Restart the container unless it is explicitly stopped or Docker itself is stopped or restarted.</td>
+    </tr>
+    <tr>
+      <td>always</td>
+      <td>always restart the container if it stops.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Today we will focus on <strong>unless-stopped</strong>.</p>
+
+<p>Now we will run the Nginx container without a restart policy.</p>
+
+<p><code class="highlighter-rouge"> docker run -d -p 8080:80 --name nginx nginx</code></p>
+
+<p><img src="/result1.PNG" alt="" /></p>
+
+<p>Let’s restart docker service</p>
+
+<p><img src="/res2.png" alt="" /></p>
+
+<p>Now, let’s check whether the existing container is running or not by using the following command.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker ps -a
+</code></pre></div></div>
+
+<p><img src="/result2.PNG" alt="" /></p>
+
+<p>So the container is in exited state. We need to avoid this situation when we are deploying the same container in the production environment.</p>
+
+<p>Let’s see how we can make use of restart property with <strong>unless-stopped</strong>.</p>
+
+<p>We need to start the container with this command</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker container run -d -p 8080:80 --name nginx --restart unless-stopped nginx
+</code></pre></div></div>
+<p>Let’s restart docker service</p>
+
+<p><img src="/res2.png" alt="" /></p>
+
+<p>Now we can check the status of the container</p>
+
+<p><img src="/result4.PNG" alt="" /></p>
+
+<p>So the container automatically gets restarted 27 seconds ago without any manual intervention.</p>
+
+<p><strong>References</strong>:</p>
+
+<p>https://docs.docker.com/config/containers/start-containers-automatically/</p>
+
+<p>Regards</p>
+
+<p><strong><em>Kartheek Gummaluri</em></strong></p>
+
+  </div><a class="u-url" href="/2022/04/22/docker-container-auto-restart-and-its-policies.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Learn By Doing</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Learn By Doing</li><li><a class="u-email" href="mailto:kartheek.gummaluri@gmail.com">kartheek.gummaluri@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/kartheek91"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">kartheek91</span></a></li><li><a href="https://www.twitter.com/jekyllrb"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jekyllrb</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
