@@ -336,4 +336,4 @@ We can explore a lot in this topic, but the above-mentioned examples are more th
 https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html#search-template
 
 Regards
-***Kartheek Gummaluri***
+***Kartheek G***
