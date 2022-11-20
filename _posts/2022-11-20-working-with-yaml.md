@@ -1,12 +1,11 @@
 ---
-title: Working with YAML Ain't Markup Language
+title: Working with YAML
 layout: post
-date: '2022-11-20 22:00:00'
 tags:
-- DOCKER
-- DevOps
-- YAML
+- Docker
 - Kubernetes
+- YAML
+date: '2022-11-20 22:42:55'
 ---
 
 # Storing data in multiple lines
