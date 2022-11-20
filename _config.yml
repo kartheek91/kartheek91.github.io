@@ -3,7 +3,7 @@ email: kartheek.gummaluri@gmail.com
 description: >-
   This site is created to share my learnings.Please let me know if you have any
   doubts regarding my postings.
-baseurl: 'https://kartheek91.github.io/'
+baseurl: ''
 url: 'http://127.0.0.1:4000/'
 twitter_username: jekyllrb
 github_username: kartheek91
