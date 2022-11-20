@@ -1,0 +1,241 @@
+I"G!<p>To get started with the usage of <strong>Verbatim</strong>, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.</p>
+
+<p>So I created an index called sample with the following mapping with defaults primary and replica shards with  1.</p>
+
+<p><strong>Mapping:</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT sample
+{
+  "sample" : {
+    "mappings" : {
+      "properties" : {
+        "address" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "name" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "role" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre></div></div>
+
+<p>Now we need to insert a couple of documents into the sample index. Once we completed indexing in the sample index.  We can check whether documents got created or not by using the below-mentioned query.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET sample/_search
+</code></pre></div></div>
+
+<p>Result:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"hits" : [
+      {
+        "_index" : "sample",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "kiran sangita",
+          "address" : "visalakshinagar",
+          "role" : "CEO"
+        }
+      },
+      {
+        "_index" : "sample",
+        "_type" : "_doc",
+        "_id" : "2",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "pavan arya",
+          "address" : "",
+          "role" : "architect"
+        }
+      },
+      {
+        "_index" : "sample",
+        "_type" : "_doc",
+        "_id" : "3",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "kartheek gummaluri",
+          "address" : "",
+          "role" : "developer"
+        }
+      },
+      {
+        "_index" : "sample",
+        "_type" : "_doc",
+        "_id" : "4",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "pavan arya",
+          "address" : "chinnamushidiwada",
+          "role" : "developer"
+        }
+      }
+    ]
+</code></pre></div></div>
+<p>Now we need to write a query to fetch a document having name=”pavan arya” and adress= “”</p>
+
+<p><strong>Query</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET sample/_search
+{
+  "query": {
+    "constant_score": {
+      "filter": {
+        "bool": {
+          "must": [
+            {
+              "term": {
+                "name.keyword": {
+                  "value": "pavan arya"
+                }
+              }
+            },
+            {
+              "term":{
+                "address.keyword":""
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+</code></pre></div></div>
+<p><strong>Output</strong>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"hits" : [
+	{
+		"_index" : "sample",
+		"_type" : "_doc",
+		"_id" : "2",
+		"_score" : 1.0,
+		"_source" : {
+			"name" : "pavan arya",
+			"address" : "",
+			"role" : "architect"
+		}
+	}
+]
+</code></pre></div></div>
+
+<p>We can see the accurate result based on the filter criteria in the above result. But the actual problem is with the NEST client when we try to write the same query in the c# Nest client we are not able to add a filter with empty string criteria.</p>
+
+<p>So I wrote a small method in the c# console application, to search the sample index with the above-mentioned filters.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> public async Task&lt;bool&gt; VerbatimExample()
+        {
+            
+            var searchResults = await _repository.EsClient().SearchAsync&lt;SampleViewModel&gt;(s =&gt; s
+             .Index("sample")
+             .Query(q =&gt; q
+                 .ConstantScore(c =&gt; c
+                     .Filter(f =&gt; f
+                         .Bool(b =&gt; b
+                             .Must(m =&gt; m.Term(t =&gt; t.Field("address.keyword").Value(string.Empty)) &amp;&amp;
+                                        m.Term(t=&gt; t.Field("name.keyword").Value("pavan arya"))))))));
+            if (searchResults.IsValid)
+            {
+                foreach (var dcoument in searchResults.Documents)
+                {
+                    Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(dcoument, Formatting.Indented));
+                }
+                return true;
+            }
+            return false;
+        }
+
+
+        public class SampleViewModel
+        {
+            public string name { get; set; }
+            public string role { get; set; }
+            public string address { get; set; }
+        }
+</code></pre></div></div>
+
+<p>Result from the above method:</p>
+
+<p><img src="/output.png" alt="" /></p>
+
+<p>But actually, we need to get only one document rather than we got two documents. Let check how the high-level NEST client internally framed the above-mentioned query.</p>
+
+<p><img src="/debug.png" alt="" /></p>
+
+<p>In the above image in the request section, we are not able to see the address filter that we added in our query. Elastic Nest client will follow some conditional checks during the query conversion so that’s the reason we are unable to see the address filter in the above-mentioned query.</p>
+
+<p>For me, it took a good amount of time to find the solution. I posted in the elasticsearch forum for the same. I have gone through the .NET elasticsearch NEST API documentation, there we have a section called NEST Specific Queries in that I found <strong>Verbatim</strong> <strong>Query</strong>.</p>
+
+<p><strong>Verbatim</strong> 
+A verbatim query will be serialized and sent in the request to Elasticsearch, bypassing NEST’s conditionless checks.</p>
+
+<p>So let’s add Verbatim to the existing query.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  var searchResults = await _repository.EsClient().SearchAsync&lt;SampleViewModel&gt;(s =&gt; s
+             .Index("sample")
+             .Query(q =&gt; q
+                 .ConstantScore(c =&gt; c
+                     .Filter(f =&gt; f
+                         .Bool(b =&gt; b
+                             .Must(m =&gt; m.Term(t =&gt; t.Field("address.keyword").Value(string.Empty).Verbatim()) &amp;&amp;
+                                        m.Term(t=&gt; t.Field("name.keyword").Value("pavan arya"))))))));
+</code></pre></div></div>
+
+<p><img src="/output1.png" alt="" /></p>
+
+<p>Now, we can see the address filter and we got accurate results from the query.</p>
+
+<p><strong>Output:</strong></p>
+
+<p><img src="/output2.png" alt="" /></p>
+
+<p>This way we can make use of Verbatim Query. <br /></p>
+
+<p><strong>References</strong>: <br />
+https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/verbatim-and-strict-query-usage.html#verbatim-and-strict-query-usage</p>
+
+<p>Thanks <br />
+<strong><em>Kartheek Gummaluri</em></strong></p>
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-kartheek91-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+:ET

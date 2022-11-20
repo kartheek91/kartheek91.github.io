@@ -1,0 +1,82 @@
+I"�<p>Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the <strong>Nginx</strong> container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state</p>
+
+<p><strong>Why and what is happening behind the scenes?</strong>
+When we try to start the container, it will have No as default. It will not start when the containers exist or when the docker daemon gets restarted.</p>
+
+<p><strong><em>Docker</em></strong> provides restart policies to control whether your containers start automatically when they exit or when the docker daemon gets restarted. Please make note that restart policies will apply only to containers.</p>
+
+<p>We can specify the restart policy using the –restart flag with the docker run command.</p>
+
+<p><strong>Restart Policies</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Flag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>no</td>
+      <td>Do not automatically restart the container(the default).</td>
+    </tr>
+    <tr>
+      <td>on-failure</td>
+      <td>Restart the container if it exists due to an error, which manifests as a non-zero exit code.</td>
+    </tr>
+    <tr>
+      <td>unless-stopped</td>
+      <td>Restart the container unless it is explicitly stopped or Docker itself is stopped or restarted.</td>
+    </tr>
+    <tr>
+      <td>always</td>
+      <td>always restart the container if it stops.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Today we will focus on <strong>unless-stopped</strong>.</p>
+
+<p>Now we will run the Nginx container without a restart policy.</p>
+
+<p>` docker run -d -p 8080:80 –name nginx nginx`</p>
+
+<p><img src="/result1.PNG" alt="" /></p>
+
+<p>Let’s restart docker service</p>
+
+<p><img src="/res2.png" alt="" /></p>
+
+<p>Now, let’s check whether the existing container is running or not by using the following command.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker ps -a
+</code></pre></div></div>
+
+<p><img src="/result2.PNG" alt="" /></p>
+
+<p>So the container is in exited state. We need to avoid this situation when we are deploying the same container in the production environment.</p>
+
+<p>Let’s see how we can make use of restart property with <strong>unless-stopped</strong>.</p>
+
+<p>We need to start the container with this command</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker container run -d -p 8080:80 --name nginx --restart unless-stopped nginx
+</code></pre></div></div>
+<p>Let’s restart docker service</p>
+
+<p><img src="/res2.png" alt="" /></p>
+
+<p>Now we can check the status of the container</p>
+
+<p><img src="/result4.PNG" alt="" /></p>
+
+<p>So the container automatically gets restarted 27 seconds ago without any manual intervention.</p>
+
+<p><strong>References</strong>:</p>
+
+<p>https://docs.docker.com/config/containers/start-containers-automatically/</p>
+
+<p>Regards</p>
+
+<p><strong><em>Kartheek Gummaluri</em></strong></p>
+:ET

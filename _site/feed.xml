@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-20T20:26:24+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Working with YAML Ain’t Markup Language</title><link href="http://localhost:4000/2022/11/20/yaml-getting-started.html" rel="alternate" type="text/html" title="Working with YAML Ain’t Markup Language" /><published>2022-11-20T20:25:45+05:30</published><updated>2022-11-20T20:25:45+05:30</updated><id>http://localhost:4000/2022/11/20/yaml-getting-started</id><content type="html" xml:base="http://localhost:4000/2022/11/20/yaml-getting-started.html">&lt;h1 id=&quot;storing-data-in-multiple-lines&quot;&gt;Storing data in multiple lines&lt;/h1&gt;
-&lt;p&gt;Hello all, today I will share my knowledge regarding YAML.&lt;br /&gt;
-&lt;strong&gt;YAML&lt;/strong&gt; is a superset of JSON. Any JSON file is a valid YAML file.
-To work with Docker, K8s, Ansible, and Prometheus configuration files written in YAML. It is a widely used format for different DevOps tools and applications. It is a data serialization language that is human-readable and intuitive.&lt;br /&gt;
-&lt;strong&gt;Indentation&lt;/strong&gt;: It is done with one or more spaces but not with tabs. &lt;br /&gt;
-&lt;strong&gt;YAML Comment&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# This is a first comment. 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-&lt;strong&gt;Key-Value Pairs&lt;/strong&gt;: This is indicated by colon and space. We can also key-value pairs as hash and dictionary.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;name&quot;: &quot;Kartheek&quot;
-&quot;designation&quot;: &quot;Senior Software Engineer&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-&lt;strong&gt;Lists&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-20T21:50:14+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Working with YAML Ain’t Markup Language</title><link href="http://localhost:4000/2022/11/20/yaml-getting-started.html" rel="alternate" type="text/html" title="Working with YAML Ain’t Markup Language" /><published>2022-11-20T20:25:45+05:30</published><updated>2022-11-20T20:25:45+05:30</updated><id>http://localhost:4000/2022/11/20/yaml-getting-started</id><content type="html" xml:base="http://localhost:4000/2022/11/20/yaml-getting-started.html"><![CDATA[<h1 id="storing-data-in-multiple-lines">Storing data in multiple lines</h1>
+<p>Hello all, today I will share my knowledge regarding YAML.<br />
+<strong>YAML</strong> is a superset of JSON. Any JSON file is a valid YAML file.
+To work with Docker, K8s, Ansible, and Prometheus configuration files written in YAML. It is a widely used format for different DevOps tools and applications. It is a data serialization language that is human-readable and intuitive.<br />
+<strong>Indentation</strong>: It is done with one or more spaces but not with tabs. <br />
+<strong>YAML Comment</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># This is a first comment. 
+</code></pre></div></div>
+<p><br />
+<strong>Key-Value Pairs</strong>: This is indicated by colon and space. We can also key-value pairs as hash and dictionary.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"name": "Kartheek"
+"designation": "Senior Software Engineer"
+</code></pre></div></div>
+<p><br />
+<strong>Lists</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 # List of Programming languages
 - Java
 - C
 - C#
 ...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-&lt;strong&gt;Block and Flow styles&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Block Style 
+</code></pre></div></div>
+<p><br />
+<strong>Block and Flow styles</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Block Style 
 fruits:
  - apple
  - banana
@@ -30,379 +30,379 @@ fruits:
  # Flow Style
 fruits: [apple, banana]
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Documents&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;One file can contain multiple documents.&lt;/li&gt;
-  &lt;li&gt;Documents are seperated by 3 hyphens (—)  and ended with 3 dots (…)&lt;/li&gt;
-&lt;/ul&gt;
+</code></pre></div></div>
+<p><strong>Documents</strong>:</p>
+<ul>
+  <li>One file can contain multiple documents.</li>
+  <li>Documents are seperated by 3 hyphens (—)  and ended with 3 dots (…)</li>
+</ul>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;name&quot;: &quot;Kartheek&quot;
-&quot;designation&quot;: &quot;Senior Software Engineer&quot;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"name": "Kartheek"
+"designation": "Senior Software Engineer"
 ---
 # List of Programming languages
 - Java
 - C
 - C#
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;
-&lt;strong&gt;Data types in YAML&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Strings&lt;/strong&gt;: We can declare string variable in three different ways.
-&lt;br /&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# String Variables
-name: &quot;Kartheek&quot;
+</code></pre></div></div>
+<p><br />
+<strong>Data types in YAML</strong>:</p>
+<ul>
+  <li><strong>Strings</strong>: We can declare string variable in three different ways.
+<br />
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># String Variables
+name: "Kartheek"
 company: Sails software solutions
 location: 'Vizag'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Storing data in multiple lines&lt;/strong&gt;:
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;bio&quot;: |
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Storing data in multiple lines</strong>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"bio": |
  This is Kartheek
  I'm very nice dude.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Write a single line in multiple lines&lt;/strong&gt;: &lt;br /&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # Write a single line in multiple lines
- &quot;message&quot;: &amp;gt;
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Write a single line in multiple lines</strong>: <br />
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Write a single line in multiple lines
+ "message": &gt;
  This will
  be
  in whole single line
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;It will be same as&lt;/p&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# same as
-&quot;message1&quot;: &quot;This will be in whole single line&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Integer&lt;/strong&gt;: &lt;br /&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Integer datatype
+</code></pre></div>    </div>
+    <p>It will be same as</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># same as
+"message1": "This will be in whole single line"
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Integer</strong>: <br />
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Integer datatype
 number: 5678
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Float&lt;/strong&gt;: &lt;br /&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Float datatype
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Float</strong>: <br />
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Float datatype
 marks: 98.5
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Boolean&lt;/strong&gt;: &lt;br /&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Boolean value
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Boolean</strong>: <br />
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Boolean value
 isDeployed: true
 deployed: yes
 isActive: on
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;&lt;br /&gt;
-&lt;strong&gt;Specifying data types in YAML:&lt;/strong&gt;&lt;/p&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;physics: !!int 98 
-date: !!timestamp &quot;2022-11-11&quot;
-time: !!timestamp &quot;2001-12-15T02:59:43.1Z&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;&lt;br /&gt;
-&lt;strong&gt;Repeated Nodes:&lt;/strong&gt;  Keeping note of DRY principle. (Don’t Repeat Yourself). We can use anchor name (&amp;amp;name) and then we can reference with alias (*name) .&lt;br /&gt;&lt;/p&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Name:  &amp;amp;myname Kartheek
+</code></pre></div>    </div>
+    <p><br />
+<strong>Specifying data types in YAML:</strong></p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>physics: !!int 98 
+date: !!timestamp "2022-11-11"
+time: !!timestamp "2001-12-15T02:59:43.1Z"
+</code></pre></div>    </div>
+    <p><br />
+<strong>Repeated Nodes:</strong>  Keeping note of DRY principle. (Don’t Repeat Yourself). We can use anchor name (&amp;name) and then we can reference with alias (*name) .<br /></p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Name:  &amp;myname Kartheek
 myName: *myname
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Name:
+</code></pre></div>    </div>
+    <p><strong>Output:</strong></p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Name:
 Kartheek
 myName:
 Kartheek
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;&lt;br /&gt;
+</code></pre></div>    </div>
+    <p><br />
 Finally, to validate the .yaml file we make use of this site.
-&lt;a href=&quot;http://www.yamllint.com/&quot;&gt;yamlint&lt;/a&gt; &lt;br /&gt;
-Regards&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+<a href="http://www.yamllint.com/">yamlint</a> <br />
+Regards</p>
+  </li>
+</ul>
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="DOCKER" /><category term="DevOps" /><category term="YAML" /><category term="Kubernetes" /><summary type="html">Storing data in multiple lines Hello all, today I will share my knowledge regarding YAML. YAML is a superset of JSON. Any JSON file is a valid YAML file. To work with Docker, K8s, Ansible, and Prometheus configuration files written in YAML. It is a widely used format for different DevOps tools and applications. It is a data serialization language that is human-readable and intuitive. Indentation: It is done with one or more spaces but not with tabs. YAML Comment: # This is a first comment. Key-Value Pairs: This is indicated by colon and space. We can also key-value pairs as hash and dictionary. &quot;name&quot;: &quot;Kartheek&quot; &quot;designation&quot;: &quot;Senior Software Engineer&quot; Lists: --- # List of Programming languages - Java - C - C# ... Block and Flow styles: ``` Block Style fruits: apple banana guava # Flow Style fruits: [apple, banana]</summary></entry><entry><title type="html">Docker Container Auto Restart Policies</title><link href="http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates.html" rel="alternate" type="text/html" title="Docker Container Auto Restart Policies" /><published>2022-04-22T21:23:24+05:30</published><updated>2022-04-22T21:23:24+05:30</updated><id>http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates</id><content type="html" xml:base="http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates.html">&lt;p&gt;Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the &lt;strong&gt;Nginx&lt;/strong&gt; container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state&lt;/p&gt;
+<p><strong><em>Kartheek Gummaluri</em></strong></p>]]></content><author><name></name></author><category term="DOCKER" /><category term="DevOps" /><category term="YAML" /><category term="Kubernetes" /><summary type="html"><![CDATA[Storing data in multiple lines Hello all, today I will share my knowledge regarding YAML. YAML is a superset of JSON. Any JSON file is a valid YAML file. To work with Docker, K8s, Ansible, and Prometheus configuration files written in YAML. It is a widely used format for different DevOps tools and applications. It is a data serialization language that is human-readable and intuitive. Indentation: It is done with one or more spaces but not with tabs. YAML Comment: # This is a first comment. Key-Value Pairs: This is indicated by colon and space. We can also key-value pairs as hash and dictionary. "name": "Kartheek" "designation": "Senior Software Engineer" Lists: --- # List of Programming languages - Java - C - C# ... Block and Flow styles: ``` Block Style fruits: apple banana guava # Flow Style fruits: [apple, banana]]]></summary></entry><entry><title type="html">Docker Container Auto Restart Policies</title><link href="http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates.html" rel="alternate" type="text/html" title="Docker Container Auto Restart Policies" /><published>2022-04-22T21:23:24+05:30</published><updated>2022-04-22T21:23:24+05:30</updated><id>http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates</id><content type="html" xml:base="http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates.html"><![CDATA[<p>Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the <strong>Nginx</strong> container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state</p>
 
-&lt;p&gt;&lt;strong&gt;Why and what is happening behind the scenes?&lt;/strong&gt;
-When we try to start the container, it will have No as default. It will not start when the containers exist or when the docker daemon gets restarted.&lt;/p&gt;
+<p><strong>Why and what is happening behind the scenes?</strong>
+When we try to start the container, it will have No as default. It will not start when the containers exist or when the docker daemon gets restarted.</p>
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Docker&lt;/em&gt;&lt;/strong&gt; provides restart policies to control whether your containers start automatically when they exit or when the docker daemon gets restarted. Please make note that restart policies will apply only to containers.&lt;/p&gt;
+<p><strong><em>Docker</em></strong> provides restart policies to control whether your containers start automatically when they exit or when the docker daemon gets restarted. Please make note that restart policies will apply only to containers.</p>
 
-&lt;p&gt;We can specify the restart policy using the –restart flag with the docker run command.&lt;/p&gt;
+<p>We can specify the restart policy using the –restart flag with the docker run command.</p>
 
-&lt;p&gt;&lt;strong&gt;Restart Policies&lt;/strong&gt;:&lt;/p&gt;
+<p><strong>Restart Policies</strong>:</p>
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Flag&lt;/th&gt;
-      &lt;th&gt;Description&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;no&lt;/td&gt;
-      &lt;td&gt;Do not automatically restart the container(the default).&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;on-failure&lt;/td&gt;
-      &lt;td&gt;Restart the container if it exists due to an error, which manifests as a non-zero exit code.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;unless-stopped&lt;/td&gt;
-      &lt;td&gt;Restart the container unless it is explicitly stopped or Docker itself is stopped or restarted.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;always&lt;/td&gt;
-      &lt;td&gt;always restart the container if it stops.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+<table>
+  <thead>
+    <tr>
+      <th>Flag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>no</td>
+      <td>Do not automatically restart the container(the default).</td>
+    </tr>
+    <tr>
+      <td>on-failure</td>
+      <td>Restart the container if it exists due to an error, which manifests as a non-zero exit code.</td>
+    </tr>
+    <tr>
+      <td>unless-stopped</td>
+      <td>Restart the container unless it is explicitly stopped or Docker itself is stopped or restarted.</td>
+    </tr>
+    <tr>
+      <td>always</td>
+      <td>always restart the container if it stops.</td>
+    </tr>
+  </tbody>
+</table>
 
-&lt;p&gt;Today we will focus on &lt;strong&gt;unless-stopped&lt;/strong&gt;.&lt;/p&gt;
+<p>Today we will focus on <strong>unless-stopped</strong>.</p>
 
-&lt;p&gt;Now we will run the Nginx container without a restart policy.&lt;/p&gt;
+<p>Now we will run the Nginx container without a restart policy.</p>
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; docker run -d -p 8080:80 --name nginx nginx&lt;/code&gt;&lt;/p&gt;
+<p>` docker run -d -p 8080:80 –name nginx nginx`</p>
 
-&lt;p&gt;&lt;img src=&quot;/result1.PNG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/result1.PNG" alt="" /></p>
 
-&lt;p&gt;Let’s restart docker service&lt;/p&gt;
+<p>Let’s restart docker service</p>
 
-&lt;p&gt;&lt;img src=&quot;/res2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/res2.png" alt="" /></p>
 
-&lt;p&gt;Now, let’s check whether the existing container is running or not by using the following command.&lt;/p&gt;
+<p>Now, let’s check whether the existing container is running or not by using the following command.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker ps -a
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker ps -a
+</code></pre></div></div>
 
-&lt;p&gt;&lt;img src=&quot;/result2.PNG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/result2.PNG" alt="" /></p>
 
-&lt;p&gt;So the container is in exited state. We need to avoid this situation when we are deploying the same container in the production environment.&lt;/p&gt;
+<p>So the container is in exited state. We need to avoid this situation when we are deploying the same container in the production environment.</p>
 
-&lt;p&gt;Let’s see how we can make use of restart property with &lt;strong&gt;unless-stopped&lt;/strong&gt;.&lt;/p&gt;
+<p>Let’s see how we can make use of restart property with <strong>unless-stopped</strong>.</p>
 
-&lt;p&gt;We need to start the container with this command&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker container run -d -p 8080:80 --name nginx --restart unless-stopped nginx
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Let’s restart docker service&lt;/p&gt;
+<p>We need to start the container with this command</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker container run -d -p 8080:80 --name nginx --restart unless-stopped nginx
+</code></pre></div></div>
+<p>Let’s restart docker service</p>
 
-&lt;p&gt;&lt;img src=&quot;/res2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/res2.png" alt="" /></p>
 
-&lt;p&gt;Now we can check the status of the container&lt;/p&gt;
+<p>Now we can check the status of the container</p>
 
-&lt;p&gt;&lt;img src=&quot;/result4.PNG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/result4.PNG" alt="" /></p>
 
-&lt;p&gt;So the container automatically gets restarted 27 seconds ago without any manual intervention.&lt;/p&gt;
+<p>So the container automatically gets restarted 27 seconds ago without any manual intervention.</p>
 
-&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;:&lt;/p&gt;
+<p><strong>References</strong>:</p>
 
-&lt;p&gt;https://docs.docker.com/config/containers/start-containers-automatically/&lt;/p&gt;
+<p>https://docs.docker.com/config/containers/start-containers-automatically/</p>
 
-&lt;p&gt;Regards&lt;/p&gt;
+<p>Regards</p>
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="Docker" /><summary type="html">Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the Nginx container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state</summary></entry><entry><title type="html">Hands-on Elasticsearch Search Templates</title><link href="http://localhost:4000/2021/07/13/hands-on-elasticsearch-search-templates.html" rel="alternate" type="text/html" title="Hands-on Elasticsearch Search Templates" /><published>2021-07-13T22:00:53+05:30</published><updated>2021-07-13T22:00:53+05:30</updated><id>http://localhost:4000/2021/07/13/hands-on-elasticsearch-search-templates</id><content type="html" xml:base="http://localhost:4000/2021/07/13/hands-on-elasticsearch-search-templates.html">&lt;p&gt;Hello all, today I’m going to share my knowledge regarding Search Templates in Elasticsearch.Today when I’m going through the  Elastic documentation randomly, I got attention to this feature. I thought if I  could share my thoughts on this feature, it would be very informative for the audience who were working on the ELK stack.&lt;/p&gt;
+<p><strong><em>Kartheek Gummaluri</em></strong></p>]]></content><author><name></name></author><category term="Docker" /><summary type="html"><![CDATA[Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the Nginx container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state]]></summary></entry><entry><title type="html">Hands-on Elasticsearch Search Templates</title><link href="http://localhost:4000/2021/07/13/hands-on-elasticsearch-search-templates.html" rel="alternate" type="text/html" title="Hands-on Elasticsearch Search Templates" /><published>2021-07-13T22:00:53+05:30</published><updated>2021-07-13T22:00:53+05:30</updated><id>http://localhost:4000/2021/07/13/hands-on-elasticsearch-search-templates</id><content type="html" xml:base="http://localhost:4000/2021/07/13/hands-on-elasticsearch-search-templates.html"><![CDATA[<p>Hello all, today I’m going to share my knowledge regarding Search Templates in Elasticsearch.Today when I’m going through the  Elastic documentation randomly, I got attention to this feature. I thought if I  could share my thoughts on this feature, it would be very informative for the audience who were working on the ELK stack.</p>
 
-&lt;p&gt;&lt;strong&gt;Search Templates&lt;/strong&gt;: A search template is a stored search you can run with different variables.
-Let’s consider a real-world example where we have two indices employee and the address. We need to populate the default results set when the user clicks on these menu items. The results set should be in descending order and need to show the top 5 documents. These are the criteria that apply to most of the functionalities.&lt;/p&gt;
+<p><strong>Search Templates</strong>: A search template is a stored search you can run with different variables.
+Let’s consider a real-world example where we have two indices employee and the address. We need to populate the default results set when the user clicks on these menu items. The results set should be in descending order and need to show the top 5 documents. These are the criteria that apply to most of the functionalities.</p>
 
-&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;:
-We will write a filtered search query for an employee as well as the address indices. We will get the top 5 documents.  For example, your functionality needs documents from ten different indices based on the same criteria. So, here we will pass the same filters for ten indices.&lt;/p&gt;
+<p><strong>Solution</strong>:
+We will write a filtered search query for an employee as well as the address indices. We will get the top 5 documents.  For example, your functionality needs documents from ten different indices based on the same criteria. So, here we will pass the same filters for ten indices.</p>
 
-&lt;p&gt;&lt;strong&gt;Optimistic Solution&lt;/strong&gt;:
-We will create a search template by binding the search criteria. Then we will validate the search template. Once validation is successful,  then we will run a template search.&lt;/p&gt;
+<p><strong>Optimistic Solution</strong>:
+We will create a search template by binding the search criteria. Then we will validate the search template. Once validation is successful,  then we will run a template search.</p>
 
-&lt;p&gt;&lt;strong&gt;Creating a Search Template&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT _scripts/indices-default-template
+<p><strong>Creating a Search Template</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT _scripts/indices-default-template
 {
-  &quot;script&quot;: {
-    &quot;lang&quot;: &quot;mustache&quot;,
-    &quot;source&quot;: {
-      &quot;query&quot;: {
-        &quot;match_all&quot;: {}
+  "script": {
+    "lang": "mustache",
+    "source": {
+      "query": {
+        "match_all": {}
       },
-      &quot;from&quot;: &quot;&quot;,
-      &quot;size&quot;: &quot;&quot;
+      "from": "",
+      "size": ""
     },
-    &quot;params&quot;: {
-      &quot;query_string&quot;: &quot;My query string&quot;
+    "params": {
+      "query_string": "My query string"
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Search templates must use a lang of &lt;strong&gt;mustache&lt;/strong&gt;, typically enclosed in double curly brackets:&lt;/p&gt;
+</code></pre></div></div>
+<p>Search templates must use a lang of <strong>mustache</strong>, typically enclosed in double curly brackets:</p>
 
-&lt;p&gt;&lt;strong&gt;Validating Search Template&lt;/strong&gt;
-We can validate the search template before executing it. It will give us some insights into your query structure. So that we can modify the template if we have any issues. Let’s validate our query.&lt;/p&gt;
+<p><strong>Validating Search Template</strong>
+We can validate the search template before executing it. It will give us some insights into your query structure. So that we can modify the template if we have any issues. Let’s validate our query.</p>
 
-&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
+<p><strong>Query</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;POST _render/template
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST _render/template
 {
-  &quot;source&quot;: {
-    &quot;query&quot;: {
-      &quot;match_all&quot;: {}
+  "source": {
+    "query": {
+      "match_all": {}
     },
-    &quot;from&quot;: &quot;&quot;,
-    &quot;size&quot;: &quot;&quot;
+    "from": "",
+    "size": ""
   },
-  &quot;params&quot;: {
-    &quot;from&quot;: 20,
-    &quot;size&quot;: 10
+  "params": {
+    "from": 20,
+    "size": 10
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre></div></div>
 
-&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;:&lt;/p&gt;
+<p><strong>Output</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-  &quot;template_output&quot; : {
-    &quot;query&quot; : {
-      &quot;match_all&quot; : { }
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "template_output" : {
+    "query" : {
+      "match_all" : { }
     },
-    &quot;from&quot; : &quot;1&quot;,
-    &quot;size&quot; : &quot;3&quot;
+    "from" : "1",
+    "size" : "3"
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Running the template search&lt;/strong&gt;:
+</code></pre></div></div>
+<p><strong>Running the template search</strong>:
 Now we will pass index name, template-id, and params for the template search query. We can specify different params for each request based on our requirement.
-&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
+<strong>Query</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search/template
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_search/template
 {
-  &quot;id&quot;: &quot;indices-default-template&quot;,
-  &quot;params&quot;: {
-    &quot;from&quot;: 0,
-    &quot;size&quot;: 2
+  "id": "indices-default-template",
+  "params": {
+    "from": 0,
+    "size": 2
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre></div></div>
 
-&lt;p&gt;Here we are querying employee index with template id i&lt;strong&gt;ndices-default template&lt;/strong&gt; and having params from and size as o,2. It means we are asking elasticsearch to fetch two documents with offset as zero.&lt;/p&gt;
+<p>Here we are querying employee index with template id i<strong>ndices-default template</strong> and having params from and size as o,2. It means we are asking elasticsearch to fetch two documents with offset as zero.</p>
 
-&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : {
-    &quot;total&quot; : {
-      &quot;value&quot; : 4,
-      &quot;relation&quot; : &quot;eq&quot;
+<p><strong>Result</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"hits" : {
+    "total" : {
+      "value" : 4,
+      "relation" : "eq"
     },
-    &quot;max_score&quot; : 1.0,
-    &quot;hits&quot; : [
+    "max_score" : 1.0,
+    "hits" : [
       {
-        &quot;_index&quot; : &quot;employee&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;2&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;Murali Sangita&quot;,
-          &quot;company&quot; : &quot;Sails Software Solutions&quot;,
-          &quot;age&quot; : 28,
-          &quot;experience&quot; : 5,
-          &quot;skills&quot; : [
-            &quot;angular&quot;,
-            &quot;aws&quot;
+        "_index" : "employee",
+        "_type" : "_doc",
+        "_id" : "2",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "Murali Sangita",
+          "company" : "Sails Software Solutions",
+          "age" : 28,
+          "experience" : 5,
+          "skills" : [
+            "angular",
+            "aws"
           ],
-          &quot;role&quot; : &quot;Senior Software Engineer&quot;
+          "role" : "Senior Software Engineer"
         }
       },
       {
-        &quot;_index&quot; : &quot;employee&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;Kiran Sangita&quot;,
-          &quot;company&quot; : &quot;Sails Software Solutions&quot;,
-          &quot;age&quot; : 50,
-          &quot;experience&quot; : 20,
-          &quot;skills&quot; : [
-            &quot;c#&quot;,
-            &quot;ELK&quot;,
-            &quot;Azure&quot;
+        "_index" : "employee",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "Kiran Sangita",
+          "company" : "Sails Software Solutions",
+          "age" : 50,
+          "experience" : 20,
+          "skills" : [
+            "c#",
+            "ELK",
+            "Azure"
           ],
-          &quot;role&quot; : &quot;CEO&quot;
+          "role" : "CEO"
         }
       }
     ]
   }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;This way, we can make use of this feature efficiently. Let’s call this search template with another index &lt;strong&gt;student&lt;/strong&gt;. 
-&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
+</code></pre></div></div>
+<p>This way, we can make use of this feature efficiently. Let’s call this search template with another index <strong>student</strong>. 
+<strong>Query</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET student/_search/template
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET student/_search/template
 {
-  &quot;id&quot;: &quot;indices-default-template&quot;,
-  &quot;params&quot;: {
-    &quot;from&quot;: 0,
-    &quot;size&quot;: 4
+  "id": "indices-default-template",
+  "params": {
+    "from": 0,
+    "size": 4
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;:&lt;/p&gt;
+</code></pre></div></div>
+<p><strong>Result</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : {
-    &quot;total&quot; : {
-      &quot;value&quot; : 4,
-      &quot;relation&quot; : &quot;eq&quot;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"hits" : {
+    "total" : {
+      "value" : 4,
+      "relation" : "eq"
     },
-    &quot;max_score&quot; : 1.0,
-    &quot;hits&quot; : [
+    "max_score" : 1.0,
+    "hits" : [
       {
-        &quot;_index&quot; : &quot;student&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;Kiran Sangita&quot;,
-          &quot;class&quot; : &quot;5&quot;
+        "_index" : "student",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "Kiran Sangita",
+          "class" : "5"
         }
       },
       {
-        &quot;_index&quot; : &quot;student&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;2&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;Murali Sangita&quot;,
-          &quot;class&quot; : &quot;8&quot;
+        "_index" : "student",
+        "_type" : "_doc",
+        "_id" : "2",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "Murali Sangita",
+          "class" : "8"
         }
       },
       {
-        &quot;_index&quot; : &quot;student&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;3&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;Pavan arya&quot;,
-          &quot;class&quot; : &quot;12&quot;
+        "_index" : "student",
+        "_type" : "_doc",
+        "_id" : "3",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "Pavan arya",
+          "class" : "12"
         }
       },
       {
-        &quot;_index&quot; : &quot;student&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;4&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;kartheek gummaluri&quot;,
-          &quot;class&quot; : &quot;1&quot;
+        "_index" : "student",
+        "_type" : "_doc",
+        "_id" : "4",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "kartheek gummaluri",
+          "class" : "1"
         }
       }
     ]
   }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;This way,  we are making use of this search template for multiple indices.
-Now let’s create another complex search template.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT _scripts/employee-template
+</code></pre></div></div>
+<p>This way,  we are making use of this search template for multiple indices.
+Now let’s create another complex search template.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT _scripts/employee-template
 {
-  &quot;script&quot;: {
-    &quot;lang&quot;: &quot;mustache&quot;,
-    &quot;source&quot;: {
-      &quot;query&quot;: {
-        &quot;bool&quot;: {
-          &quot;must&quot;: [
+  "script": {
+    "lang": "mustache",
+    "source": {
+      "query": {
+        "bool": {
+          "must": [
             {
-              &quot;match&quot;: {
-                &quot;company&quot;: &quot;&quot;
+              "match": {
+                "company": ""
               }
             },
             {
-              &quot;range&quot;: {
-                &quot;experience&quot;: {
-                  &quot;gt&quot;: &quot;&quot;
+              "range": {
+                "experience": {
+                  "gt": ""
                 }
               }
             }
@@ -411,207 +411,207 @@ Now let’s create another complex search template.&lt;/p&gt;
       }
     }
   },
-  &quot;params&quot;: {
-    &quot;company&quot;: &quot;&quot;,
-    &quot;experience&quot;: &quot;&quot;
+  "params": {
+    "company": "",
+    "experience": ""
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
+</code></pre></div></div>
+<p><strong>Query</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search/template
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_search/template
 {
-  &quot;id&quot;: &quot;employee-template&quot;,
-  &quot;params&quot;: {
-    &quot;company&quot;: &quot;sails&quot;,
-    &quot;experience&quot;: 10
+  "id": "employee-template",
+  "params": {
+    "company": "sails",
+    "experience": 10
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre></div></div>
 
-&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
+<p><strong>Result</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"hits" : [
       {
-        &quot;_index&quot; : &quot;employee&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0870113,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;Kiran Sangita&quot;,
-          &quot;company&quot; : &quot;Sails Software Solutions&quot;,
-          &quot;age&quot; : 50,
-          &quot;experience&quot; : 20,
-          &quot;skills&quot; : [
-            &quot;c#&quot;,
-            &quot;ELK&quot;,
-            &quot;Azure&quot;
+        "_index" : "employee",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0870113,
+        "_source" : {
+          "name" : "Kiran Sangita",
+          "company" : "Sails Software Solutions",
+          "age" : 50,
+          "experience" : 20,
+          "skills" : [
+            "c#",
+            "ELK",
+            "Azure"
           ],
-          &quot;role&quot; : &quot;CEO&quot;
+          "role" : "CEO"
         }
       },
       {
-        &quot;_index&quot; : &quot;employee&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;3&quot;,
-        &quot;_score&quot; : 1.0870113,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;Pavan Arya&quot;,
-          &quot;company&quot; : &quot;Sails Software Solutions&quot;,
-          &quot;age&quot; : 35,
-          &quot;experience&quot; : 16,
-          &quot;skills&quot; : [
-            &quot;elk&quot;,
-            &quot;aws&quot;,
-            &quot;azure&quot;,
-            &quot;c#&quot;,
-            &quot;docker&quot;,
-            &quot;Kubernetes&quot;
+        "_index" : "employee",
+        "_type" : "_doc",
+        "_id" : "3",
+        "_score" : 1.0870113,
+        "_source" : {
+          "name" : "Pavan Arya",
+          "company" : "Sails Software Solutions",
+          "age" : 35,
+          "experience" : 16,
+          "skills" : [
+            "elk",
+            "aws",
+            "azure",
+            "c#",
+            "docker",
+            "Kubernetes"
           ],
-          &quot;role&quot; : &quot;CTO&quot;
+          "role" : "CTO"
         }
       }
     ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Here we wrote a query to fetch results, having experience greater than &lt;strong&gt;ten years **and employee should belong to **Sails Software Solutions&lt;/strong&gt;.&lt;/p&gt;
+</code></pre></div></div>
+<p>Here we wrote a query to fetch results, having experience greater than <strong>ten years **and employee should belong to **Sails Software Solutions</strong>.</p>
 
-&lt;p&gt;&lt;strong&gt;To retrieve all Search templated within the cluster&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET _cluster/state/metadata?pretty&amp;amp;filter_path=metadata.stored_scripts
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;:&lt;/p&gt;
+<p><strong>To retrieve all Search templated within the cluster</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET _cluster/state/metadata?pretty&amp;filter_path=metadata.stored_scripts
+</code></pre></div></div>
+<p><strong>Result</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-  &quot;metadata&quot; : {
-    &quot;stored_scripts&quot; : {
-      &quot;candidate-template&quot; : {
-        &quot;lang&quot; : &quot;mustache&quot;,
-        &quot;source&quot; : &quot;&quot;&quot;{&quot;query&quot;:{&quot;match&quot;:{&quot;company&quot;:&quot;&quot;}},&quot;from&quot;:&quot;&quot;,&quot;size&quot;:&quot;&quot;}&quot;&quot;&quot;,
-        &quot;options&quot; : {
-          &quot;content_type&quot; : &quot;application/json; charset=UTF-8&quot;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "metadata" : {
+    "stored_scripts" : {
+      "candidate-template" : {
+        "lang" : "mustache",
+        "source" : """{"query":{"match":{"company":""}},"from":"","size":""}""",
+        "options" : {
+          "content_type" : "application/json; charset=UTF-8"
         }
       },
-      &quot;indices-default-template&quot; : {
-        &quot;lang&quot; : &quot;mustache&quot;,
-        &quot;source&quot; : &quot;&quot;&quot;{&quot;query&quot;:{&quot;match_all&quot;:{}},&quot;from&quot;:&quot;&quot;,&quot;size&quot;:&quot;&quot;}&quot;&quot;&quot;,
-        &quot;options&quot; : {
-          &quot;content_type&quot; : &quot;application/json; charset=UTF-8&quot;
+      "indices-default-template" : {
+        "lang" : "mustache",
+        "source" : """{"query":{"match_all":{}},"from":"","size":""}""",
+        "options" : {
+          "content_type" : "application/json; charset=UTF-8"
         }
       },
-      &quot;employee-template&quot; : {
-        &quot;lang&quot; : &quot;mustache&quot;,
-        &quot;source&quot; : &quot;&quot;&quot;{&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:[{&quot;match&quot;:{&quot;company&quot;:&quot;&quot;}},{&quot;range&quot;:{&quot;experience&quot;:{&quot;gt&quot;:&quot;&quot;}}}]}}}&quot;&quot;&quot;,
-        &quot;options&quot; : {
-          &quot;content_type&quot; : &quot;application/json; charset=UTF-8&quot;
+      "employee-template" : {
+        "lang" : "mustache",
+        "source" : """{"query":{"bool":{"must":[{"match":{"company":""}},{"range":{"experience":{"gt":""}}}]}}}""",
+        "options" : {
+          "content_type" : "application/json; charset=UTF-8"
         }
       }
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre></div></div>
 
-&lt;p&gt;We can explore a lot in this topic, but the above-mentioned examples are more than enough to get started. You can explore from here on your own in order to make your hands dirty. Please check out this link for further reference
-https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html#search-template&lt;/p&gt;
+<p>We can explore a lot in this topic, but the above-mentioned examples are more than enough to get started. You can explore from here on your own in order to make your hands dirty. Please check out this link for further reference
+https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html#search-template</p>
 
-&lt;p&gt;Regards
-&lt;strong&gt;&lt;em&gt;Kartheek G&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">Hello all, today I’m going to share my knowledge regarding Search Templates in Elasticsearch.Today when I’m going through the Elastic documentation randomly, I got attention to this feature. I thought if I could share my thoughts on this feature, it would be very informative for the audience who were working on the ELK stack.</summary></entry><entry><title type="html">Hands on Multi-Host Networking with Docker Overlay Driver</title><link href="http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver.html" rel="alternate" type="text/html" title="Hands on Multi-Host Networking with Docker Overlay Driver" /><published>2021-06-13T12:41:31+05:30</published><updated>2021-06-13T12:41:31+05:30</updated><id>http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver</id><content type="html" xml:base="http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver.html">&lt;p&gt;Hi all, today we will learn about Multi-Host Networking with Docker Overlay Driver. The main idea is to make containers of different hosts talk to each other.&lt;/p&gt;
+<p>Regards
+<strong><em>Kartheek G</em></strong></p>]]></content><author><name></name></author><category term="ELasticSearch" /><summary type="html"><![CDATA[Hello all, today I’m going to share my knowledge regarding Search Templates in Elasticsearch.Today when I’m going through the Elastic documentation randomly, I got attention to this feature. I thought if I could share my thoughts on this feature, it would be very informative for the audience who were working on the ELK stack.]]></summary></entry><entry><title type="html">Hands on Multi-Host Networking with Docker Overlay Driver</title><link href="http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver.html" rel="alternate" type="text/html" title="Hands on Multi-Host Networking with Docker Overlay Driver" /><published>2021-06-13T12:41:31+05:30</published><updated>2021-06-13T12:41:31+05:30</updated><id>http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver</id><content type="html" xml:base="http://localhost:4000/2021/06/13/hands-on-multi-host-networking-with-docker-overlay-driver.html"><![CDATA[<p>Hi all, today we will learn about Multi-Host Networking with Docker Overlay Driver. The main idea is to make containers of different hosts talk to each other.</p>
 
-&lt;p&gt;&lt;img src=&quot;/multi-host-overlay.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/multi-host-overlay.png" alt="" /></p>
 
-&lt;p&gt;For making things simple, let’s consider two nodes of different subnets. In each node, we will have SandBox installed with a bridge driver. Now VXLAN tunnel endpoint gets created, attached to the bridge. Now VXLAN tunnel gets created. It will act as an overlay network. It is a single Layer2 broadcast domain.&lt;/p&gt;
+<p>For making things simple, let’s consider two nodes of different subnets. In each node, we will have SandBox installed with a bridge driver. Now VXLAN tunnel endpoint gets created, attached to the bridge. Now VXLAN tunnel gets created. It will act as an overlay network. It is a single Layer2 broadcast domain.</p>
 
-&lt;p&gt;So each container is attached to the virtual adapter to connect to the bridge driver. Let’s say container 1 wants to connect to container two,  which are in different hosts. So, container one will create a virtual adapter and will attach it to the bridge driver. This bridge driver internally communicates via a virtual ethernet endpoint through a VXLAN tunnel. In this way, we can talk to container two from container one. We need to same to communicate vice-versa.&lt;/p&gt;
+<p>So each container is attached to the virtual adapter to connect to the bridge driver. Let’s say container 1 wants to connect to container two,  which are in different hosts. So, container one will create a virtual adapter and will attach it to the bridge driver. This bridge driver internally communicates via a virtual ethernet endpoint through a VXLAN tunnel. In this way, we can talk to container two from container one. We need to same to communicate vice-versa.</p>
 
-&lt;p&gt;To make our hands dirty, we need to have two ubuntu virtual machines. Docker installed on both the virtual machines. We also need to enable the following ports 4789-UDP, 7946 UDP/TCP, and 2377 TCP.&lt;/p&gt;
+<p>To make our hands dirty, we need to have two ubuntu virtual machines. Docker installed on both the virtual machines. We also need to enable the following ports 4789-UDP, 7946 UDP/TCP, and 2377 TCP.</p>
 
-&lt;p&gt;For time being I already created two virtual machines in azure cloud environment.&lt;/p&gt;
+<p>For time being I already created two virtual machines in azure cloud environment.</p>
 
-&lt;p&gt;&lt;img src=&quot;/vms_list.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/vms_list.png" alt="" /></p>
 
-&lt;p&gt;Now we will try to login into the virtual machines.&lt;/p&gt;
+<p>Now we will try to login into the virtual machines.</p>
 
-&lt;p&gt;&lt;img src=&quot;/vm_login.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/vm_login.png" alt="" /></p>
 
-&lt;p&gt;Now we need to enable swarm mode in node 1 with the following command.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker swarm init
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;The above command will enable node one as a manager and will generate a token to add a manager to this swarm.&lt;/p&gt;
+<p>Now we need to enable swarm mode in node 1 with the following command.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker swarm init
+</code></pre></div></div>
+<p>The above command will enable node one as a manager and will generate a token to add a manager to this swarm.</p>
 
-&lt;p&gt;&lt;img src=&quot;/node1_swarm.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/node1_swarm.png" alt="" /></p>
 
-&lt;p&gt;Now we will paste this command in node two.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker swarm join --token SWMTKN-1-5kd2q3hvp3kh8cynnxzaiu3dpj3rrhy9fym6wgxr0dbs9vk8dp-3x84cvrsti8fwrgkbzlkiuhwq 10.0.0.4:2377
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/node2_output.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p>Now we will paste this command in node two.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker swarm join --token SWMTKN-1-5kd2q3hvp3kh8cynnxzaiu3dpj3rrhy9fym6wgxr0dbs9vk8dp-3x84cvrsti8fwrgkbzlkiuhwq 10.0.0.4:2377
+</code></pre></div></div>
+<p><img src="/node2_output.png" alt="" /></p>
 
-&lt;p&gt;Now let’s check the active nodes by the following command.&lt;/p&gt;
+<p>Now let’s check the active nodes by the following command.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker node ls
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/node_1_ls.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker node ls
+</code></pre></div></div>
+<p><img src="/node_1_ls.png" alt="" /></p>
 
-&lt;p&gt;Now we will check the networks in the docker by using the following command.&lt;/p&gt;
+<p>Now we will check the networks in the docker by using the following command.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker network ls
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/docker_network.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker network ls
+</code></pre></div></div>
+<p><img src="/docker_network.png" alt="" /></p>
 
-&lt;p&gt;docker_gwbridge is the local bridge that acts as a gateway for the outside world.&lt;/p&gt;
+<p>docker_gwbridge is the local bridge that acts as a gateway for the outside world.</p>
 
-&lt;p&gt;Now, we will create custom overlay network with the following command.&lt;/p&gt;
+<p>Now, we will create custom overlay network with the following command.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; docker network create -d overlay ps-over
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/network_create.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker network create -d overlay ps-over
+</code></pre></div></div>
+<p><img src="/network_create.png" alt="" /></p>
 
-&lt;p&gt;In the above image, the newly created network &lt;strong&gt;ps-bridge&lt;/strong&gt; is scoped to the swarm.&lt;/p&gt;
+<p>In the above image, the newly created network <strong>ps-bridge</strong> is scoped to the swarm.</p>
 
-&lt;p&gt;It should be available in both nodes. Let us check the same command in node two.&lt;/p&gt;
+<p>It should be available in both nodes. Let us check the same command in node two.</p>
 
-&lt;p&gt;&lt;img src=&quot;/docker_networkd2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/docker_networkd2.png" alt="" /></p>
 
-&lt;p&gt;So, we are not able to see correct? Any guess why we are not able to see the newly created in node two. The answer is docker has a lazy approach. It will not create a network on worker nodes immediately.&lt;/p&gt;
+<p>So, we are not able to see correct? Any guess why we are not able to see the newly created in node two. The answer is docker has a lazy approach. It will not create a network on worker nodes immediately.</p>
 
-&lt;p&gt;Now we will create a docker service with two replicas. Then we will attach the &lt;strong&gt;ps-network&lt;/strong&gt; to the service.To create a service we need to use following command.&lt;/p&gt;
+<p>Now we will create a docker service with two replicas. Then we will attach the <strong>ps-network</strong> to the service.To create a service we need to use following command.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker service create --name ps-svc --network ps-over --replicas 2 alpine sleep 1d
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker service create --name ps-svc --network ps-over --replicas 2 alpine sleep 1d
+</code></pre></div></div>
 
-&lt;p&gt;&lt;img src=&quot;/docker_service.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/docker_service.png" alt="" /></p>
 
-&lt;p&gt;Let’s check whether service got created or not with the following command.&lt;/p&gt;
+<p>Let’s check whether service got created or not with the following command.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker service ps ps-svc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker service ps ps-svc
+</code></pre></div></div>
 
-&lt;p&gt;&lt;img src=&quot;/docker_service_check.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/docker_service_check.png" alt="" /></p>
 
-&lt;p&gt;So, now lets do docker network inspect so that we can get to know VXLANId, container details.&lt;/p&gt;
+<p>So, now lets do docker network inspect so that we can get to know VXLANId, container details.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker network isnpect ps-over
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker network isnpect ps-over
+</code></pre></div></div>
 
-&lt;p&gt;&lt;img src=&quot;/docker_inspect.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/docker_inspect.png" alt="" /></p>
 
-&lt;p&gt;In the above output we get to know the containers that are participated in the  &lt;strong&gt;ps-over&lt;/strong&gt; overlay network, &lt;strong&gt;vxlanid_list&lt;/strong&gt; and their &lt;strong&gt;IPV4&lt;/strong&gt; ips. We can also the run same command in node-two and we will see the same result.&lt;/p&gt;
+<p>In the above output we get to know the containers that are participated in the  <strong>ps-over</strong> overlay network, <strong>vxlanid_list</strong> and their <strong>IPV4</strong> ips. We can also the run same command in node-two and we will see the same result.</p>
 
-&lt;p&gt;So let’s ping node-2 ip address &lt;strong&gt;192.0.0.4&lt;/strong&gt; from node-1.&lt;/p&gt;
+<p>So let’s ping node-2 ip address <strong>192.0.0.4</strong> from node-1.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping 192.0.0.4
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ping 192.0.0.4
+</code></pre></div></div>
 
-&lt;p&gt;&lt;img src=&quot;/nod1-output.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/nod1-output.png" alt="" /></p>
 
-&lt;p&gt;So let’s ping node-1 ip address &lt;strong&gt;10.0.0.4&lt;/strong&gt;  from node-2.&lt;/p&gt;
+<p>So let’s ping node-1 ip address <strong>10.0.0.4</strong>  from node-2.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping 10.0.0.4
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/node-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ping 10.0.0.4
+</code></pre></div></div>
+<p><img src="/node-2.png" alt="" /></p>
 
-&lt;p&gt;By this way we can establish connectinon between two container using &lt;strong&gt;Overlay Driver.&lt;/strong&gt;
-Thanks &lt;br /&gt;
-&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+<p>By this way we can establish connectinon between two container using <strong>Overlay Driver.</strong>
+Thanks <br />
+<strong><em>Kartheek Gummaluri</em></strong></p>
 
-&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
+<div id="disqus_thread"></div>
+<script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
@@ -627,249 +627,249 @@ Thanks &lt;br /&gt;
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();
-&lt;/script&gt;
+</script>
 
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="Docker" /><category term="Ubuntu" /><summary type="html">Hi all, today we will learn about Multi-Host Networking with Docker Overlay Driver. The main idea is to make containers of different hosts talk to each other.</summary></entry><entry><title type="html">Hands-on Elasticsearch Specialized Queries</title><link href="http://localhost:4000/2021/05/02/elasticsearch-specialized-queries-bytes-101.html" rel="alternate" type="text/html" title="Hands-on Elasticsearch Specialized Queries" /><published>2021-05-02T21:52:30+05:30</published><updated>2021-05-02T21:52:30+05:30</updated><id>http://localhost:4000/2021/05/02/elasticsearch-specialized-queries-bytes-101</id><content type="html" xml:base="http://localhost:4000/2021/05/02/elasticsearch-specialized-queries-bytes-101.html">&lt;p&gt;Hi all, today we will learn about a couple of specialized queries in elasticsearch. This group contains queries that do not fit into the other groups:&lt;/p&gt;
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>]]></content><author><name></name></author><category term="Docker" /><category term="Ubuntu" /><summary type="html"><![CDATA[Hi all, today we will learn about Multi-Host Networking with Docker Overlay Driver. The main idea is to make containers of different hosts talk to each other.]]></summary></entry><entry><title type="html">Hands-on Elasticsearch Specialized Queries</title><link href="http://localhost:4000/2021/05/02/elasticsearch-specialized-queries-bytes-101.html" rel="alternate" type="text/html" title="Hands-on Elasticsearch Specialized Queries" /><published>2021-05-02T21:52:30+05:30</published><updated>2021-05-02T21:52:30+05:30</updated><id>http://localhost:4000/2021/05/02/elasticsearch-specialized-queries-bytes-101</id><content type="html" xml:base="http://localhost:4000/2021/05/02/elasticsearch-specialized-queries-bytes-101.html"><![CDATA[<p>Hi all, today we will learn about a couple of specialized queries in elasticsearch. This group contains queries that do not fit into the other groups:</p>
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Pinned Query&lt;/em&gt;&lt;/strong&gt;  is one of the cool features of elasticsearch. To set the context,  I’m working on a medical product where I need to populate specific drugs based on the pharmacist’s ease of use irrespective of the business logic in drug dropdown. So, for this problem statement, I came across this query which would be the exact solution.&lt;/p&gt;
+<p><strong><em>Pinned Query</em></strong>  is one of the cool features of elasticsearch. To set the context,  I’m working on a medical product where I need to populate specific drugs based on the pharmacist’s ease of use irrespective of the business logic in drug dropdown. So, for this problem statement, I came across this query which would be the exact solution.</p>
 
-&lt;p&gt;&lt;strong&gt;Let’s create a sample mapping for demonstrating the pinned query&lt;/strong&gt;:&lt;/p&gt;
+<p><strong>Let’s create a sample mapping for demonstrating the pinned query</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT drug_pinned
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT drug_pinned
 {
-  &quot;mappings&quot;: {
-    &quot;properties&quot;: {
-      &quot;drugname&quot;:{
-        &quot;type&quot;: &quot;text&quot;
+  "mappings": {
+    "properties": {
+      "drugname":{
+        "type": "text"
       },
-      &quot;brand&quot;:{
-        &quot;type&quot;: &quot;text&quot;
+      "brand":{
+        "type": "text"
       }
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre></div></div>
 
-&lt;p&gt;Now let’s insert couple of documents to the drug_pinned index by using bulk api.&lt;/p&gt;
+<p>Now let’s insert couple of documents to the drug_pinned index by using bulk api.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT drug_pinned/_bulk?refresh
-{&quot;index&quot;:{&quot;_id&quot;:1}}
-{&quot;drugname&quot;:&quot;abacavir sulphate&quot;,&quot;brand&quot;:&quot;epzicom&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:2}}
-{&quot;drugname&quot;:&quot;lasix&quot;,&quot;brand&quot;:&quot;furosemide&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:3}}
-{&quot;drugname&quot;:&quot;motrin&quot;,&quot;brand&quot;:&quot;ibuprofen&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:4}}
-{&quot;drugname&quot;:&quot;atorvastatin&quot;,&quot;brand&quot;:&quot;mactor&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:5}}
-{&quot;drugname&quot;:&quot;abilify&quot;,&quot;brand&quot;:&quot;aripiprazole&quot;}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT drug_pinned/_bulk?refresh
+{"index":{"_id":1}}
+{"drugname":"abacavir sulphate","brand":"epzicom"}
+{"index":{"_id":2}}
+{"drugname":"lasix","brand":"furosemide"}
+{"index":{"_id":3}}
+{"drugname":"motrin","brand":"ibuprofen"}
+{"index":{"_id":4}}
+{"drugname":"atorvastatin","brand":"mactor"}
+{"index":{"_id":5}}
+{"drugname":"abilify","brand":"aripiprazole"}
+</code></pre></div></div>
 
-&lt;p&gt;Let’s check whether documents got inserted or not by using this query.&lt;/p&gt;
+<p>Let’s check whether documents got inserted or not by using this query.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET drug_pinned/_search
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET drug_pinned/_search
+</code></pre></div></div>
 
-&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &quot;hits&quot; : [
+<p><strong>Output</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   "hits" : [
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;abacavir sulphate&quot;,
-          &quot;brand&quot; : &quot;epzicom&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "drugname" : "abacavir sulphate",
+          "brand" : "epzicom"
         }
       },
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;2&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;lasix&quot;,
-          &quot;brand&quot; : &quot;furosemide&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "2",
+        "_score" : 1.0,
+        "_source" : {
+          "drugname" : "lasix",
+          "brand" : "furosemide"
         }
       },
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;3&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;motrin&quot;,
-          &quot;brand&quot; : &quot;ibuprofen&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "3",
+        "_score" : 1.0,
+        "_source" : {
+          "drugname" : "motrin",
+          "brand" : "ibuprofen"
         }
       },
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;4&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;atorvastatin&quot;,
-          &quot;brand&quot; : &quot;mactor&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "4",
+        "_score" : 1.0,
+        "_source" : {
+          "drugname" : "atorvastatin",
+          "brand" : "mactor"
         }
       },
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;5&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;abilify&quot;,
-          &quot;brand&quot; : &quot;aripiprazole&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "5",
+        "_score" : 1.0,
+        "_source" : {
+          "drugname" : "abilify",
+          "brand" : "aripiprazole"
         }
       }
     ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre></div></div>
 
-&lt;p&gt;So, let’s start writing a query to promote a set of documents to rank higher than those matching a given query.&lt;/p&gt;
+<p>So, let’s start writing a query to promote a set of documents to rank higher than those matching a given query.</p>
 
-&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
+<p><strong>Query</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET drug_pinned/_search
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET drug_pinned/_search
 {
-  &quot;query&quot;: {
-    &quot;pinned&quot;: {
-      &quot;ids&quot;: [
+  "query": {
+    "pinned": {
+      "ids": [
         2,
         4
       ],
-      &quot;organic&quot;: {
-        &quot;prefix&quot;: {
-          &quot;drugname&quot;: {
-            &quot;value&quot;: &quot;ab&quot;
+      "organic": {
+        "prefix": {
+          "drugname": {
+            "value": "ab"
           }
         }
       }
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;:&lt;/p&gt;
+</code></pre></div></div>
+<p><strong>Result</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"hits" : [
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;2&quot;,
-        &quot;_score&quot; : 1.7014124E38,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;lasix&quot;,
-          &quot;brand&quot; : &quot;furosemide&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "2",
+        "_score" : 1.7014124E38,
+        "_source" : {
+          "drugname" : "lasix",
+          "brand" : "furosemide"
         }
       },
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;4&quot;,
-        &quot;_score&quot; : 1.7014122E38,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;atorvastatin&quot;,
-          &quot;brand&quot; : &quot;mactor&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "4",
+        "_score" : 1.7014122E38,
+        "_source" : {
+          "drugname" : "atorvastatin",
+          "brand" : "mactor"
         }
       },
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;abacavir sulphate&quot;,
-          &quot;brand&quot; : &quot;epzicom&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "drugname" : "abacavir sulphate",
+          "brand" : "epzicom"
         }
       },
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;5&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;abilify&quot;,
-          &quot;brand&quot; : &quot;aripiprazole&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "5",
+        "_score" : 1.0,
+        "_source" : {
+          "drugname" : "abilify",
+          "brand" : "aripiprazole"
         }
       }
     ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;In the results set, the second and fourth documents populated first.  Followed by the drugs which matched the query criteria i.e. drug name starts with ab. In this way, we can make use of &lt;strong&gt;Pinned Query&lt;/strong&gt;.&lt;/p&gt;
+</code></pre></div></div>
+<p>In the results set, the second and fourth documents populated first.  Followed by the drugs which matched the query criteria i.e. drug name starts with ab. In this way, we can make use of <strong>Pinned Query</strong>.</p>
 
-&lt;p&gt;&lt;strong&gt;Wrapper Query&lt;/strong&gt;: A query that accepts any other query as base64 encoded string.&lt;/p&gt;
+<p><strong>Wrapper Query</strong>: A query that accepts any other query as base64 encoded string.</p>
 
-&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;:
-So let’s convert the pinned query to a base64 encoded string. Will pass the string to the wrapper query.&lt;/p&gt;
+<p><strong>Example</strong>:
+So let’s convert the pinned query to a base64 encoded string. Will pass the string to the wrapper query.</p>
 
-&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
+<p><strong>Query</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET drug_pinned/_search
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET drug_pinned/_search
 {
-  &quot;query&quot;: {
-    &quot;wrapper&quot;: {
-      &quot;query&quot;: &quot;IHsKICAgICJwaW5uZWQiOiB7CiAgICAgICJpZHMiOiBbCiAgICAgICAgMiwKICAgICAgICA0CiAgICAgIF0sCiAgICAgICJvcmdhbmljIjogewogICAgICAgICJwcmVmaXgiOiB7CiAgICAgICAgICAiZHJ1Z25hbWUiOiB7CiAgICAgICAgICAgICJ2YWx1ZSI6ICJhYiIKICAgICAgICAgIH0KICAgICAgICB9CiAgICAgIH0KICAgIH0KICB9&quot;
+  "query": {
+    "wrapper": {
+      "query": "IHsKICAgICJwaW5uZWQiOiB7CiAgICAgICJpZHMiOiBbCiAgICAgICAgMiwKICAgICAgICA0CiAgICAgIF0sCiAgICAgICJvcmdhbmljIjogewogICAgICAgICJwcmVmaXgiOiB7CiAgICAgICAgICAiZHJ1Z25hbWUiOiB7CiAgICAgICAgICAgICJ2YWx1ZSI6ICJhYiIKICAgICAgICAgIH0KICAgICAgICB9CiAgICAgIH0KICAgIH0KICB9"
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre></div></div>
 
-&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;:&lt;/p&gt;
+<p><strong>Result</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &quot;hits&quot; : [
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> "hits" : [
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;2&quot;,
-        &quot;_score&quot; : 1.7014124E38,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;lasix&quot;,
-          &quot;brand&quot; : &quot;furosemide&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "2",
+        "_score" : 1.7014124E38,
+        "_source" : {
+          "drugname" : "lasix",
+          "brand" : "furosemide"
         }
       },
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;4&quot;,
-        &quot;_score&quot; : 1.7014122E38,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;atorvastatin&quot;,
-          &quot;brand&quot; : &quot;mactor&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "4",
+        "_score" : 1.7014122E38,
+        "_source" : {
+          "drugname" : "atorvastatin",
+          "brand" : "mactor"
         }
       },
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;abacavir sulphate&quot;,
-          &quot;brand&quot; : &quot;epzicom&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "drugname" : "abacavir sulphate",
+          "brand" : "epzicom"
         }
       },
       {
-        &quot;_index&quot; : &quot;drug_pinned&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;5&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;drugname&quot; : &quot;abilify&quot;,
-          &quot;brand&quot; : &quot;aripiprazole&quot;
+        "_index" : "drug_pinned",
+        "_type" : "_doc",
+        "_id" : "5",
+        "_score" : 1.0,
+        "_source" : {
+          "drugname" : "abilify",
+          "brand" : "aripiprazole"
         }
       }
     ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;In this way, we can make use of &lt;strong&gt;Wrapper  Query&lt;/strong&gt;.&lt;/p&gt;
+</code></pre></div></div>
+<p>In this way, we can make use of <strong>Wrapper  Query</strong>.</p>
 
-&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;:&lt;/p&gt;
+<p><strong>References</strong>:</p>
 
-&lt;p&gt;https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wrapper-query.html#query-dsl-wrapper-query&lt;/p&gt;
+<p>https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wrapper-query.html#query-dsl-wrapper-query</p>
 
-&lt;p&gt;https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-pinned-query.html&lt;/p&gt;
+<p>https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-pinned-query.html</p>
 
-&lt;p&gt;Thanks &lt;br /&gt;
-&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+<p>Thanks <br />
+<strong><em>Kartheek Gummaluri</em></strong></p>
 
-&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
+<div id="disqus_thread"></div>
+<script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
@@ -885,42 +885,42 @@ So let’s convert the pinned query to a base64 encoded string. Will pass the st
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();
-&lt;/script&gt;
+</script>
 
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">Hi all, today we will learn about a couple of specialized queries in elasticsearch. This group contains queries that do not fit into the other groups:</summary></entry><entry><title type="html">Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client</title><link href="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html" rel="alternate" type="text/html" title="Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client" /><published>2021-04-17T13:50:56+05:30</published><updated>2021-04-17T13:50:56+05:30</updated><id>http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client</id><content type="html" xml:base="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html">&lt;p&gt;To get started with the usage of &lt;strong&gt;Verbatim&lt;/strong&gt;, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.&lt;/p&gt;
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>]]></content><author><name></name></author><category term="ELasticSearch" /><summary type="html"><![CDATA[Hi all, today we will learn about a couple of specialized queries in elasticsearch. This group contains queries that do not fit into the other groups:]]></summary></entry><entry><title type="html">Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client</title><link href="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html" rel="alternate" type="text/html" title="Hands-on Verbatim Query Usage in elasticsearch using NEST.Net client" /><published>2021-04-17T13:50:56+05:30</published><updated>2021-04-17T13:50:56+05:30</updated><id>http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client</id><content type="html" xml:base="http://localhost:4000/2021/04/17/hands-on-verbatim-query-usage-in-elasticsearch-using-nestnet-client.html"><![CDATA[<p>To get started with the usage of <strong>Verbatim</strong>, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.</p>
 
-&lt;p&gt;So I created an index called sample with the following mapping with defaults primary and replica shards with  1.&lt;/p&gt;
+<p>So I created an index called sample with the following mapping with defaults primary and replica shards with  1.</p>
 
-&lt;p&gt;&lt;strong&gt;Mapping:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT sample
+<p><strong>Mapping:</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT sample
 {
-  &quot;sample&quot; : {
-    &quot;mappings&quot; : {
-      &quot;properties&quot; : {
-        &quot;address&quot; : {
-          &quot;type&quot; : &quot;text&quot;,
-          &quot;fields&quot; : {
-            &quot;keyword&quot; : {
-              &quot;type&quot; : &quot;keyword&quot;,
-              &quot;ignore_above&quot; : 256
+  "sample" : {
+    "mappings" : {
+      "properties" : {
+        "address" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
             }
           }
         },
-        &quot;name&quot; : {
-          &quot;type&quot; : &quot;text&quot;,
-          &quot;fields&quot; : {
-            &quot;keyword&quot; : {
-              &quot;type&quot; : &quot;keyword&quot;,
-              &quot;ignore_above&quot; : 256
+        "name" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
             }
           }
         },
-        &quot;role&quot; : {
-          &quot;type&quot; : &quot;text&quot;,
-          &quot;fields&quot; : {
-            &quot;keyword&quot; : {
-              &quot;type&quot; : &quot;keyword&quot;,
-              &quot;ignore_above&quot; : 256
+        "role" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
             }
           }
         }
@@ -928,81 +928,81 @@ So let’s convert the pinned query to a base64 encoded string. Will pass the st
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre></div></div>
 
-&lt;p&gt;Now we need to insert a couple of documents into the sample index. Once we completed indexing in the sample index.  We can check whether documents got created or not by using the below-mentioned query.&lt;/p&gt;
+<p>Now we need to insert a couple of documents into the sample index. Once we completed indexing in the sample index.  We can check whether documents got created or not by using the below-mentioned query.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET sample/_search
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET sample/_search
+</code></pre></div></div>
 
-&lt;p&gt;Result:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
+<p>Result:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"hits" : [
       {
-        &quot;_index&quot; : &quot;sample&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;kiran sangita&quot;,
-          &quot;address&quot; : &quot;visalakshinagar&quot;,
-          &quot;role&quot; : &quot;CEO&quot;
+        "_index" : "sample",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "kiran sangita",
+          "address" : "visalakshinagar",
+          "role" : "CEO"
         }
       },
       {
-        &quot;_index&quot; : &quot;sample&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;2&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;pavan arya&quot;,
-          &quot;address&quot; : &quot;&quot;,
-          &quot;role&quot; : &quot;architect&quot;
+        "_index" : "sample",
+        "_type" : "_doc",
+        "_id" : "2",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "pavan arya",
+          "address" : "",
+          "role" : "architect"
         }
       },
       {
-        &quot;_index&quot; : &quot;sample&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;3&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;kartheek gummaluri&quot;,
-          &quot;address&quot; : &quot;&quot;,
-          &quot;role&quot; : &quot;developer&quot;
+        "_index" : "sample",
+        "_type" : "_doc",
+        "_id" : "3",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "kartheek gummaluri",
+          "address" : "",
+          "role" : "developer"
         }
       },
       {
-        &quot;_index&quot; : &quot;sample&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;4&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;pavan arya&quot;,
-          &quot;address&quot; : &quot;chinnamushidiwada&quot;,
-          &quot;role&quot; : &quot;developer&quot;
+        "_index" : "sample",
+        "_type" : "_doc",
+        "_id" : "4",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "pavan arya",
+          "address" : "chinnamushidiwada",
+          "role" : "developer"
         }
       }
     ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Now we need to write a query to fetch a document having name=”pavan arya” and adress= “”&lt;/p&gt;
+</code></pre></div></div>
+<p>Now we need to write a query to fetch a document having name=”pavan arya” and adress= “”</p>
 
-&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET sample/_search
+<p><strong>Query</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET sample/_search
 {
-  &quot;query&quot;: {
-    &quot;constant_score&quot;: {
-      &quot;filter&quot;: {
-        &quot;bool&quot;: {
-          &quot;must&quot;: [
+  "query": {
+    "constant_score": {
+      "filter": {
+        "bool": {
+          "must": [
             {
-              &quot;term&quot;: {
-                &quot;name.keyword&quot;: {
-                  &quot;value&quot;: &quot;pavan arya&quot;
+              "term": {
+                "name.keyword": {
+                  "value": "pavan arya"
                 }
               }
             },
             {
-              &quot;term&quot;:{
-                &quot;address.keyword&quot;:&quot;&quot;
+              "term":{
+                "address.keyword":""
               }
             }
           ]
@@ -1011,39 +1011,39 @@ So let’s convert the pinned query to a base64 encoded string. Will pass the st
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;:&lt;/p&gt;
+</code></pre></div></div>
+<p><strong>Output</strong>:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"hits" : [
 	{
-		&quot;_index&quot; : &quot;sample&quot;,
-		&quot;_type&quot; : &quot;_doc&quot;,
-		&quot;_id&quot; : &quot;2&quot;,
-		&quot;_score&quot; : 1.0,
-		&quot;_source&quot; : {
-			&quot;name&quot; : &quot;pavan arya&quot;,
-			&quot;address&quot; : &quot;&quot;,
-			&quot;role&quot; : &quot;architect&quot;
+		"_index" : "sample",
+		"_type" : "_doc",
+		"_id" : "2",
+		"_score" : 1.0,
+		"_source" : {
+			"name" : "pavan arya",
+			"address" : "",
+			"role" : "architect"
 		}
 	}
 ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre></div></div>
 
-&lt;p&gt;We can see the accurate result based on the filter criteria in the above result. But the actual problem is with the NEST client when we try to write the same query in the c# Nest client we are not able to add a filter with empty string criteria.&lt;/p&gt;
+<p>We can see the accurate result based on the filter criteria in the above result. But the actual problem is with the NEST client when we try to write the same query in the c# Nest client we are not able to add a filter with empty string criteria.</p>
 
-&lt;p&gt;So I wrote a small method in the c# console application, to search the sample index with the above-mentioned filters.&lt;/p&gt;
+<p>So I wrote a small method in the c# console application, to search the sample index with the above-mentioned filters.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; public async Task&amp;lt;bool&amp;gt; VerbatimExample()
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> public async Task&lt;bool&gt; VerbatimExample()
         {
             
-            var searchResults = await _repository.EsClient().SearchAsync&amp;lt;SampleViewModel&amp;gt;(s =&amp;gt; s
-             .Index(&quot;sample&quot;)
-             .Query(q =&amp;gt; q
-                 .ConstantScore(c =&amp;gt; c
-                     .Filter(f =&amp;gt; f
-                         .Bool(b =&amp;gt; b
-                             .Must(m =&amp;gt; m.Term(t =&amp;gt; t.Field(&quot;address.keyword&quot;).Value(string.Empty)) &amp;amp;&amp;amp;
-                                        m.Term(t=&amp;gt; t.Field(&quot;name.keyword&quot;).Value(&quot;pavan arya&quot;))))))));
+            var searchResults = await _repository.EsClient().SearchAsync&lt;SampleViewModel&gt;(s =&gt; s
+             .Index("sample")
+             .Query(q =&gt; q
+                 .ConstantScore(c =&gt; c
+                     .Filter(f =&gt; f
+                         .Bool(b =&gt; b
+                             .Must(m =&gt; m.Term(t =&gt; t.Field("address.keyword").Value(string.Empty)) &amp;&amp;
+                                        m.Term(t=&gt; t.Field("name.keyword").Value("pavan arya"))))))));
             if (searchResults.IsValid)
             {
                 foreach (var dcoument in searchResults.Documents)
@@ -1062,53 +1062,53 @@ So let’s convert the pinned query to a base64 encoded string. Will pass the st
             public string role { get; set; }
             public string address { get; set; }
         }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre></div></div>
 
-&lt;p&gt;Result from the above method:&lt;/p&gt;
+<p>Result from the above method:</p>
 
-&lt;p&gt;&lt;img src=&quot;/output.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/output.png" alt="" /></p>
 
-&lt;p&gt;But actually, we need to get only one document rather than we got two documents. Let check how the high-level NEST client internally framed the above-mentioned query.&lt;/p&gt;
+<p>But actually, we need to get only one document rather than we got two documents. Let check how the high-level NEST client internally framed the above-mentioned query.</p>
 
-&lt;p&gt;&lt;img src=&quot;/debug.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/debug.png" alt="" /></p>
 
-&lt;p&gt;In the above image in the request section, we are not able to see the address filter that we added in our query. Elastic Nest client will follow some conditional checks during the query conversion so that’s the reason we are unable to see the address filter in the above-mentioned query.&lt;/p&gt;
+<p>In the above image in the request section, we are not able to see the address filter that we added in our query. Elastic Nest client will follow some conditional checks during the query conversion so that’s the reason we are unable to see the address filter in the above-mentioned query.</p>
 
-&lt;p&gt;For me, it took a good amount of time to find the solution. I posted in the elasticsearch forum for the same. I have gone through the .NET elasticsearch NEST API documentation, there we have a section called NEST Specific Queries in that I found &lt;strong&gt;Verbatim&lt;/strong&gt; &lt;strong&gt;Query&lt;/strong&gt;.&lt;/p&gt;
+<p>For me, it took a good amount of time to find the solution. I posted in the elasticsearch forum for the same. I have gone through the .NET elasticsearch NEST API documentation, there we have a section called NEST Specific Queries in that I found <strong>Verbatim</strong> <strong>Query</strong>.</p>
 
-&lt;p&gt;&lt;strong&gt;Verbatim&lt;/strong&gt; 
-A verbatim query will be serialized and sent in the request to Elasticsearch, bypassing NEST’s conditionless checks.&lt;/p&gt;
+<p><strong>Verbatim</strong> 
+A verbatim query will be serialized and sent in the request to Elasticsearch, bypassing NEST’s conditionless checks.</p>
 
-&lt;p&gt;So let’s add Verbatim to the existing query.&lt;/p&gt;
+<p>So let’s add Verbatim to the existing query.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  var searchResults = await _repository.EsClient().SearchAsync&amp;lt;SampleViewModel&amp;gt;(s =&amp;gt; s
-             .Index(&quot;sample&quot;)
-             .Query(q =&amp;gt; q
-                 .ConstantScore(c =&amp;gt; c
-                     .Filter(f =&amp;gt; f
-                         .Bool(b =&amp;gt; b
-                             .Must(m =&amp;gt; m.Term(t =&amp;gt; t.Field(&quot;address.keyword&quot;).Value(string.Empty).Verbatim()) &amp;amp;&amp;amp;
-                                        m.Term(t=&amp;gt; t.Field(&quot;name.keyword&quot;).Value(&quot;pavan arya&quot;))))))));
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  var searchResults = await _repository.EsClient().SearchAsync&lt;SampleViewModel&gt;(s =&gt; s
+             .Index("sample")
+             .Query(q =&gt; q
+                 .ConstantScore(c =&gt; c
+                     .Filter(f =&gt; f
+                         .Bool(b =&gt; b
+                             .Must(m =&gt; m.Term(t =&gt; t.Field("address.keyword").Value(string.Empty).Verbatim()) &amp;&amp;
+                                        m.Term(t=&gt; t.Field("name.keyword").Value("pavan arya"))))))));
+</code></pre></div></div>
 
-&lt;p&gt;&lt;img src=&quot;/output1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/output1.png" alt="" /></p>
 
-&lt;p&gt;Now, we can see the address filter and we got accurate results from the query.&lt;/p&gt;
+<p>Now, we can see the address filter and we got accurate results from the query.</p>
 
-&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Output:</strong></p>
 
-&lt;p&gt;&lt;img src=&quot;/output2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/output2.png" alt="" /></p>
 
-&lt;p&gt;This way we can make use of Verbatim Query. &lt;br /&gt;&lt;/p&gt;
+<p>This way we can make use of Verbatim Query. <br /></p>
 
-&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;: &lt;br /&gt;
-https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/verbatim-and-strict-query-usage.html#verbatim-and-strict-query-usage&lt;/p&gt;
+<p><strong>References</strong>: <br />
+https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/verbatim-and-strict-query-usage.html#verbatim-and-strict-query-usage</p>
 
-&lt;p&gt;Thanks &lt;br /&gt;
-&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+<p>Thanks <br />
+<strong><em>Kartheek Gummaluri</em></strong></p>
 
-&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
+<div id="disqus_thread"></div>
+<script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
@@ -1124,124 +1124,124 @@ https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/verbatim-an
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();
-&lt;/script&gt;
+</script>
 
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="ELasticSearch" /><category term="c#" /><category term="NEST" /><summary type="html">To get started with the usage of Verbatim, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.</summary></entry><entry><title type="html">Getting Started with AWS-Athena</title><link href="http://localhost:4000/2021/03/17/getting-started-with-aws-athena.html" rel="alternate" type="text/html" title="Getting Started with AWS-Athena" /><published>2021-03-17T19:42:15+05:30</published><updated>2021-03-17T19:42:15+05:30</updated><id>http://localhost:4000/2021/03/17/getting-started-with-aws-athena</id><content type="html" xml:base="http://localhost:4000/2021/03/17/getting-started-with-aws-athena.html">&lt;p&gt;&lt;strong&gt;Introduction to AWS Athena&lt;/strong&gt;
-&lt;em&gt;Amazon Athena&lt;/em&gt; is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL.&lt;/p&gt;
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>]]></content><author><name></name></author><category term="ELasticSearch" /><category term="c#" /><category term="NEST" /><summary type="html"><![CDATA[To get started with the usage of Verbatim, I will set some context so that everybody will be on the same page. I came across a challenge where we need to fetch the results of an employee having an address as an empty string.]]></summary></entry><entry><title type="html">Getting Started with AWS-Athena</title><link href="http://localhost:4000/2021/03/17/getting-started-with-aws-athena.html" rel="alternate" type="text/html" title="Getting Started with AWS-Athena" /><published>2021-03-17T19:42:15+05:30</published><updated>2021-03-17T19:42:15+05:30</updated><id>http://localhost:4000/2021/03/17/getting-started-with-aws-athena</id><content type="html" xml:base="http://localhost:4000/2021/03/17/getting-started-with-aws-athena.html"><![CDATA[<p><strong>Introduction to AWS Athena</strong>
+<em>Amazon Athena</em> is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL.</p>
 
-&lt;p&gt;&lt;strong&gt;Features&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Athena is serverless. So there is no infrastructure to set up or manage,   and you pay only for the queries you run.&lt;/li&gt;
-  &lt;li&gt;It scales automatically and also executes queries in parallel.&lt;/li&gt;
-  &lt;li&gt;Results are fast even with large data sets and complex queries.&lt;/li&gt;
-  &lt;li&gt;Athena helps you to analyze unstructured, semi-structured, and structured data stored in amazon s3. eg: Apache Web Logs, CSV, TSV, Text file with custom delimiters, JSON, etc.&lt;/li&gt;
-  &lt;li&gt;We can access Athena using AWS management console, JDBC or ODBC connection, Athena API, Athena CLI.&lt;/li&gt;
-  &lt;li&gt;It is Cost-effective - We pay only for S3 which is quite cheap, and externally we pay per query. Per query cost - 5 dollars per Terabyte scan for S3.&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Features</strong>:</p>
+<ul>
+  <li>Athena is serverless. So there is no infrastructure to set up or manage,   and you pay only for the queries you run.</li>
+  <li>It scales automatically and also executes queries in parallel.</li>
+  <li>Results are fast even with large data sets and complex queries.</li>
+  <li>Athena helps you to analyze unstructured, semi-structured, and structured data stored in amazon s3. eg: Apache Web Logs, CSV, TSV, Text file with custom delimiters, JSON, etc.</li>
+  <li>We can access Athena using AWS management console, JDBC or ODBC connection, Athena API, Athena CLI.</li>
+  <li>It is Cost-effective - We pay only for S3 which is quite cheap, and externally we pay per query. Per query cost - 5 dollars per Terabyte scan for S3.</li>
+</ul>
 
-&lt;p&gt;&lt;strong&gt;Presto (SQL on anything)&lt;/strong&gt;:
-Athena uses Presto as a managed service. Presto is an in-memory distributed SQL engine, which came out of Facebook. It reads data from anywhere and actually processes data from where it lives; hence it can be connected to a variety of connectors including HDFS, S3, MongoDB, MySQL, Postgres, Redshift, SQL Server. It has the power to handle hundreds of concurrent queries on a single cluster. That means we don’t have to maintain complex clusters.&lt;/p&gt;
+<p><strong>Presto (SQL on anything)</strong>:
+Athena uses Presto as a managed service. Presto is an in-memory distributed SQL engine, which came out of Facebook. It reads data from anywhere and actually processes data from where it lives; hence it can be connected to a variety of connectors including HDFS, S3, MongoDB, MySQL, Postgres, Redshift, SQL Server. It has the power to handle hundreds of concurrent queries on a single cluster. That means we don’t have to maintain complex clusters.</p>
 
-&lt;p&gt;So it supports commands like creating a table, nested queries, multiple joins. We can also partition the data based on any column, not just date and time, but can also make a combination of several columns. It uses Hive QL for DDL, and Presto while querying the data.\&lt;/p&gt;
+<p>So it supports commands like creating a table, nested queries, multiple joins. We can also partition the data based on any column, not just date and time, but can also make a combination of several columns. It uses Hive QL for DDL, and Presto while querying the data.\</p>
 
-&lt;p&gt;&lt;strong&gt;Querying data from S3-Bucket using Athena&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;We took sample data set from https://www.kaggle.com/shivamb/netflix-shows which is of CSV format and uploaded it to s3://kartheek-athena/ which is test bucket.
- &lt;img src=&quot;/second_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;On global search type Athena and select Athena-Query data in S3 using SQL.&lt;/p&gt;
+<p><strong>Querying data from S3-Bucket using Athena</strong>:</p>
+<ul>
+  <li>
+    <p>We took sample data set from https://www.kaggle.com/shivamb/netflix-shows which is of CSV format and uploaded it to s3://kartheek-athena/ which is test bucket.
+ <img src="/second_athena.png" alt="" /></p>
+  </li>
+  <li>
+    <p>On global search type Athena and select Athena-Query data in S3 using SQL.</p>
 
-    &lt;p&gt;&lt;img src=&quot;/first_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Now you will see the following screen,  we need to click on &lt;strong&gt;Connect Data Source&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+    <p><img src="/first_athena.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Now you will see the following screen,  we need to click on <strong>Connect Data Source</strong>.</p>
+  </li>
+</ul>
 
- 	&lt;img src=&quot;/thrid_athena.png&quot; alt=&quot;&quot; /&gt;
+ 	<img src="/thrid_athena.png" alt="" />
 
-&lt;ul&gt;
-  &lt;li&gt;Here we need to choose where our data is located, I will select Query data in Amazon S3  and will click on the Next button.&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li>Here we need to choose where our data is located, I will select Query data in Amazon S3  and will click on the Next button.</li>
+</ul>
 
- 	&lt;img src=&quot;/fourth_athena.png&quot; alt=&quot;&quot; /&gt;
+ 	<img src="/fourth_athena.png" alt="" />
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Now we need to specify connection details i.e Athena will connect to your data stored in Amazon S3 and use AWS Glue Data Catalog to store metadata, such as table and column names.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;This can be done in two ways i.e setup a crawler in AWS Glue to retrieve schema information automatically and another way is to add a table and enter schema information manually.
- 	&lt;img src=&quot;/fifth_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;This can be done in two ways i.e setup a crawler in AWS Glue to retrieve schema information automatically and another way is to add a table and enter schema information manually.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select the second option and click on the continue to add table button.
-  &lt;img src=&quot;/sixth_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Here we need to specify the database name, table name, and location of the input data set and click on the next button.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Now we need to select data format i.e CSV and click on the next button.
-  &lt;img src=&quot;/seventh_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Add columns for the table, in order to add multiple columns at a time, we can click on the   &lt;strong&gt;bulk add columns&lt;/strong&gt; .
-&lt;img src=&quot;/eighth_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Define schema for the table and click on the next button.
-&lt;img src=&quot;/ninth_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Partitions are the way to group specific information and it is option and we can proceed further by clicking on the 
-&lt;strong&gt;Create table&lt;/strong&gt; button.
-&lt;img src=&quot;/tenth_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;It will redirects us to the &lt;strong&gt;Query Editor&lt;/strong&gt; screen&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li>
+    <p>Now we need to specify connection details i.e Athena will connect to your data stored in Amazon S3 and use AWS Glue Data Catalog to store metadata, such as table and column names.</p>
+  </li>
+  <li>
+    <p>This can be done in two ways i.e setup a crawler in AWS Glue to retrieve schema information automatically and another way is to add a table and enter schema information manually.
+ 	<img src="/fifth_athena.png" alt="" /></p>
+  </li>
+  <li>
+    <p>This can be done in two ways i.e setup a crawler in AWS Glue to retrieve schema information automatically and another way is to add a table and enter schema information manually.</p>
+  </li>
+  <li>
+    <p>Select the second option and click on the continue to add table button.
+  <img src="/sixth_athena.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Here we need to specify the database name, table name, and location of the input data set and click on the next button.</p>
+  </li>
+  <li>
+    <p>Now we need to select data format i.e CSV and click on the next button.
+  <img src="/seventh_athena.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Add columns for the table, in order to add multiple columns at a time, we can click on the   <strong>bulk add columns</strong> .
+<img src="/eighth_athena.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Define schema for the table and click on the next button.
+<img src="/ninth_athena.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Partitions are the way to group specific information and it is option and we can proceed further by clicking on the 
+<strong>Create table</strong> button.
+<img src="/tenth_athena.png" alt="" /></p>
+  </li>
+  <li>
+    <p>It will redirects us to the <strong>Query Editor</strong> screen</p>
+  </li>
+</ul>
 
-&lt;p&gt;&lt;img src=&quot;/elevth_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/elevth_athena.png" alt="" /></p>
 
-&lt;ul&gt;
-  &lt;li&gt;Now we can start querying data by writing simple queries.&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li>Now we can start querying data by writing simple queries.</li>
+</ul>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT COUNT(*)  AS TotalRows FROM &quot;athenatest&quot;.&quot;netflix_info&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;&lt;/p&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT COUNT(*)  AS TotalRows FROM "athenatest"."netflix_info"
+</code></pre></div></div>
+<p><strong>Result</strong></p>
 
-&lt;p&gt;&lt;img src=&quot;/12_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/12_athena.png" alt="" /></p>
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Query2&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li><strong>Query2</strong></li>
+</ul>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT Title,
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT Title,
          Director,
          Country,
          Rating
-FROM &quot;athenatest&quot;.&quot;netflix_info&quot;
+FROM "athenatest"."netflix_info"
 WHERE Type = 'Movie'
         AND COUNTRY != ''
 ORDER BY  COUNTRY ASC;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Result&lt;/strong&gt;&lt;/p&gt;
+</code></pre></div></div>
+<p><strong>Result</strong></p>
 
-&lt;p&gt;&lt;img src=&quot;/13_athena.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<p><img src="/13_athena.png" alt="" /></p>
 
-&lt;p&gt;By this way we can  make use of SQL to Query S3 files with &lt;strong&gt;AWS Athena&lt;/strong&gt;
-Thanks &lt;br /&gt;
-&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
+<p>By this way we can  make use of SQL to Query S3 files with <strong>AWS Athena</strong>
+Thanks <br />
+<strong><em>Kartheek Gummaluri</em></strong></p>
+<div id="disqus_thread"></div>
+<script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
@@ -1257,72 +1257,72 @@ Thanks &lt;br /&gt;
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();
-&lt;/script&gt;
+</script>
 
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="AWS" /><category term="ATHENA" /><category term="ServerlessAnalyticsTool" /><summary type="html">Introduction to AWS Athena Amazon Athena is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL.</summary></entry><entry><title type="html">Introduction to Runtime Fields in ElasticSearch</title><link href="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html" rel="alternate" type="text/html" title="Introduction to Runtime Fields in ElasticSearch" /><published>2021-02-25T08:53:15+05:30</published><updated>2021-02-25T08:53:15+05:30</updated><id>http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch</id><content type="html" xml:base="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html">&lt;p&gt;Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called &lt;strong&gt;MyCareer.com&lt;/strong&gt; where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with &lt;strong&gt;Data Streams&lt;/strong&gt; and  I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that  it is available in  &lt;strong&gt;Beta&lt;/strong&gt;&lt;/p&gt;
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>]]></content><author><name></name></author><category term="AWS" /><category term="ATHENA" /><category term="ServerlessAnalyticsTool" /><summary type="html"><![CDATA[Introduction to AWS Athena Amazon Athena is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL.]]></summary></entry><entry><title type="html">Introduction to Runtime Fields in ElasticSearch</title><link href="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html" rel="alternate" type="text/html" title="Introduction to Runtime Fields in ElasticSearch" /><published>2021-02-25T08:53:15+05:30</published><updated>2021-02-25T08:53:15+05:30</updated><id>http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch</id><content type="html" xml:base="http://localhost:4000/2021/02/25/introduction-to-runtime-fields-in-elasticsearch.html"><![CDATA[<p>Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called <strong>MyCareer.com</strong> where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with <strong>Data Streams</strong> and  I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that  it is available in  <strong>Beta</strong></p>
 
-&lt;p&gt;&lt;strong&gt;Runtime Fields&lt;/strong&gt;: A runtime field is a field that is evaluated at query time. It enables us with the following features i.e.&lt;/p&gt;
+<p><strong>Runtime Fields</strong>: A runtime field is a field that is evaluated at query time. It enables us with the following features i.e.</p>
 
-&lt;ul&gt;
-  &lt;li&gt;Add fields to existing documents without reindexing your data&lt;/li&gt;
-  &lt;li&gt;Start working with your data without understanding how it’s structured&lt;/li&gt;
-  &lt;li&gt;Override the value returned from an indexed field at query time&lt;/li&gt;
-  &lt;li&gt;Define fields for a specific use without modifying the underlying schema&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li>Add fields to existing documents without reindexing your data</li>
+  <li>Start working with your data without understanding how it’s structured</li>
+  <li>Override the value returned from an indexed field at query time</li>
+  <li>Define fields for a specific use without modifying the underlying schema</li>
+</ul>
 
-&lt;p&gt;Queries against runtime fields are considered expensive. If search.&lt;strong&gt;allow_expensive_queries is set to false&lt;/strong&gt;, expensive queries are not allowed and Elasticsearch will reject any queries against runtime fields.&lt;/p&gt;
+<p>Queries against runtime fields are considered expensive. If search.<strong>allow_expensive_queries is set to false</strong>, expensive queries are not allowed and Elasticsearch will reject any queries against runtime fields.</p>
 
-&lt;p&gt;&lt;strong&gt;Advantages&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Runtime fields aren’t indexed, adding a runtime field doesn’t increase the index size.&lt;/li&gt;
-  &lt;li&gt;We can define runtime fields directly in the index mapping, saving storage costs and increasing ingestion speed.&lt;/li&gt;
-  &lt;li&gt;When you define a runtime field, you can immediately use it in search requests, aggregations, filtering, and sorting.&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Advantages</strong>:</p>
+<ul>
+  <li>Runtime fields aren’t indexed, adding a runtime field doesn’t increase the index size.</li>
+  <li>We can define runtime fields directly in the index mapping, saving storage costs and increasing ingestion speed.</li>
+  <li>When you define a runtime field, you can immediately use it in search requests, aggregations, filtering, and sorting.</li>
+</ul>
 
-&lt;p&gt;&lt;strong&gt;Disadvantages&lt;/strong&gt; :
-																					&lt;em&gt;Queries&lt;/em&gt; against runtime fields can be expensive, so data that you commonly search or filter on should still be mapped to indexed fields. Runtime fields can also decrease search speed, even though your index size is smaller.&lt;/p&gt;
+<p><strong>Disadvantages</strong> :
+																					<em>Queries</em> against runtime fields can be expensive, so data that you commonly search or filter on should still be mapped to indexed fields. Runtime fields can also decrease search speed, even though your index size is smaller.</p>
 
-&lt;p&gt;Now let’s make our hands dirty by adding runtime fields.&lt;/p&gt;
+<p>Now let’s make our hands dirty by adding runtime fields.</p>
 
-&lt;p&gt;Creating sample &lt;strong&gt;employee&lt;/strong&gt; index:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT employee
+<p>Creating sample <strong>employee</strong> index:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT employee
 {
-  &quot;mappings&quot;: {
-    &quot;dynamic&quot;: &quot;runtime&quot;,
-    &quot;properties&quot;: {
-      &quot;name&quot;: {
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;fields&quot;: {
-          &quot;raw&quot;: {
-            &quot;type&quot;: &quot;keyword&quot;
+  "mappings": {
+    "dynamic": "runtime",
+    "properties": {
+      "name": {
+        "type": "text",
+        "fields": {
+          "raw": {
+            "type": "keyword"
           }
         }
       },
-      &quot;dob&quot;: {
-        &quot;type&quot;: &quot;date&quot;,
-        &quot;format&quot;: &quot;yyyy-MM-dd&quot;
+      "dob": {
+        "type": "date",
+        "format": "yyyy-MM-dd"
       }
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Now we will check the employee mapping&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_mapping
+</code></pre></div></div>
+<p>Now we will check the employee mapping</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_mapping
 Output:
 {
-  &quot;employee&quot; : {
-    &quot;mappings&quot; : {
-      &quot;dynamic&quot; : &quot;runtime&quot;,
-      &quot;properties&quot; : {
-        &quot;dob&quot; : {
-          &quot;type&quot; : &quot;date&quot;,
-          &quot;format&quot; : &quot;yyyy-MM-dd&quot;
+  "employee" : {
+    "mappings" : {
+      "dynamic" : "runtime",
+      "properties" : {
+        "dob" : {
+          "type" : "date",
+          "format" : "yyyy-MM-dd"
         },
-        &quot;name&quot; : {
-          &quot;type&quot; : &quot;text&quot;,
-          &quot;fields&quot; : {
-            &quot;raw&quot; : {
-              &quot;type&quot; : &quot;keyword&quot;
+        "name" : {
+          "type" : "text",
+          "fields" : {
+            "raw" : {
+              "type" : "keyword"
             }
           }
         }
@@ -1330,58 +1330,58 @@ Output:
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;So now we try to insert a couple of sample documents into the employee index.&lt;/p&gt;
+</code></pre></div></div>
+<p>So now we try to insert a couple of sample documents into the employee index.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT employee/_doc/1
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT employee/_doc/1
 {
-  &quot;name&quot;:&quot;Kiran Sangita&quot;,
-  &quot;dob&quot;:&quot;1980-04-01&quot;,
-  &quot;fullname&quot;:&quot;kiran appaji sangita&quot;,
-  &quot;age&quot;:&quot;45&quot;
+  "name":"Kiran Sangita",
+  "dob":"1980-04-01",
+  "fullname":"kiran appaji sangita",
+  "age":"45"
 }
 PUT employee/_doc/2
 {
-  &quot;name&quot;:&quot;Kartheek Gummaluri&quot;,
-  &quot;dob&quot;:&quot;1991-12-28&quot;,
-  &quot;fullname&quot;:&quot;Sai Srinivasa Kartheek Gummaluri&quot;,
-  &quot;age&quot;:&quot;29&quot;
+  "name":"Kartheek Gummaluri",
+  "dob":"1991-12-28",
+  "fullname":"Sai Srinivasa Kartheek Gummaluri",
+  "age":"29"
 }
 PUT employee/_doc/3
 {
-  &quot;name&quot;:&quot;Pavan Kumar&quot;,
-  &quot;dob&quot;:&quot;1980-12-28&quot;,
-  &quot;fullname&quot;:&quot;Pavan Arya&quot;,
-  &quot;age&quot;:&quot;34&quot;
+  "name":"Pavan Kumar",
+  "dob":"1980-12-28",
+  "fullname":"Pavan Arya",
+  "age":"34"
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre></div></div>
 
-&lt;p&gt;Now we will check mapping again and we will see age, full name as runtime fields.&lt;/p&gt;
+<p>Now we will check mapping again and we will see age, full name as runtime fields.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_mapping
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_mapping
 Output: 
 {
-  &quot;employee&quot; : {
-    &quot;mappings&quot; : {
-      &quot;dynamic&quot; : &quot;runtime&quot;,
-      &quot;runtime&quot; : {
-        &quot;age&quot; : {
-          &quot;type&quot; : &quot;keyword&quot;
+  "employee" : {
+    "mappings" : {
+      "dynamic" : "runtime",
+      "runtime" : {
+        "age" : {
+          "type" : "keyword"
         },
-        &quot;fullname&quot; : {
-          &quot;type&quot; : &quot;keyword&quot;
+        "fullname" : {
+          "type" : "keyword"
         }
       },
-      &quot;properties&quot; : {
-        &quot;dob&quot; : {
-          &quot;type&quot; : &quot;date&quot;,
-          &quot;format&quot; : &quot;yyyy-MM-dd&quot;
+      "properties" : {
+        "dob" : {
+          "type" : "date",
+          "format" : "yyyy-MM-dd"
         },
-        &quot;name&quot; : {
-          &quot;type&quot; : &quot;text&quot;,
-          &quot;fields&quot; : {
-            &quot;raw&quot; : {
-              &quot;type&quot; : &quot;keyword&quot;
+        "name" : {
+          "type" : "text",
+          "fields" : {
+            "raw" : {
+              "type" : "keyword"
             }
           }
         }
@@ -1389,142 +1389,142 @@ Output:
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre></div></div>
 
-&lt;p&gt;Now let’s write a small query to search documents having an age greater than 29.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search
+<p>Now let’s write a small query to search documents having an age greater than 29.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_search
 {
-  &quot;query&quot;: {
-    &quot;range&quot;: {
-      &quot;age&quot;: {
-        &quot;gt&quot;: 29
+  "query": {
+    "range": {
+      "age": {
+        "gt": 29
       }
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Result:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
+</code></pre></div></div>
+<p>Result:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"hits" : [
       {
-        &quot;_index&quot; : &quot;employee&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;Kiran Sangita&quot;,
-          &quot;dob&quot; : &quot;1980-04-01&quot;,
-          &quot;fullname&quot; : &quot;kiran appaji sangita&quot;,
-          &quot;age&quot; : &quot;45&quot;
+        "_index" : "employee",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "Kiran Sangita",
+          "dob" : "1980-04-01",
+          "fullname" : "kiran appaji sangita",
+          "age" : "45"
         }
       },
       {
-        &quot;_index&quot; : &quot;employee&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;3&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;Pavan Kumar&quot;,
-          &quot;dob&quot; : &quot;1980-12-28&quot;,
-          &quot;fullname&quot; : &quot;Pavan Arya&quot;,
-          &quot;age&quot; : &quot;34&quot;
+        "_index" : "employee",
+        "_type" : "_doc",
+        "_id" : "3",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "Pavan Kumar",
+          "dob" : "1980-12-28",
+          "fullname" : "Pavan Arya",
+          "age" : "34"
         }
       }
     ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;This way we simply queried using runtime field and as mentioned earlier this field is not indexed but still, we can retrieve the results.&lt;/p&gt;
+</code></pre></div></div>
+<p>This way we simply queried using runtime field and as mentioned earlier this field is not indexed but still, we can retrieve the results.</p>
 
-&lt;p&gt;Now lets something new out of it like we can create the concatenation of two fields with a static string as follows:&lt;/p&gt;
+<p>Now lets something new out of it like we can create the concatenation of two fields with a static string as follows:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_search
 {
-  &quot;runtime_mappings&quot;: {
-    &quot;concatenated_field&quot;: {
-      &quot;type&quot;: &quot;keyword&quot;,
-      &quot;script&quot;: {
-        &quot;source&quot;: &quot;emit(doc['fullname'].value + '_' +  doc['age'].value.toString())&quot;
+  "runtime_mappings": {
+    "concatenated_field": {
+      "type": "keyword",
+      "script": {
+        "source": "emit(doc['fullname'].value + '_' +  doc['age'].value.toString())"
       }
     }
   },
-  &quot;fields&quot;: [
-    &quot;concatenated_field&quot;
+  "fields": [
+    "concatenated_field"
   ],
-  &quot;query&quot;: {
-    &quot;match&quot;: {
-      &quot;concatenated_field&quot;: &quot;kiran appaji sangita_45&quot;
+  "query": {
+    "match": {
+      "concatenated_field": "kiran appaji sangita_45"
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;We defined the field &lt;strong&gt;concatenated_field&lt;/strong&gt; in the runtime_mappings section. We used a short Painless script that defines how the value of concatenated_field will be calculated per document (using + to indicate concatenation of the value of the full name field with the static string ‘:’ and the value of the age field). We then used the field concatenated_field in the query. When defining a Painless script to use with runtime fields, you must include emit to return calculated values.&lt;/p&gt;
+</code></pre></div></div>
+<p>We defined the field <strong>concatenated_field</strong> in the runtime_mappings section. We used a short Painless script that defines how the value of concatenated_field will be calculated per document (using + to indicate concatenation of the value of the full name field with the static string ‘:’ and the value of the age field). We then used the field concatenated_field in the query. When defining a Painless script to use with runtime fields, you must include emit to return calculated values.</p>
 
-&lt;p&gt;Result:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;hits&quot; : [
+<p>Result:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"hits" : [
       {
-        &quot;_index&quot; : &quot;employee&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;Kiran Sangita&quot;,
-          &quot;dob&quot; : &quot;1980-04-01&quot;,
-          &quot;fullname&quot; : &quot;kiran appaji sangita&quot;,
-          &quot;age&quot; : &quot;45&quot;
+        "_index" : "employee",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "Kiran Sangita",
+          "dob" : "1980-04-01",
+          "fullname" : "kiran appaji sangita",
+          "age" : "45"
         },
-        &quot;fields&quot; : {
-          &quot;concatenated_field&quot; : [
-            &quot;kiran appaji sangita_45&quot;
+        "fields" : {
+          "concatenated_field" : [
+            "kiran appaji sangita_45"
           ]
         }
       }
     ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;If we find that &lt;strong&gt;concatenated_field&lt;/strong&gt; is a field that we want to use in multiple queries without having to define it per query, we can simply add it to the mapping by making the call:&lt;/p&gt;
+</code></pre></div></div>
+<p>If we find that <strong>concatenated_field</strong> is a field that we want to use in multiple queries without having to define it per query, we can simply add it to the mapping by making the call:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; PUT employee/_mapping
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> PUT employee/_mapping
  {
-   &quot;runtime&quot;: {
-     &quot;concatenated_field&quot;: {
-       &quot;type&quot;: &quot;keyword&quot;,
-        &quot;script&quot;: {
-        &quot;source&quot;: &quot;emit(doc['fullname'].value + '_' +  doc['age'].value.toString())&quot;
+   "runtime": {
+     "concatenated_field": {
+       "type": "keyword",
+        "script": {
+        "source": "emit(doc['fullname'].value + '_' +  doc['age'].value.toString())"
       }
      } 
    } 
  }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Now we will again check the mappings of the employee index, this time you will see &lt;strong&gt;concatenated_field&lt;/strong&gt; will be added in the mapping.&lt;/p&gt;
+</code></pre></div></div>
+<p>Now we will again check the mappings of the employee index, this time you will see <strong>concatenated_field</strong> will be added in the mapping.</p>
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Output&lt;/em&gt;&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_mapping
+<p><strong><em>Output</em></strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_mapping
 {
-  &quot;employee&quot; : {
-    &quot;mappings&quot; : {
-      &quot;dynamic&quot; : &quot;runtime&quot;,
-      &quot;runtime&quot; : {
-        &quot;age&quot; : {
-          &quot;type&quot; : &quot;keyword&quot;
+  "employee" : {
+    "mappings" : {
+      "dynamic" : "runtime",
+      "runtime" : {
+        "age" : {
+          "type" : "keyword"
         },
-        &quot;concatenated_field&quot; : {
-          &quot;type&quot; : &quot;keyword&quot;,
-          &quot;script&quot; : {
-            &quot;source&quot; : &quot;emit(doc['fullname'].value + '_' +  doc['age'].value.toString())&quot;,
-            &quot;lang&quot; : &quot;painless&quot;
+        "concatenated_field" : {
+          "type" : "keyword",
+          "script" : {
+            "source" : "emit(doc['fullname'].value + '_' +  doc['age'].value.toString())",
+            "lang" : "painless"
           }
         },
-        &quot;fullname&quot; : {
-          &quot;type&quot; : &quot;keyword&quot;
+        "fullname" : {
+          "type" : "keyword"
         }
       },
-      &quot;properties&quot; : {
-        &quot;dob&quot; : {
-          &quot;type&quot; : &quot;date&quot;,
-          &quot;format&quot; : &quot;yyyy-MM-dd&quot;
+      "properties" : {
+        "dob" : {
+          "type" : "date",
+          "format" : "yyyy-MM-dd"
         },
-        &quot;name&quot; : {
-          &quot;type&quot; : &quot;text&quot;,
-          &quot;fields&quot; : {
-            &quot;raw&quot; : {
-              &quot;type&quot; : &quot;keyword&quot;
+        "name" : {
+          "type" : "text",
+          "fields" : {
+            "raw" : {
+              "type" : "keyword"
             }
           }
         }
@@ -1532,75 +1532,75 @@ Output:
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;And then the query does not have to include the definition of the field, for example:&lt;/p&gt;
+</code></pre></div></div>
+<p>And then the query does not have to include the definition of the field, for example:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_search
 {
-  &quot;query&quot;: {
-    &quot;match&quot;: {
-      &quot;concatenated_field&quot;: &quot;kiran appaji sangita_45&quot;
+  "query": {
+    "match": {
+      "concatenated_field": "kiran appaji sangita_45"
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Now let’s see the result as I mentioned earlier we will not see &lt;strong&gt;concatenated_field&lt;/strong&gt; in the source document.&lt;/p&gt;
+</code></pre></div></div>
+<p>Now let’s see the result as I mentioned earlier we will not see <strong>concatenated_field</strong> in the source document.</p>
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Output&lt;/em&gt;&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; {
-        &quot;_index&quot; : &quot;employee&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;Kiran Sangita&quot;,
-          &quot;dob&quot; : &quot;1980-04-01&quot;,
-          &quot;fullname&quot; : &quot;kiran appaji sangita&quot;,
-          &quot;age&quot; : &quot;45&quot;
+<p><strong><em>Output</em></strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {
+        "_index" : "employee",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "Kiran Sangita",
+          "dob" : "1980-04-01",
+          "fullname" : "kiran appaji sangita",
+          "age" : "45"
         }
       }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;If we want to see &lt;strong&gt;concatenated_field&lt;/strong&gt; then we need to specify implicitly in the &lt;strong&gt;fields&lt;/strong&gt; section.&lt;/p&gt;
+</code></pre></div></div>
+<p>If we want to see <strong>concatenated_field</strong> then we need to specify implicitly in the <strong>fields</strong> section.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET employee/_search
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET employee/_search
 {
-  &quot;fields&quot;: [
-    &quot;concatenated_field&quot;
+  "fields": [
+    "concatenated_field"
   ],
-  &quot;query&quot;: {
-    &quot;match&quot;: {
-      &quot;concatenated_field&quot;: &quot;kiran appaji sangita_45&quot;
+  "query": {
+    "match": {
+      "concatenated_field": "kiran appaji sangita_45"
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Output&lt;/em&gt;&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &quot;hits&quot; : [
+</code></pre></div></div>
+<p><strong><em>Output</em></strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> "hits" : [
       {
-        &quot;_index&quot; : &quot;employee&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;name&quot; : &quot;Kiran Sangita&quot;,
-          &quot;dob&quot; : &quot;1980-04-01&quot;,
-          &quot;fullname&quot; : &quot;kiran appaji sangita&quot;,
-          &quot;age&quot; : &quot;45&quot;
+        "_index" : "employee",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "name" : "Kiran Sangita",
+          "dob" : "1980-04-01",
+          "fullname" : "kiran appaji sangita",
+          "age" : "45"
         },
-        &quot;fields&quot; : {
-          &quot;concatenated_field&quot; : [
-            &quot;kiran appaji sangita_45&quot;
+        "fields" : {
+          "concatenated_field" : [
+            "kiran appaji sangita_45"
           ]
         }
       }
     ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;This is how we can make use of &lt;strong&gt;Runtime Fields&lt;/strong&gt;.&lt;/p&gt;
+</code></pre></div></div>
+<p>This is how we can make use of <strong>Runtime Fields</strong>.</p>
 
-&lt;p&gt;Thanks &lt;br /&gt;
-&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
+<p>Thanks <br />
+<strong><em>Kartheek Gummaluri</em></strong></p>
+<div id="disqus_thread"></div>
+<script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
@@ -1616,255 +1616,255 @@ Output:
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();
-&lt;/script&gt;
+</script>
 
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="ELasticSearch" /><summary type="html">Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called MyCareer.com where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with Data Streams and I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that it is available in Beta</summary></entry><entry><title type="html">Painless Scripting Language-Series-1</title><link href="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html" rel="alternate" type="text/html" title="Painless Scripting Language-Series-1" /><published>2021-02-07T13:15:20+05:30</published><updated>2021-02-07T13:15:20+05:30</updated><id>http://localhost:4000/2021/02/07/painless-scripting-language-series-1</id><content type="html" xml:base="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html">&lt;p&gt;Today we will learn about very intresting scripting language called &lt;strong&gt;Painless&lt;/strong&gt;. So let’s jump directy into the topic.&lt;/p&gt;
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>]]></content><author><name></name></author><category term="ELasticSearch" /><summary type="html"><![CDATA[Hi, all today I wanted to share with you one of the most awaited topics since I started learning elastic search. We used to have a product called MyCareer.com where we used elasticsearch and indexed around 20 million resumes. Every time due to the aggressive timelines and incremental development we are in a situation where we need to add a couple of properties to an existing index. Till now we have only one solution i.e adding new properties to the existing mapping, creating a new index based on the new mapping, and try to reindex the data by passing the source and destination index. It is a tedious job correct so that’s the reason elasticsearch came up with Data Streams and I will cover this topic in upcoming posts. In elasticsearch 7.11 release they came with a solution called Runtime Fields. Please make note that it is available in Beta]]></summary></entry><entry><title type="html">Painless Scripting Language-Series-1</title><link href="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html" rel="alternate" type="text/html" title="Painless Scripting Language-Series-1" /><published>2021-02-07T13:15:20+05:30</published><updated>2021-02-07T13:15:20+05:30</updated><id>http://localhost:4000/2021/02/07/painless-scripting-language-series-1</id><content type="html" xml:base="http://localhost:4000/2021/02/07/painless-scripting-language-series-1.html"><![CDATA[<p>Today we will learn about very intresting scripting language called <strong>Painless</strong>. So let’s jump directy into the topic.</p>
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Painless:&lt;/em&gt;&lt;/strong&gt;
-It is a simple, secure scripting language designed specifically for use with Elasticsearch. It is the default scripting language for Elasticsearch and can safely be used for inline and stored scripts.In fact, most Painless scripts are also valid Groovy, and simple Groovy scripts are typically valid Painless.&lt;/p&gt;
+<p><strong><em>Painless:</em></strong>
+It is a simple, secure scripting language designed specifically for use with Elasticsearch. It is the default scripting language for Elasticsearch and can safely be used for inline and stored scripts.In fact, most Painless scripts are also valid Groovy, and simple Groovy scripts are typically valid Painless.</p>
 
-&lt;p&gt;Painless scripts are parsed and compiled using the ANTLR4 and ASM libraries. Painless scripts are compiled directly into Java byte code and executed against a standard Java Virtual Machine.
-You can use Painless anywhere scripts are used in Elasticsearch. Painless provides:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;It is fast performance.&lt;/li&gt;
-  &lt;li&gt;Safety: Fine-grained allowlist with method call/field granularity.&lt;/li&gt;
-  &lt;li&gt;Optional typing: Variables and parameters can use explicit types or the dynamic def type.&lt;/li&gt;
-  &lt;li&gt;Syntax: Extends a subset of Java’s syntax to provide additional scripting language features.&lt;/li&gt;
-  &lt;li&gt;Optimizations: Designed specifically for Elasticsearch scripting.&lt;/li&gt;
-&lt;/ul&gt;
+<p>Painless scripts are parsed and compiled using the ANTLR4 and ASM libraries. Painless scripts are compiled directly into Java byte code and executed against a standard Java Virtual Machine.
+You can use Painless anywhere scripts are used in Elasticsearch. Painless provides:</p>
+<ul>
+  <li>It is fast performance.</li>
+  <li>Safety: Fine-grained allowlist with method call/field granularity.</li>
+  <li>Optional typing: Variables and parameters can use explicit types or the dynamic def type.</li>
+  <li>Syntax: Extends a subset of Java’s syntax to provide additional scripting language features.</li>
+  <li>Optimizations: Designed specifically for Elasticsearch scripting.</li>
+</ul>
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Painless Evolution:&lt;/em&gt;&lt;/strong&gt;
-Since the earlier versions of ES, it supported scripting, but the scripting language has evolved over the ES releases. Starting with MVEL prior version 1.4, Groovy (post version 1.4), and now the latest entry &lt;strong&gt;&lt;em&gt;Painless&lt;/em&gt;&lt;/strong&gt;  starting ES 5.0, the scripting in ES has evolved. A key reason for this evolution is for the above mentioned features.&lt;/p&gt;
+<p><strong><em>Painless Evolution:</em></strong>
+Since the earlier versions of ES, it supported scripting, but the scripting language has evolved over the ES releases. Starting with MVEL prior version 1.4, Groovy (post version 1.4), and now the latest entry <strong><em>Painless</em></strong>  starting ES 5.0, the scripting in ES has evolved. A key reason for this evolution is for the above mentioned features.</p>
 
-&lt;p&gt;Prior the release of &lt;strong&gt;&lt;em&gt;Painless&lt;/em&gt;&lt;/strong&gt; in ES 5.0, the majority of the security vulnerabilities that were reported in ES had to deal with vulnerabilities due to the scripting. Painless scripting language addresses these issues and is more secure, and faster than its predecessors. Starting ES 5.0, “Painless” is the default scripting language and its syntax is similar to &lt;strong&gt;Groovy&lt;/strong&gt;.&lt;/p&gt;
+<p>Prior the release of <strong><em>Painless</em></strong> in ES 5.0, the majority of the security vulnerabilities that were reported in ES had to deal with vulnerabilities due to the scripting. Painless scripting language addresses these issues and is more secure, and faster than its predecessors. Starting ES 5.0, “Painless” is the default scripting language and its syntax is similar to <strong>Groovy</strong>.</p>
 
-&lt;p&gt;This blog takes it a level further and explains the various usages of scripting that would be very handy.&lt;/p&gt;
+<p>This blog takes it a level further and explains the various usages of scripting that would be very handy.</p>
 
-&lt;p&gt;Before we can start using the scripts lets understand the syntax of scripts in ES.&lt;/p&gt;
+<p>Before we can start using the scripts lets understand the syntax of scripts in ES.</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;script&quot;: {
- &quot;lang&quot;: &quot;...&quot;, 
- &quot;inline&quot; | &quot;stored&quot;: &quot;...&quot;,
- &quot;params&quot;: { ... }
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"script": {
+ "lang": "...", 
+ "inline" | "stored": "...",
+ "params": { ... }
  }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;As shown above, the script syntax consists of three parts:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;The language the script is written in, which defaults to painless.&lt;/li&gt;
-  &lt;li&gt;The script itself which may be specified as source for an inline script or id for a stored script.&lt;/li&gt;
-  &lt;li&gt;Any named parameters that should be passed into the script.&lt;/li&gt;
-&lt;/ol&gt;
+</code></pre></div></div>
+<p>As shown above, the script syntax consists of three parts:</p>
+<ol>
+  <li>The language the script is written in, which defaults to painless.</li>
+  <li>The script itself which may be specified as source for an inline script or id for a stored script.</li>
+  <li>Any named parameters that should be passed into the script.</li>
+</ol>
 
-&lt;p&gt;Let’s illustrate how Painless works by loading some student stats into an Elasticsearch index:&lt;/p&gt;
+<p>Let’s illustrate how Painless works by loading some student stats into an Elasticsearch index:</p>
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT student/_bulk?refresh
-{&quot;index&quot;:{&quot;_id&quot;:1}}
-{&quot;first_name&quot;:&quot;kiran&quot;,&quot;last_name&quot;:&quot;sangita&quot;,&quot;score&quot;:[9,27,1],&quot;dob&quot;:&quot;1980/08/13&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:2}}
-{&quot;first_name&quot;:&quot;kartheek&quot;,&quot;last_name&quot;:&quot;gummaluri&quot;,&quot;score&quot;:[19,37,12],&quot;dob&quot;:&quot;1991/12/28&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:3}}
-{&quot;first_name&quot;:&quot;pavan&quot;,&quot;last_name&quot;:&quot;arya&quot;,&quot;score&quot;:[22,12,34],&quot;dob&quot;:&quot;1989/01/22&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:4}}
-{&quot;first_name&quot;:&quot;murali&quot;,&quot;last_name&quot;:&quot;sangita&quot;,&quot;score&quot;:[10,2,44],&quot;dob&quot;:&quot;1990/04/15&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:5}}
-{&quot;first_name&quot;:&quot;prudwi&quot;,&quot;last_name&quot;:&quot;seeramreddi&quot;,&quot;score&quot;:[12,22,14],&quot;dob&quot;:&quot;1991/08/17&quot;}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Accessing Doc Values from Painless:&lt;/em&gt;&lt;/strong&gt;
-Document values can be accessed from a Map named doc.&lt;/p&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT student/_bulk?refresh
+{"index":{"_id":1}}
+{"first_name":"kiran","last_name":"sangita","score":[9,27,1],"dob":"1980/08/13"}
+{"index":{"_id":2}}
+{"first_name":"kartheek","last_name":"gummaluri","score":[19,37,12],"dob":"1991/12/28"}
+{"index":{"_id":3}}
+{"first_name":"pavan","last_name":"arya","score":[22,12,34],"dob":"1989/01/22"}
+{"index":{"_id":4}}
+{"first_name":"murali","last_name":"sangita","score":[10,2,44],"dob":"1990/04/15"}
+{"index":{"_id":5}}
+{"first_name":"prudwi","last_name":"seeramreddi","score":[12,22,14],"dob":"1991/08/17"}
+</code></pre></div></div>
+<p><strong><em>Accessing Doc Values from Painless:</em></strong>
+Document values can be accessed from a Map named doc.</p>
 
-&lt;p&gt;For example, the following script calculates a student’s total score who name start’s with letter &lt;strong&gt;K&lt;/strong&gt;. This example uses a strongly typed int and a for loop.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET student/_search
+<p>For example, the following script calculates a student’s total score who name start’s with letter <strong>K</strong>. This example uses a strongly typed int and a for loop.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET student/_search
 {
-  &quot;query&quot;: {
-    &quot;prefix&quot;: {
-      &quot;first_name&quot;: {
-        &quot;value&quot;: &quot;k&quot;
+  "query": {
+    "prefix": {
+      "first_name": {
+        "value": "k"
       }
     }
   },
-  &quot;script_fields&quot;: {
-    &quot;total_score&quot;: {
-      &quot;script&quot;: {
-        &quot;lang&quot;: &quot;painless&quot;,
-        &quot;source&quot;: &quot;&quot;&quot;
+  "script_fields": {
+    "total_score": {
+      "script": {
+        "lang": "painless",
+        "source": """
           int total = 0;
-          for (int i = 0; i &amp;lt; doc['score'].length; ++i) {
+          for (int i = 0; i &lt; doc['score'].length; ++i) {
             total += doc['score'][i];
           
           }
           return total;
-        &quot;&quot;&quot;
+        """
       }
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Result&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &quot;hits&quot; : [
+</code></pre></div></div>
+<p><strong><em>Result</em></strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> "hits" : [
       {
-        &quot;_index&quot; : &quot;student&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;fields&quot; : {
-          &quot;total_score&quot; : [
+        "_index" : "student",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "fields" : {
+          "total_score" : [
             37
           ]
         }
       },
       {
-        &quot;_index&quot; : &quot;student&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;2&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;fields&quot; : {
-          &quot;total_score&quot; : [
+        "_index" : "student",
+        "_type" : "_doc",
+        "_id" : "2",
+        "_score" : 1.0,
+        "fields" : {
+          "total_score" : [
             68
           ]
         }
       }
     ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;The following example uses a Painless script to sort the students by their combined first and last names. The names are accessed using doc[‘first_name’].keyword.value and doc[‘last_name’].keyword.value.
-&lt;strong&gt;&lt;em&gt;Query&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET student/_search
+</code></pre></div></div>
+<p>The following example uses a Painless script to sort the students by their combined first and last names. The names are accessed using doc[‘first_name’].keyword.value and doc[‘last_name’].keyword.value.
+<strong><em>Query</em></strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET student/_search
 {
-  &quot;query&quot;: {
-    &quot;match_all&quot;: {}
+  "query": {
+    "match_all": {}
   },
-  &quot;sort&quot;: {
-    &quot;_script&quot;: {
-      &quot;type&quot;: &quot;string&quot;,
-      &quot;order&quot;: &quot;asc&quot;,
-      &quot;script&quot;: {
-        &quot;lang&quot;: &quot;painless&quot;,
-        &quot;source&quot;: &quot;doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value&quot;
+  "sort": {
+    "_script": {
+      "type": "string",
+      "order": "asc",
+      "script": {
+        "lang": "painless",
+        "source": "doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value"
       }
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Result&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &quot;hits&quot; : [
+</code></pre></div></div>
+<p><strong><em>Result</em></strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  "hits" : [
       {
-        &quot;_index&quot; : &quot;student&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;2&quot;,
-        &quot;_score&quot; : null,
-        &quot;_source&quot; : {
-          &quot;first_name&quot; : &quot;kartheek&quot;,
-          &quot;last_name&quot; : &quot;gummaluri&quot;,
-          &quot;score&quot; : [
+        "_index" : "student",
+        "_type" : "_doc",
+        "_id" : "2",
+        "_score" : null,
+        "_source" : {
+          "first_name" : "kartheek",
+          "last_name" : "gummaluri",
+          "score" : [
             19,
             37,
             12
           ],
-          &quot;dob&quot; : &quot;1991/12/28&quot;
+          "dob" : "1991/12/28"
         },
-        &quot;sort&quot; : [
-          &quot;kartheek gummaluri&quot;
+        "sort" : [
+          "kartheek gummaluri"
         ]
       },
       {
-        &quot;_index&quot; : &quot;student&quot;,
-        &quot;_type&quot; : &quot;_doc&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : null,
-        &quot;_source&quot; : {
-          &quot;first_name&quot; : &quot;kiran&quot;,
-          &quot;last_name&quot; : &quot;sangita&quot;,
-          &quot;score&quot; : [
+        "_index" : "student",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : null,
+        "_source" : {
+          "first_name" : "kiran",
+          "last_name" : "sangita",
+          "score" : [
             9,
             27,
             1
           ],
-          &quot;dob&quot; : &quot;1980/08/13&quot;
+          "dob" : "1980/08/13"
         },
-        &quot;sort&quot; : [
-          &quot;kiran sangita&quot;
+        "sort" : [
+          "kiran sangita"
         ]
       },....]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Missing Values&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+</code></pre></div></div>
+<p><strong><em>Missing Values</em></strong></p>
 
-&lt;p&gt;Now let learn how to query if we have missing values either in last_name, first_name.doc[‘field’].value throws an exception if the field is missing in a document.&lt;/p&gt;
+<p>Now let learn how to query if we have missing values either in last_name, first_name.doc[‘field’].value throws an exception if the field is missing in a document.</p>
 
-&lt;p&gt;To check if a document is missing a value, you can call doc[‘field’].size() == 0. So let’s add another document in the &lt;strong&gt;student&lt;/strong&gt; index.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT student/_doc/6
-{&quot;first_name&quot;:&quot;bala&quot;,&quot;score&quot;:[11,33,12],&quot;dob&quot;:&quot;1971/04/21&quot;}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;If you observe in the above mentioned document we haven’t specified &lt;strong&gt;last_name&lt;/strong&gt; and now let’s re-run the above mentioned query which concatenates first_name and last_name.&lt;/p&gt;
+<p>To check if a document is missing a value, you can call doc[‘field’].size() == 0. So let’s add another document in the <strong>student</strong> index.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT student/_doc/6
+{"first_name":"bala","score":[11,33,12],"dob":"1971/04/21"}
+</code></pre></div></div>
+<p>If you observe in the above mentioned document we haven’t specified <strong>last_name</strong> and now let’s re-run the above mentioned query which concatenates first_name and last_name.</p>
 
-&lt;p&gt;After executing the above mentioned query we end up with run time error.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-        &quot;shard&quot;: 0,
-        &quot;index&quot;: &quot;student&quot;,
-        &quot;node&quot;: &quot;993H1-V5Qk6Qc2nOoZ0iuw&quot;,
-        &quot;reason&quot;: {
-          &quot;type&quot;: &quot;script_exception&quot;,
-          &quot;reason&quot;: &quot;runtime error&quot;,
-          &quot;script_stack&quot;: [
-            &quot;org.elasticsearch.index.fielddata.ScriptDocValues$Strings.get(ScriptDocValues.java:496)&quot;,
-            &quot;org.elasticsearch.index.fielddata.ScriptDocValues$Strings.getValue(ScriptDocValues.java:503)&quot;,
-            &quot;doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value&quot;,
-            &quot;                                                                ^---- HERE&quot;
+<p>After executing the above mentioned query we end up with run time error.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+        "shard": 0,
+        "index": "student",
+        "node": "993H1-V5Qk6Qc2nOoZ0iuw",
+        "reason": {
+          "type": "script_exception",
+          "reason": "runtime error",
+          "script_stack": [
+            "org.elasticsearch.index.fielddata.ScriptDocValues$Strings.get(ScriptDocValues.java:496)",
+            "org.elasticsearch.index.fielddata.ScriptDocValues$Strings.getValue(ScriptDocValues.java:503)",
+            "doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value",
+            "                                                                ^---- HERE"
           ],
-          &quot;script&quot;: &quot;doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value&quot;,
-          &quot;lang&quot;: &quot;painless&quot;,
-          &quot;caused_by&quot;: {
-            &quot;type&quot;: &quot;illegal_state_exception&quot;,
-            &quot;reason&quot;: &quot;A document doesn't have a value for a field! Use doc[&amp;lt;field&amp;gt;].size()==0 to check if a document is missing a field!&quot;
+          "script": "doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value",
+          "lang": "painless",
+          "caused_by": {
+            "type": "illegal_state_exception",
+            "reason": "A document doesn't have a value for a field! Use doc[&lt;field&gt;].size()==0 to check if a document is missing a field!"
           }
         }
       }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;If you observe the reason session it clearly saying that we are trying to access document which doesn’t have a value for a field. It is also providing recommendation for us.Now let’s re-write the query.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+</code></pre></div></div>
+<p>If you observe the reason session it clearly saying that we are trying to access document which doesn’t have a value for a field. It is also providing recommendation for us.Now let’s re-write the query.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 GET student/_search
 {
-  &quot;query&quot;: {
-   &quot;match_all&quot;: {}
+  "query": {
+   "match_all": {}
   },
- &quot;script_fields&quot;: {
-   &quot;full_name&quot;: {
-     &quot;script&quot;: {
-       &quot;lang&quot;: &quot;painless&quot;,
-        &quot;source&quot;: &quot;&quot;&quot;if(doc['last_name.keyword'].size()&amp;gt;0 &amp;amp;&amp;amp; doc['first_name.keyword'].size()&amp;gt;0) {  return doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value}&quot;&quot;&quot;
+ "script_fields": {
+   "full_name": {
+     "script": {
+       "lang": "painless",
+        "source": """if(doc['last_name.keyword'].size()&gt;0 &amp;&amp; doc['first_name.keyword'].size()&gt;0) {  return doc['first_name.keyword'].value + ' ' + doc['last_name.keyword'].value}"""
        
      }
    }
  }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;This way we can overcome the above mentioned exception.Finally I will conclude with an important information and we can learn in depth in upcoming blogs.&lt;/p&gt;
+</code></pre></div></div>
+<p>This way we can overcome the above mentioned exception.Finally I will conclude with an important information and we can learn in depth in upcoming blogs.</p>
 
-&lt;p&gt;The first time Elasticsearch sees a new script, it compiles it and stores the compiled version in a cache. Compilation can be a heavy process.&lt;/p&gt;
+<p>The first time Elasticsearch sees a new script, it compiles it and stores the compiled version in a cache. Compilation can be a heavy process.</p>
 
-&lt;p&gt;If you need to pass variables into the script, you should pass them in as named params instead of hard-coding values into the script itself. We will try to learn these topic in upcoming blog post with an real time example.&lt;/p&gt;
+<p>If you need to pass variables into the script, you should pass them in as named params instead of hard-coding values into the script itself. We will try to learn these topic in upcoming blog post with an real time example.</p>
 
-&lt;p&gt;Thanks,&lt;br /&gt;
-&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><category term="ELasticSearch" /><category term="Painless" /><summary type="html">Today we will learn about very intresting scripting language called Painless. So let’s jump directy into the topic.</summary></entry><entry><title type="html">MY PLANS FOR YEAR 2021</title><link href="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html" rel="alternate" type="text/html" title="MY PLANS FOR YEAR 2021" /><published>2021-01-01T22:00:46+05:30</published><updated>2021-01-01T22:00:46+05:30</updated><id>http://localhost:4000/2021/01/01/my-plans-for-year-2021</id><content type="html" xml:base="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html">&lt;h2 id=&quot;happy-new-year-2021&quot;&gt;Happy New Year 2021&lt;/h2&gt;
-&lt;p&gt;First of all, Thank you for all  following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.&lt;/p&gt;
+<p>Thanks,<br />
+<strong><em>Kartheek Gummaluri</em></strong></p>]]></content><author><name></name></author><category term="ELasticSearch" /><category term="Painless" /><summary type="html"><![CDATA[Today we will learn about very intresting scripting language called Painless. So let’s jump directy into the topic.]]></summary></entry><entry><title type="html">MY PLANS FOR YEAR 2021</title><link href="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html" rel="alternate" type="text/html" title="MY PLANS FOR YEAR 2021" /><published>2021-01-01T22:00:46+05:30</published><updated>2021-01-01T22:00:46+05:30</updated><id>http://localhost:4000/2021/01/01/my-plans-for-year-2021</id><content type="html" xml:base="http://localhost:4000/2021/01/01/my-plans-for-year-2021.html"><![CDATA[<h2 id="happy-new-year-2021">Happy New Year 2021</h2>
+<p>First of all, Thank you for all  following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.</p>
 
-&lt;h3 id=&quot;here-is-a-brief-list-of-todos-that-i-am-planning-to-accomplish-in-2021&quot;&gt;Here is a brief list of todo’s that I am planning to accomplish in 2021&lt;/h3&gt;
+<h3 id="here-is-a-brief-list-of-todos-that-i-am-planning-to-accomplish-in-2021">Here is a brief list of todo’s that I am planning to accomplish in 2021</h3>
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Increase my blogging frequency&lt;/strong&gt;: I started blogging since 2 years, but i was like passive participant and I used to create posts perodically due to my work. I understand the value and importance of contributing to the community. So this year I again want to get in touch with developer communities and my fellow developers. So my target for this year and upcoming years is to post at least one article( of course useful ones) per week.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Learn Apache Kafka in depth&lt;/strong&gt;:&lt;strong&gt;A&lt;/strong&gt;pache Kafka is a community distributed event streaming platform capable of handling trillions of events a day. Initially conceived as a messaging queue, Kafka is based on an abstraction of a distributed commit log. Since being created and open sourced by LinkedIn in 2011, Kafka has quickly evolved from messaging queue to a full-fledged event streaming platform.I have hands-on experience but I need to get my hands dirty in depth on  KsqlDb, Kafka-Api, Kafka-Cluser Architecture.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Use at least one programming language other than the ones which I frequently use&lt;/strong&gt;: Since 4  years I’m  working on Microsoft technologies and NoSql databases like ELK stack, Couchbase and MongoDb, I did write code in other programming languages like “Python” and did develop a good project using these technologies. But I was like a Nightwatchman ( If you follow cricket, especially test matches) working on these technologies. Of course, I strongly believe that Programming language should never be a barrier to implement ideas or thoughts for a good developer. At any given point of time, I believe that a good developer should be capable of writing code in any programming language. But of course there is a slight difference between writing code in a new programming language and excelling in that programming language. So I decided to learn and excel in “Python”. Reason for choosing Python is for 4 years I am using C# which is statically typed and I would like to the taste the dynamic nature of python now. Also, I am planning to learn about data engineering, Python provides some packages in those areas like NumPy, SciPi and many more. Also, another reason is I would like to explore Apache Spark and using PySpark I’ll be able to write map-reduce functions.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li>
+    <p><strong>Increase my blogging frequency</strong>: I started blogging since 2 years, but i was like passive participant and I used to create posts perodically due to my work. I understand the value and importance of contributing to the community. So this year I again want to get in touch with developer communities and my fellow developers. So my target for this year and upcoming years is to post at least one article( of course useful ones) per week.</p>
+  </li>
+  <li>
+    <p><strong>Learn Apache Kafka in depth</strong>:<strong>A</strong>pache Kafka is a community distributed event streaming platform capable of handling trillions of events a day. Initially conceived as a messaging queue, Kafka is based on an abstraction of a distributed commit log. Since being created and open sourced by LinkedIn in 2011, Kafka has quickly evolved from messaging queue to a full-fledged event streaming platform.I have hands-on experience but I need to get my hands dirty in depth on  KsqlDb, Kafka-Api, Kafka-Cluser Architecture.</p>
+  </li>
+  <li>
+    <p><strong>Use at least one programming language other than the ones which I frequently use</strong>: Since 4  years I’m  working on Microsoft technologies and NoSql databases like ELK stack, Couchbase and MongoDb, I did write code in other programming languages like “Python” and did develop a good project using these technologies. But I was like a Nightwatchman ( If you follow cricket, especially test matches) working on these technologies. Of course, I strongly believe that Programming language should never be a barrier to implement ideas or thoughts for a good developer. At any given point of time, I believe that a good developer should be capable of writing code in any programming language. But of course there is a slight difference between writing code in a new programming language and excelling in that programming language. So I decided to learn and excel in “Python”. Reason for choosing Python is for 4 years I am using C# which is statically typed and I would like to the taste the dynamic nature of python now. Also, I am planning to learn about data engineering, Python provides some packages in those areas like NumPy, SciPi and many more. Also, another reason is I would like to explore Apache Spark and using PySpark I’ll be able to write map-reduce functions.</p>
+  </li>
+</ul>
 
-&lt;p&gt;And the list is never ending but I would like to focus on these technologies and goals for this year and If time permits, I’ll be focusing on some other topics like exploring AWS cloud solutions such as AWS Athena, Azure cloud solutions such as Application Gateways, Azure Bastion etc and Red Hat OpenShift which is an open source container application platform based on the Kubernetes container orchestraton.&lt;/p&gt;
+<p>And the list is never ending but I would like to focus on these technologies and goals for this year and If time permits, I’ll be focusing on some other topics like exploring AWS cloud solutions such as AWS Athena, Azure cloud solutions such as Application Gateways, Azure Bastion etc and Red Hat OpenShift which is an open source container application platform based on the Kubernetes container orchestraton.</p>
 
-&lt;p&gt;Last but on the least I would like to thank my well wishers, mentors who has always been my constant support starting with my mentors Kiran Sangita, Siva AVKD, Pavan Arya, Sumath AWS, Aravind ELK and list continues……….&lt;/p&gt;
+<p>Last but on the least I would like to thank my well wishers, mentors who has always been my constant support starting with my mentors Kiran Sangita, Siva AVKD, Pavan Arya, Sumath AWS, Aravind ELK and list continues……….</p>
 
-&lt;p&gt;And once again I wish everyone a Happy New Year. Please do post your valuable suggestions, questions, and learnings, and let’s try to learn as much as possible this year.&lt;/p&gt;
+<p>And once again I wish everyone a Happy New Year. Please do post your valuable suggestions, questions, and learnings, and let’s try to learn as much as possible this year.</p>
 
-&lt;p&gt;Thanks,&lt;br /&gt;
-&lt;strong&gt;&lt;em&gt;Kartheek Gummaluri&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Happy New Year 2021 First of all, Thank you for all following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.</summary></entry></feed>
+<p>Thanks,<br />
+<strong><em>Kartheek Gummaluri</em></strong></p>]]></content><author><name></name></author><summary type="html"><![CDATA[Happy New Year 2021 First of all, Thank you for all following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.]]></summary></entry></feed>

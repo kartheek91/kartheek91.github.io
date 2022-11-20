@@ -2,9 +2,9 @@
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Docker Container Auto Restart Policies | Learn By Doing</title>
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.0.1" />
 <meta property="og:title" content="Docker Container Auto Restart Policies" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the Nginx container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state" />
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Docker Container Auto Restart Policies" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates.html"},"url":"http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates.html","headline":"Docker Container Auto Restart Policies","dateModified":"2022-04-22T21:23:24+05:30","datePublished":"2022-04-22T21:23:24+05:30","description":"Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the Nginx container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-04-22T21:23:24+05:30","datePublished":"2022-04-22T21:23:24+05:30","description":"Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the Nginx container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state","headline":"Docker Container Auto Restart Policies","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates.html"},"url":"http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Learn By Doing" /></head>
 <body><header class="site-header" role="banner">
@@ -89,7 +89,7 @@ When we try to start the container, it will have No as default. It will not star
 
 <p>Now we will run the Nginx container without a restart policy.</p>
 
-<p><code class="highlighter-rouge"> docker run -d -p 8080:80 --name nginx nginx</code></p>
+<p>` docker run -d -p 8080:80 –name nginx nginx`</p>
 
 <p><img src="/result1.PNG" alt="" /></p>
 

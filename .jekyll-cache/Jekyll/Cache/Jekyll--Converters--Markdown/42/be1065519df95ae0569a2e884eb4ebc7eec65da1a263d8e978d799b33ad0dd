@@ -1,0 +1,35 @@
+I"ª<h1 id="storing-data-in-multiple-lines">Storing data in multiple lines</h1>
+<p>Hello all, today I will share my knowledge regarding YAML.<br />
+<strong>YAML</strong> is a superset of JSON. Any JSON file is a valid YAML file.
+To work with Docker, K8s, Ansible, and Prometheus configuration files written in YAML. It is a widely used format for different DevOps tools and applications. It is a data serialization language that is human-readable and intuitive.<br />
+<strong>Indentation</strong>: It is done with one or more spaces but not with tabs. <br />
+<strong>YAML Comment</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># This is a first comment. 
+</code></pre></div></div>
+<p><br />
+<strong>Key-Value Pairs</strong>: This is indicated by colon and space. We can also key-value pairs as hash and dictionary.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"name": "Kartheek"
+"designation": "Senior Software Engineer"
+</code></pre></div></div>
+<p><br />
+<strong>Lists</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+# List of Programming languages
+- Java
+- C
+- C#
+...
+</code></pre></div></div>
+<p><br />
+<strong>Block and Flow styles</strong>:
+```</p>
+<h1 id="block-style">Block Style</h1>
+<p>fruits:</p>
+<ul>
+  <li>apple</li>
+  <li>banana</li>
+  <li>guava
+ # Flow Style
+fruits: [apple, banana]</li>
+</ul>
+:ET

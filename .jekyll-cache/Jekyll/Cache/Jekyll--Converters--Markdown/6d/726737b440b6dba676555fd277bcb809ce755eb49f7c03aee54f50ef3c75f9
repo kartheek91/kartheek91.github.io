@@ -1,0 +1,7 @@
+I"�<p>Here I will explain you how to convert emojis and emoticons to text.
+```
+data_path = “D:/nlp/HelperCodes/”
+import sys
+import re
+import emot</p>
+:ET
