@@ -1,7 +1,7 @@
 ---
 title: Working with YAML Ain't Markup Language
 layout: post
-date: '2022-11-20 20:25:45'
+date: '2022-11-20 22:00:00'
 tags:
 - DOCKER
 - DevOps
