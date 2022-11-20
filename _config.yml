@@ -4,7 +4,7 @@ description: >-
   This site is created to share my learnings.Please let me know if you have any
   doubts regarding my postings.
 baseurl: ''
-url: 'http://127.0.0.1:4000/'
+url: 'https://kartheek91.github.io/'
 twitter_username: jekyllrb
 github_username: kartheek91
 markdown: kramdown
