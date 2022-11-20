@@ -128,5 +128,6 @@ Kartheek
 <br>
 Finally, to validate the .yaml file we make use of this site.
 [yamlint](http://www.yamllint.com/) <br>
-Regards <br>
+Regards
+
 ***Kartheek Gummaluri***
