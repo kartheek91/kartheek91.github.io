@@ -1,120 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-20T22:33:31+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Working with YAML Ain’t Markup Language</title><link href="http://localhost:4000/2022/11/20/Working-with-YAML-Ain't-Markup-Language.html" rel="alternate" type="text/html" title="Working with YAML Ain’t Markup Language" /><published>2022-11-20T22:00:00+05:30</published><updated>2022-11-20T22:00:00+05:30</updated><id>http://localhost:4000/2022/11/20/Working-with-YAML-Ain't-Markup-Language</id><content type="html" xml:base="http://localhost:4000/2022/11/20/Working-with-YAML-Ain't-Markup-Language.html"><![CDATA[<h1 id="storing-data-in-multiple-lines">Storing data in multiple lines</h1>
-<p>Hello all, today I will share my knowledge regarding YAML.<br />
-<strong>YAML</strong> is a superset of JSON. Any JSON file is a valid YAML file.
-To work with Docker, K8s, Ansible, and Prometheus configuration files written in YAML. It is a widely used format for different DevOps tools and applications. It is a data serialization language that is human-readable and intuitive.<br />
-<strong>Indentation</strong>: It is done with one or more spaces but not with tabs. <br />
-<strong>YAML Comment</strong>:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># This is a first comment. 
-</code></pre></div></div>
-<p><br />
-<strong>Key-Value Pairs</strong>: This is indicated by colon and space. We can also key-value pairs as hash and dictionary.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"name": "Kartheek"
-"designation": "Senior Software Engineer"
-</code></pre></div></div>
-<p><br />
-<strong>Lists</strong>:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-# List of Programming languages
-- Java
-- C
-- C#
-...
-</code></pre></div></div>
-<p><br />
-<strong>Block and Flow styles</strong>:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Block Style 
-fruits:
- - apple
- - banana
- - guava
- # Flow Style
-fruits: [apple, banana]
-
-</code></pre></div></div>
-<p><strong>Documents</strong>:</p>
-<ul>
-  <li>One file can contain multiple documents.</li>
-  <li>Documents are seperated by 3 hyphens (—)  and ended with 3 dots (…)</li>
-</ul>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"name": "Kartheek"
-"designation": "Senior Software Engineer"
----
-# List of Programming languages
-- Java
-- C
-- C#
-</code></pre></div></div>
-<p><br />
-<strong>Data types in YAML</strong>:</p>
-<ul>
-  <li><strong>Strings</strong>: We can declare string variable in three different ways.
-<br />
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># String Variables
-name: "Kartheek"
-company: Sails software solutions
-location: 'Vizag'
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Storing data in multiple lines</strong>:
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"bio": |
- This is Kartheek
- I'm very nice dude.
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Write a single line in multiple lines</strong>: <br />
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Write a single line in multiple lines
- "message": &gt;
- This will
- be
- in whole single line
-</code></pre></div>    </div>
-    <p>It will be same as</p>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># same as
-"message1": "This will be in whole single line"
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Integer</strong>: <br />
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Integer datatype
-number: 5678
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Float</strong>: <br />
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Float datatype
-marks: 98.5
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Boolean</strong>: <br />
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Boolean value
-isDeployed: true
-deployed: yes
-isActive: on
-</code></pre></div>    </div>
-    <p><br />
-<strong>Specifying data types in YAML:</strong></p>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>physics: !!int 98 
-date: !!timestamp "2022-11-11"
-time: !!timestamp "2001-12-15T02:59:43.1Z"
-</code></pre></div>    </div>
-    <p><br />
-<strong>Repeated Nodes:</strong>  Keeping note of DRY principle. (Don’t Repeat Yourself). We can use anchor name (&amp;name) and then we can reference with alias (*name) .<br /></p>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Name:  &amp;myname Kartheek
-myName: *myname
-</code></pre></div>    </div>
-    <p><strong>Output:</strong></p>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Name:
-Kartheek
-myName:
-Kartheek
-</code></pre></div>    </div>
-    <p><br />
-Finally, to validate the .yaml file we make use of this site.
-<a href="http://www.yamllint.com/">yamlint</a> <br />
-Regards</p>
-  </li>
-</ul>
-
-<p><strong><em>Kartheek Gummaluri</em></strong></p>]]></content><author><name></name></author><category term="DOCKER" /><category term="DevOps" /><category term="YAML" /><category term="Kubernetes" /><summary type="html"><![CDATA[Storing data in multiple lines Hello all, today I will share my knowledge regarding YAML. YAML is a superset of JSON. Any JSON file is a valid YAML file. To work with Docker, K8s, Ansible, and Prometheus configuration files written in YAML. It is a widely used format for different DevOps tools and applications. It is a data serialization language that is human-readable and intuitive. Indentation: It is done with one or more spaces but not with tabs. YAML Comment: # This is a first comment. Key-Value Pairs: This is indicated by colon and space. We can also key-value pairs as hash and dictionary. "name": "Kartheek" "designation": "Senior Software Engineer" Lists: --- # List of Programming languages - Java - C - C# ... Block and Flow styles: ``` Block Style fruits: apple banana guava # Flow Style fruits: [apple, banana]]]></summary></entry><entry><title type="html">Docker Container Auto Restart Policies</title><link href="http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates.html" rel="alternate" type="text/html" title="Docker Container Auto Restart Policies" /><published>2022-04-22T21:23:24+05:30</published><updated>2022-04-22T21:23:24+05:30</updated><id>http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates</id><content type="html" xml:base="http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates.html"><![CDATA[<p>Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the <strong>Nginx</strong> container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-20T22:37:31+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learn By Doing</title><subtitle>This site is created to share my learnings.Please let me know if you have any doubts regarding my postings.</subtitle><entry><title type="html">Docker Container Auto Restart Policies</title><link href="http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates.html" rel="alternate" type="text/html" title="Docker Container Auto Restart Policies" /><published>2022-04-22T21:23:24+05:30</published><updated>2022-04-22T21:23:24+05:30</updated><id>http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates</id><content type="html" xml:base="http://localhost:4000/2022/04/22/hands-on-elasticsearch-search-templates.html"><![CDATA[<p>Hello all, today I will share my knowledge regarding docker and its restart policies. We have an application hosted in the <strong>Nginx</strong> container. We hosted all our applications in the Azure cloud provider. Usually, we will have patches to update the virtual machines. During this process, we might encounter restarting the virtual machines. Due to this, we will see that couple of containers will be in a stopped state</p>
 
 <p><strong>Why and what is happening behind the scenes?</strong>
 When we try to start the container, it will have No as default. It will not start when the containers exist or when the docker daemon gets restarted.</p>
@@ -1867,4 +1751,94 @@ GET student/_search
 <p>And once again I wish everyone a Happy New Year. Please do post your valuable suggestions, questions, and learnings, and let’s try to learn as much as possible this year.</p>
 
 <p>Thanks,<br />
-<strong><em>Kartheek Gummaluri</em></strong></p>]]></content><author><name></name></author><summary type="html"><![CDATA[Happy New Year 2021 First of all, Thank you for all following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.]]></summary></entry></feed>
+<strong><em>Kartheek Gummaluri</em></strong></p>]]></content><author><name></name></author><summary type="html"><![CDATA[Happy New Year 2021 First of all, Thank you for all following my blog and showing interest in reading my articles. In this blog post, I would like to discuss my plans for the year 2021. I’ll work hard to accomplish all my goals mentioned here and share my learnings.]]></summary></entry><entry><title type="html">Apache-NiFi-Series-1 GetFile and PutFile Processors</title><link href="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html" rel="alternate" type="text/html" title="Apache-NiFi-Series-1 GetFile and PutFile Processors" /><published>2020-08-03T21:00:06+05:30</published><updated>2020-08-03T21:00:06+05:30</updated><id>http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors</id><content type="html" xml:base="http://localhost:4000/2020/08/03/apache-nifi-series-1-getfile-and-putfile-processors.html"><![CDATA[<h1 id="apache-nifi-getfile-and-putfile-processors">Apache NiFi GetFile and PutFile Processors</h1>
+<p>Hi, In this post I’ll discuss on how to leverage  <strong><em>Get and Put File Processors</em></strong> using  <strong><em>Apache-NiF</em>i</strong></p>
+
+<h1 id="introduction">Introduction</h1>
+<p><strong><em>Apache NiFi</em></strong> is a real time data ingestion platform, which can transfer and manage data transfer between different sources and destination systems. It supports a wide variety of data formats like logs, geo location data, social feeds, etc. It also supports many protocols like SFTP, HDFS, and KAFKA, etc. This support to wide variety of data sources and protocols making this platform popular in many IT organizations.</p>
+
+<p>So we will take two processors i.e. GetFile Processor, PutFile Processor and will try to establish relationship between two procesors. Our goal is to move the files from one location to another.</p>
+
+<h1 id="getfile-processor">GetFile Processor</h1>
+<p><strong><em>GetFile Processor</em></strong>  is used to fetch files of a specific format from a specific directory. It also provides other options to user for more control on fetching. We will discuss it in properties section below.So now we will add this processor.</p>
+
+<h1 id="steps-to-add-this-getfile-processor-to-the-workspace">Steps to add this GetFile Processor to the WorkSpace</h1>
+<ul>
+  <li>Drag the processor icon from the  menu and you will see the following window.</li>
+</ul>
+
+<p><img src="/addProcessor.png" alt="" /></p>
+
+<ul>
+  <li>Now we need to add GetFileProcessor, go to the top right corner and  in filter box type <strong>GetFile</strong> and  double click on the result then you willl processor getting added to the workspace.</li>
+</ul>
+
+<p><img src="/getFile1.png" alt="" /></p>
+
+<ul>
+  <li>Now we will set  <strong><em>GetFile Properties</em></strong>  which is important and without we can’t start the processor.</li>
+</ul>
+
+<p><img src="/getFile_Properties.png" alt="" /></p>
+
+<ul>
+  <li>So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can’t      start the processor. Let’s fill the properties and click on the <strong>Apply</strong> button.</li>
+</ul>
+
+<p><img src="/getFile_Configuration.png" alt="" /></p>
+
+<h1 id="putfile-processor">PutFile Processor</h1>
+<p><strong><em>PutFile Processor</em></strong> The PutFile processor is used to store the file from the data flow to a specific location. We will discuss it in properties section below.So now we will add this processor.</p>
+
+<h1 id="steps-to-add-this-putfile-processor-to-the-workspace">Steps to add this PutFile Processor to the WorkSpace</h1>
+<ul>
+  <li>
+    <p>We can replicate the above mentioned steps and try to  filter it out by <strong>PutFilter</strong> double click on it and you will end up with this screen.
+<img src="/getFile_putFile.png" alt="" /></p>
+  </li>
+  <li>So the proeprties which are in bold are the mandatory properties, we need to set values for those properties without which we can’t      start the processor. Let’s fill the properties in properties tab and don’t forget to check  <strong><em>sucess and failure</em></strong>  in setting tab.</li>
+  <li>Now click  <strong>Apply</strong> button.</li>
+</ul>
+
+<p><img src="/putfile_property.png" alt="" /></p>
+<h1 id="create-connection">Create Connection</h1>
+<ul>
+  <li>Now we will create connection between two processors and we will end up with the following screen.</li>
+</ul>
+
+<p><img src="/createconnection.png" alt="" /></p>
+
+<ul>
+  <li>Now we go to the input directory and I have copied <strong>100 pdf  files</strong>.</li>
+</ul>
+
+<p><img src="/input_directory.png" alt="" /></p>
+
+<ul>
+  <li>Now we are ready to start the processors, in order to start the processors right click on the workspace and click start. Then we are are good to go. For our understanding i will start processors individually.</li>
+</ul>
+
+<p><img src="/input_processor_start.png" alt="" /></p>
+
+<ul>
+  <li>So now we will see 100 items in the queue.</li>
+</ul>
+
+<p><img src="/quee100.png" alt="" /></p>
+
+<ul>
+  <li>Now we will start <strong>Put File Processor</strong>.</li>
+</ul>
+
+<p><img src="/putoutput.png" alt="" /></p>
+
+<ul>
+  <li>Finally now we will check  in the <strong>Output Directory</strong>.</li>
+</ul>
+
+<p><img src="/output_direcotry.png" alt="" /></p>
+
+<p>So this how we will leverage <strong>GetFile and PutFile Processors</strong>  using <strong>Apache NiFi</strong></p>
+
+<p>Thanks,<br />
+<strong><em>Kartheek Gummaluri</em></strong></p>]]></content><author><name></name></author><category term="APACHE" /><category term="NIFI" /><summary type="html"><![CDATA[Apache NiFi GetFile and PutFile Processors Hi, In this post I’ll discuss on how to leverage Get and Put File Processors using Apache-NiFi]]></summary></entry></feed>
