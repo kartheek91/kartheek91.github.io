@@ -1,17 +1,18 @@
 version: '3'
 services:
     jekyll:
-        image: jekyll/jekyll:3.8.3
+        image: jekyll/jekyll:4.2.0  # Updated image with Ruby 2.6+ support
         container_name: kartheek91.github.io
         environment:
-            - JEKYILL_ENV=docker
-        # working on one post - use incremental mode
+            - JEKYLL_ENV=docker
+
+        # Work on a single post with incremental build
         # command: jekyll serve --host 0.0.0.0 --drafts --config _config.yml,_config_dev.yml --watch --incremental
 
-        # add new post - no incremental mode, Jekyll will regenerate dependencies on save
-        command: jekyll serve --host 0.0.0.0 --drafts --config _config.yml,
+        # Add new post - no incremental mode, Jekyll will regenerate dependencies on save
+        command: jekyll serve --host 0.0.0.0 --drafts --config _config.yml
 
-        # work on design - no incremental mode, no drafts, looks like production
+        # Work on design - no incremental mode, no drafts, looks like production
         # command: jekyll serve --host 0.0.0.0 --config _config.yml --watch
 
         volumes:

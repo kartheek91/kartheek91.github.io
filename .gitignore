@@ -1,1 +1,46 @@
+# Jekyll specific
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
 .DS_Store
+.env
+node_modules/
+vendor/
+
+# Bundler
+Gemfile.lock
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.old
+
+# System-specific
+*.orig
+*.rej
+Thumbs.db
+ehthumbs.db
+Icon?
+
+# VSCode
+.vscode/
+
+# Ruby-specific
+*.gem
+*.rbc
+*.rbo
+.rspec
+.yardoc
+.rubocop.yml
+.rubocop_todo.yml
+
+# Docker-related
+docker-compose.override
+/vendor/
+/.bundle/
+/jekyll-cache/
+/vendor/bundle/bin/
